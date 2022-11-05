@@ -11,3 +11,90 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+/* HEADER */
+
+header {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  background-color: #97B9A8;
+}
+
+nav ul {
+  margin: 0;
+  display: flex;
+  justify-content: right;
+  text-decoration: none;
+}
+
+nav ul li {
+  color: black;
+  list-style: none;
+  padding: 1em;
+}
+
+header div {
+  display: flex;
+  justify-content: space-evenly;
+  padding: 1em;
+}
+
+.brand-logo {
+  width: 120px;
+}
+
+header div .search-bar input{
+  width: 690px;
+}
+
+header .authentication-button {
+  display: flex;
+  justify-content: space-between;
+  width: 200px;
+}
+
+header .authentication-button button{
+  width: 100px;
+  border-color: #97B9A8;
+  border-radius: 5px;
+  padding: 10px;
+  background-color: #386159;
+  color: white;
+}
+/* MAIN */
+/* HOMEPAGE */
+
+.homepage-container {
+  text-align: center;
+  padding: 2em;
+}
+
+.homepage-container img {
+  border-radius: 20px;
+}
+
+/* FOOTER */
+
+footer {
+  background-color: #97B9A8;
+}
+
+footer div{
+  display: flex;
+  justify-content: space-evenly;
+}
+
+footer div ul li{
+  list-style: none;
+}
+
+.usefull-links, .ikuti-kami {
+  display: flex;
+  flex-direction: column;
+}
+
+footer h4 {
+  text-align: center;
+  padding: 10px;
+}
