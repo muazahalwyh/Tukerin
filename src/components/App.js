@@ -9,6 +9,7 @@ import Homepage from '../pages/HomePage';
 // Styles
 import '../styles/App.css';
 import brandLogo from '../images/logo192.png';
+import brandTukerin from '../images/brand-tukerin.png';
 
 function App() {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -35,7 +36,8 @@ function App() {
           </ul>
         </nav>
         <div>
-          <Link to="/" className="brand-logo"><img src="" alt="logo tukerin" /></Link>
+          <Link to="/" className="brand-logo"><img src={brandTukerin} alt="logo tukerin" /></Link>
+          <h1>Tukerin</h1>
           <SearchBar
             keyword={keyword}
             // eslint-disable-next-line react/jsx-no-bind
