@@ -6,6 +6,7 @@ import {
 import SearchBar from './SearchBar';
 // Pages
 import Homepage from '../pages/HomePage';
+import RegisterPage from '../pages/RegisterPage';
 // Styles
 import '../styles/App.css';
 import brandLogo from '../images/logo192.png';
@@ -45,13 +46,14 @@ function App() {
           />
           <div className="authentication-button">
             <button type="button">Masuk</button>
-            <button type="button">Register</button>
+            <button type="button"><Link to="/register">Register</Link></button>
           </div>
         </div>
       </header>
       <main className="content">
         <Routes>
           <Route path="/" element={<Homepage />} />
+          <Route path="/register" element={<RegisterPage />} />
         </Routes>
       </main>
       <footer>
