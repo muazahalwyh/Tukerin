@@ -7,6 +7,8 @@ import SearchBar from './SearchBar';
 // Pages
 import Homepage from '../pages/HomePage';
 import RegisterPage from '../pages/RegisterPage';
+
+import LoginPage from '../pages/LoginPage';
 // Styles
 import '../styles/App.css';
 import brandLogo from '../images/logo192.png';
@@ -36,7 +38,7 @@ function App() {
             <li><a href="/">Hubungi Kami</a></li>
           </ul>
         </nav>
-        <div>
+        <div className="header-main">
           <Link to="/" className="brand-logo"><img src={brandTukerin} alt="logo tukerin" /></Link>
           <h1>Tukerin</h1>
           <SearchBar
@@ -45,7 +47,7 @@ function App() {
             keywordChange={onKeywordChangeHandler}
           />
           <div className="authentication-button">
-            <button type="button">Masuk</button>
+            <button type="button"><Link to="/login">Masuk</Link></button>
             <button type="button"><Link to="/register">Register</Link></button>
           </div>
         </div>
@@ -54,6 +56,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Homepage />} />
           <Route path="/register" element={<RegisterPage />} />
+          <Route path="/login" element={<LoginPage />} />
         </Routes>
       </main>
       <footer>
@@ -72,7 +75,7 @@ function App() {
             <ul>
               <li><button type="button">Facebook</button></li>
               <li><button type="button">Instagram</button></li>
-              <li><button type="button">Twitter</button></li>
+              <li><button type="button">Twitter </button></li>
             </ul>
           </div>
         </div>

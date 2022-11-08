@@ -14,11 +14,11 @@ function RegisterPage() {
   }
   return (
     <div className="register-page">
-      <h1>Register Page</h1>
+      <h2>Register Sekarang</h2>
       <RegisterInput register={onRegisterHandler()} />
       <p>
-        Back to
-        <Link to="/">Login</Link>
+        Sudah punya akun?
+        <Link className="link" to="/login">Login</Link>
       </p>
     </div>
   );
