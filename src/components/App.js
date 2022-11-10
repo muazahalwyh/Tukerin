@@ -7,10 +7,11 @@ import SearchBar from './SearchBar';
 // Pages
 import Homepage from '../pages/HomePage';
 import RegisterPage from '../pages/RegisterPage';
-
 import LoginPage from '../pages/LoginPage';
+import AddPage from '../pages/AddPage';
 // Styles
 import '../styles/App.css';
+import '../styles/AddPage.css';
 import brandLogo from '../images/logo192.png';
 import brandTukerin from '../images/brand-tukerin.png';
 
@@ -57,6 +58,7 @@ function App() {
           <Route path="/" element={<Homepage />} />
           <Route path="/register" element={<RegisterPage />} />
           <Route path="/login" element={<LoginPage />} />
+          <Route path="/add" element={<AddPage />} />
         </Routes>
       </main>
       <footer>
