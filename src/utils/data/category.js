@@ -1,4 +1,4 @@
-const products = [
+const categories = [
   {
     category: 'laptop',
   },
@@ -25,4 +25,4 @@ const products = [
   },
 ];
 
-export default products;
+export default categories;
