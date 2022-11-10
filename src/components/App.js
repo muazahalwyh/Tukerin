@@ -1,3 +1,4 @@
+/* eslint-disable import/order */
 import React, { useState } from 'react';
 import {
   Routes, Route, Link, useSearchParams,
@@ -8,8 +9,10 @@ import SearchBar from './SearchBar';
 import Homepage from '../pages/HomePage';
 // Styles
 import '../styles/App.css';
-import brandLogo from '../images/logo192.png';
+import { BsFacebook, BsInstagram, BsTwitter } from 'react-icons/bs';
+import { FaCopyright } from 'react-icons/fa';
 import brandTukerin from '../images/brand-tukerin.png';
+import brandTukerinFooter from '../images/tukerinn-removebg.png';
 
 function App() {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -36,8 +39,10 @@ function App() {
           </ul>
         </nav>
         <div>
-          <Link to="/" className="brand-logo"><img src={brandTukerin} alt="logo tukerin" /></Link>
-          <h1>Tukerin</h1>
+          <div className="brand-container">
+            <Link to="/" className="brand-logo"><img src={brandTukerin} alt="logo tukerin" /></Link>
+            <h1>Tukerin</h1>
+          </div>
           <SearchBar
             keyword={keyword}
             // eslint-disable-next-line react/jsx-no-bind
@@ -55,26 +60,32 @@ function App() {
         </Routes>
       </main>
       <footer>
-        <div>
-          <img src={brandLogo} alt="logo tukerin" />
+        <div className="footer-container">
+          <div className="brand-footer">
+            <img src={brandTukerinFooter} alt="logo tukerin" />
+            <h1>Tukerin</h1>
+          </div>
           <div className="usefull-links">
             <h3>Jelajahi Tukerin</h3>
-            <ul>
+            <ul className="usefull-links__list">
               <li><a href="/">Beranda</a></li>
               <li><a href="/">Tentang Kami</a></li>
-              <li><a href="/">Hubungi Kami</a></li>
+              <li><a href="/">FAQ</a></li>
             </ul>
           </div>
           <div className="ikuti-kami">
             <h3>Ikuti Kami</h3>
-            <ul>
-              <li><button type="button">Facebook</button></li>
-              <li><button type="button">Instagram</button></li>
-              <li><button type="button">Twitter</button></li>
+            <ul className="ikuti-kami__list">
+              <li><a href="/" aria-label="facebook"><BsFacebook /></a></li>
+              <li><a href="/" aria-label="instagram"><BsInstagram /></a></li>
+              <li><a href="/" aria-label="twitter"><BsTwitter /></a></li>
             </ul>
           </div>
         </div>
-        <h4>2022, C22-015</h4>
+        <div className="copyright">
+          <FaCopyright />
+          <h4>2022, C22-015</h4>
+        </div>
       </footer>
     </div>
   );
