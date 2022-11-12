@@ -9,6 +9,7 @@ import Homepage from '../pages/HomePage';
 import RegisterPage from '../pages/RegisterPage';
 import LoginPage from '../pages/LoginPage';
 import AddPage from '../pages/AddPage';
+import TransactionPage from '../pages/TransactionPage';
 // Styles
 import '../styles/App.css';
 import '../styles/AddPage.css';
@@ -59,6 +60,7 @@ function App() {
           <Route path="/register" element={<RegisterPage />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/add" element={<AddPage />} />
+          <Route path="/transaction" element={<TransactionPage />} />
         </Routes>
       </main>
       <footer>
