@@ -7,6 +7,7 @@ import {
 import SearchBar from './SearchBar';
 // Pages
 import Homepage from '../pages/HomePage';
+import DetailPage from '../pages/DetailPage';
 // Styles
 import '../styles/App.css';
 import { BsFacebook, BsInstagram, BsTwitter } from 'react-icons/bs';
@@ -57,6 +58,7 @@ function App() {
       <main className="content">
         <Routes>
           <Route path="/" element={<Homepage />} />
+          <Route path="/products/:id" element={<DetailPage />} />
         </Routes>
       </main>
       <footer>
