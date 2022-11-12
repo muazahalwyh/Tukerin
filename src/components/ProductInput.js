@@ -4,14 +4,14 @@ import useInput from '../hooks/useInput';
 import { addProduct } from '../utils/data/local-data';
 
 function ProductInput() {
-  const [image, setImage] = useState('');
+  const [picture, setPicture] = useState('');
   const [name, handleNameChange] = useInput('');
   const [price, handlePriceChange] = useInput('');
   const [category, handleCategoryChange] = useInput('');
   const [description, handleDescriptionChange] = useInput('');
 
   const handleImage = (event) => {
-    setImage(event.target.files[0]);
+    setPicture(event.target.files[0]);
   };
 
   const navigate = useNavigate();
@@ -23,9 +23,8 @@ function ProductInput() {
 
   return (
     <form className="add-product__input" onSubmit={onAddProductHandler}>
-      <div className="add-product__input-image" onChange={handleImage}> + </div>
-      <label htmlFor="name">Nama</label>
-      <br />
+      <div className="add-product__input-image" onChange={handleImage} value={picture}> + </div>
+      <h4>Nama</h4>
       <input
         className="add-product__input-text"
         placeholder="Nama Barang"
@@ -33,8 +32,7 @@ function ProductInput() {
         onChange={handleNameChange}
       />
       <br />
-      <label htmlFor="price">Harga</label>
-      <br />
+      <h4>Harga</h4>
       <input
         className="add-product__input-text"
         placeholder="Rp."
@@ -42,8 +40,7 @@ function ProductInput() {
         onChange={handlePriceChange}
       />
       <br />
-      <label htmlFor="category">Kategori</label>
-      <br />
+      <h4>Kategori</h4>
       <select className="add-product__input-select" value={category} onChange={handleCategoryChange}>
         <option value=""> --Pilih Kategori-- </option>
         <option value="elektronik">Elektronik</option>
@@ -55,8 +52,7 @@ function ProductInput() {
         <option value="Hobi">Hobi</option>
       </select>
       <br />
-      <label htmlFor="description">Deskripsi</label>
-      <br />
+      <h4>Deskripsi</h4>
       <input
         className="add-product__input-description"
         placeholder="Jelaskan kondisi barang anda"
