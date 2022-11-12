@@ -1,12 +1,12 @@
 import React from 'react';
-import products from '../utils/data/category';
+import categories from '../utils/data/category';
 
 function Category() {
-  if (products.length > 0) {
+  if (categories.length > 0) {
     return (
       <div className="categories">
         {
-            products.map((product) => `${product.category}, `)
+            categories.map((category) => `${category.category}, `)
         }
       </div>
     );
