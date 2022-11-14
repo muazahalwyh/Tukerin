@@ -125,6 +125,21 @@
     background-color: #386159;
   }
   
+  .close-form {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+    min-height: 30px;
+  }
+
+  .close-form svg {
+    height: 100%;
+  }
+
+  .close-icon {
+    width: 30px;
+  }
+
   .masukan-barang-barter form p {
     font-weight: bold;
     font-size: 18px;
@@ -151,9 +166,9 @@
     bottom: auto;
     margin-right: -50%;
     transform: translate(-50%, -50%);
-    gap: 20px;
+    gap: 10px;
   }
-  
+
   form label {
     text-align: center;
     width: 100%;
@@ -168,8 +183,10 @@
   }
   
   .input-image {
+    display: flex;
     margin: auto;
-    text-align: center;
+    justify-content: center;
+    align-items: center;
     width: 85px;
     height: 85px;
     border-style: dashed;
@@ -177,6 +194,29 @@
     border-radius: 10px;
   }
   
+  .input-image input {
+    position: absolute;
+    width: 85px;
+    height: 85px;
+    opacity: 0;
+  }
+
+  label img {
+    align-items: center;
+    max-width: 100px;
+    max-height: 100px;
+  }
+
+  form h4{
+    font-size: 12px;
+    font-weight: lighter;
+  }
+
+  .icon-add {
+    margin: auto;
+    z-index: -10;
+  }
+
   .ajukan-button {
     border-style: none;
     border-radius: 10px;
@@ -185,4 +225,5 @@
     font-size: 18px;
     width: 200px;
     height: 40px;
+    padding: 10px;
   }
