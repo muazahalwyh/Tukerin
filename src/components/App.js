@@ -3,22 +3,29 @@ import React, { useState } from 'react';
 import {
   Routes, Route, Link, useSearchParams,
 } from 'react-router-dom';
+import Popup from 'reactjs-popup';
 // Components
 import SearchBar from './SearchBar';
+import ProfileModal from './pop-up/ProfileModal';
 // Pages
 import Homepage from '../pages/HomePage';
+import DetailPage from '../pages/DetailPage';
 import RegisterPage from '../pages/RegisterPage';
 import LoginPage from '../pages/LoginPage';
 import AddPage from '../pages/AddPage';
 import TransactionPage from '../pages/TransactionPage';
 // Styles
 import '../styles/App.css';
+import '../styles/DetailPage.css';
 import '../styles/AddPage.css';
-// import brandLogo from '../images/logo192.png';
-import brandTukerin from '../images/brand-tukerin.png';
-import brandTukerinFooter from '../images/tukerinn-removebg.png';
+// Icons
 import { BsFacebook, BsInstagram, BsTwitter } from 'react-icons/bs';
 import { FaCopyright } from 'react-icons/fa';
+import { CgProfile } from 'react-icons/cg';
+import { MdNotifications } from 'react-icons/md';
+
+import brandTukerin from '../images/brand-tukerin.png';
+import brandTukerinFooter from '../images/tukerinn-removebg.png';
 
 function App() {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -33,6 +40,86 @@ function App() {
   // const filteredProducts = products.filter((product) => product.name.toLowerCase().includes(
   //   keyword.toLocaleLowerCase(),
   // ));
+
+  const authedUser = 'alan';
+  if (authedUser === 'alan') {
+    return (
+      <div className="app-container">
+        <header>
+          <nav>
+            <ul>
+              <li><a href="/">Beranda</a></li>
+              <li><a href="/">Tentang Kami</a></li>
+              <li><a href="/">Hubungi Kami</a></li>
+            </ul>
+          </nav>
+          <div>
+            <div className="brand-container">
+              <Link to="/" className="brand-logo"><img src={brandTukerin} alt="logo tukerin" /></Link>
+              <h1>Tukerin</h1>
+            </div>
+            <SearchBar
+              keyword={keyword}
+            // eslint-disable-next-line react/jsx-no-bind
+              keywordChange={onKeywordChangeHandler}
+            />
+            <div className="authentication-button">
+              <li>
+                <Popup trigger={<MdNotifications className="notification-icon" />} position="right center">
+                  <ProfileModal />
+                </Popup>
+                <div className="profile-icon">
+                  <Popup trigger={<CgProfile className="profile-icon__icon" />}>
+                    <ProfileModal />
+                  </Popup>
+                  {' '}
+                  <p>{authedUser}</p>
+                </div>
+              </li>
+            </div>
+          </div>
+        </header>
+        <main className="content">
+          <Routes>
+            <Route path="/" element={<Homepage />} />
+            <Route path="/products/:id" element={<DetailPage />} />
+            <Route path="/register" element={<RegisterPage />} />
+            <Route path="/login" element={<LoginPage />} />
+            <Route path="/add" element={<AddPage />} />
+            <Route path="/transaction" element={<TransactionPage />} />
+          </Routes>
+        </main>
+        <footer>
+          <div className="footer-container">
+            <div className="brand-footer">
+              <img src={brandTukerinFooter} alt="logo tukerin" />
+              <h1>Tukerin</h1>
+            </div>
+            <div className="usefull-links">
+              <h3>Jelajahi Tukerin</h3>
+              <ul className="usefull-links__list">
+                <li><a href="/">Beranda</a></li>
+                <li><a href="/">Tentang Kami</a></li>
+                <li><a href="/">FAQ</a></li>
+              </ul>
+            </div>
+            <div className="ikuti-kami">
+              <h3>Ikuti Kami</h3>
+              <ul className="ikuti-kami__list">
+                <li><a href="/" aria-label="facebook"><BsFacebook /></a></li>
+                <li><a href="/" aria-label="instagram"><BsInstagram /></a></li>
+                <li><a href="/" aria-label="twitter"><BsTwitter /></a></li>
+              </ul>
+            </div>
+          </div>
+          <div className="copyright">
+            <FaCopyright />
+            <h4>2022, C22-015</h4>
+          </div>
+        </footer>
+      </div>
+    );
+  }
 
   return (
     <div className="app-container">
@@ -63,6 +150,7 @@ function App() {
       <main className="content">
         <Routes>
           <Route path="/" element={<Homepage />} />
+          <Route path="/products/:id" element={<DetailPage />} />
           <Route path="/register" element={<RegisterPage />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/add" element={<AddPage />} />
