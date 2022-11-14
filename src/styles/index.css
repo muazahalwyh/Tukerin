@@ -177,6 +177,7 @@ header .authentication-button button{
 .product-item__body p {
   margin: 5px;
   font-size: 12px;
+}
 
 /* LOGIN */
 
@@ -198,10 +199,6 @@ header .authentication-button button{
   margin: 0px auto;
 }
 
-.container-img img{
-  
-}
-
 .container-content{
   display: flex;
   flex-direction: column;
@@ -213,7 +210,6 @@ header .authentication-button button{
   height: 100%;
   border-radius: 0 10px 10px 0;
 }
-
 
 .input-login button{
   padding: 10px 25px;
@@ -358,6 +354,7 @@ footer ul li a:hover{
   font-size: 18px;
   display: flex;
   opacity: 50%;
+}
 
 .ikuti-kami button{
   margin: 1px;
