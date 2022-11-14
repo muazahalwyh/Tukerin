@@ -27,13 +27,13 @@ class DetailPage extends React.Component {
     const Product = await products;
     console.log(Product);
 
-    this.setState(() => ({
-      product: Product.findIndex((product) => product.id === '1'),
-    }));
+    // this.setState(() => ({
+    //   product: Product.findIndex((product) => product.id === '1'),
+    // }));
   }
 
   render() {
-    if (this.state.product === null) {
+    if (this.state.product === 'alan') {
       return <p>Product tidak ditemukan</p>;
     }
 

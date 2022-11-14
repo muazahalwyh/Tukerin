@@ -1,11 +1,12 @@
+/* eslint-disable max-len */
 import React from 'react';
 import Popup from 'reactjs-popup';
 import SilahkanLogin from '../pop-up/SilahkanLogin';
 import MasukanBarangBarter from '../pop-up/MasukanBarangBarter';
 
 function AjukanBarterButton() {
-  // const { data } = await getUserLogged();
-  const data = null;
+// const { data } = await getUserLogged();
+  const data = 'alan';
   if (data === null) {
     return (
       <Popup trigger={<button className="ajukan-barter" type="button">Ajukan Barter</button>}>
