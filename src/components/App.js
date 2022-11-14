@@ -14,7 +14,7 @@ import TransactionPage from '../pages/TransactionPage';
 // Styles
 import '../styles/App.css';
 import '../styles/AddPage.css';
-import brandLogo from '../images/logo192.png';
+// import brandLogo from '../images/logo192.png';
 import brandTukerin from '../images/brand-tukerin.png';
 import brandTukerinFooter from '../images/tukerinn-removebg.png';
 import { BsFacebook, BsInstagram, BsTwitter } from 'react-icons/bs';
@@ -44,14 +44,11 @@ function App() {
             <li><a href="/">Hubungi Kami</a></li>
           </ul>
         </nav>
-         <div>
+        <div className="header-main">
           <div className="brand-container">
             <Link to="/" className="brand-logo"><img src={brandTukerin} alt="logo tukerin" /></Link>
             <h1>Tukerin</h1>
           </div>
-        <div className="header-main">
-          <Link to="/" className="brand-logo"><img src={brandTukerin} alt="logo tukerin" /></Link>
-          <h1>Tukerin</h1>
           <SearchBar
             keyword={keyword}
             // eslint-disable-next-line react/jsx-no-bind
@@ -92,6 +89,7 @@ function App() {
               <li><a href="/" aria-label="facebook"><BsFacebook /></a></li>
               <li><a href="/" aria-label="instagram"><BsInstagram /></a></li>
               <li><a href="/" aria-label="twitter"><BsTwitter /></a></li>
+            </ul>
             <ul>
               <li><button type="button">Facebook</button></li>
               <li><button type="button">Instagram</button></li>
