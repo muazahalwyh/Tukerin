@@ -12,6 +12,7 @@ import Homepage from '../pages/HomePage';
 import DetailPage from '../pages/DetailPage';
 // Styles
 import '../styles/App.css';
+import '../styles/DetailPage.css';
 import { BsFacebook, BsInstagram, BsTwitter } from 'react-icons/bs';
 import { FaCopyright } from 'react-icons/fa';
 import { CgProfile } from 'react-icons/cg';
