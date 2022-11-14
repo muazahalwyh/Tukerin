@@ -7,8 +7,7 @@ import { AiOutlinePlus } from 'react-icons/ai';
 import { GrFormClose } from 'react-icons/gr';
 
 function MasukanBarangBarter() {
-  // eslint-disable-next-line no-unused-vars
-  const [picture, setPicture] = useState();
+  const [picture, setPicture] = useState([]);
   console.log(picture);
 
   const handlePicture = (e) => {
@@ -50,7 +49,7 @@ function MasukanBarangBarter() {
               <input type="file" onChange={handlePicture} />
               <AiOutlinePlus className="icon-add" />
             </div>
-            <h4 className="nama-file">{picture}</h4>
+            <h4 className="nama-file">{picture.FileList}</h4>
           </label>
           <input className="ajukan-button" type="submit" value="Ajukan" />
         </form>
