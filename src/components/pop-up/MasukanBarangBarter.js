@@ -49,6 +49,7 @@ function MasukanBarangBarter() {
               <input type="file" onChange={handlePicture} />
               <AiOutlinePlus className="icon-add" />
             </div>
+            <br />
             <h4 className="nama-file">{picture.FileList}</h4>
           </label>
           <input className="ajukan-button" type="submit" value="Ajukan" />

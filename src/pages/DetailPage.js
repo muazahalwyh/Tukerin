@@ -5,6 +5,7 @@ import { useParams } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import ProductDetail from '../components/product/ProductDetail';
 import products from '../utils/data/products';
+import '../styles/DetailPage.css';
 
 function DetailPageWrapper() {
   const { id } = useParams();

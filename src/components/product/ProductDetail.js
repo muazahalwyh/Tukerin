@@ -6,7 +6,7 @@ import AjukanBarterButton from '../buttons/AjukanBarterButton';
 import HubungiPemilikButton from '../buttons/HubungiPemilikButton';
 
 function ProductDetail({
-  name, price, condition, brand, weight, guarantee,
+  name, price, category,
 }) {
 //   const idImage = `${CONFIG.BASE_IMAGE_URL} + ${id}`;
   const idImage = `${CONFIG.BASE_IMAGE_URL}`;
@@ -17,26 +17,20 @@ function ProductDetail({
         <div className="detail-page__headline-product__text">
           <p className="detail-page__name">Nama{ name }</p>
           <p className="detail-page__price">Rp. { price }</p>
-        </div>
-      </div>
-      <div className="detail-page__detail-product">
-        <div className="detail-page__informations">
-          <p className="detail-product-text">Detail produk :</p>
-          <div className="detail-product-detail">
-            <div>
-              <p>Kondisi</p>
-              <p>Merek</p>
-              <p>Berat produk</p>
-              <p>Garansi</p>
-            </div>
-            <div>
-              <p>:  {condition}</p>
-              <p>:  {brand}</p>
-              <p>:  {weight}</p>
-              <p>:  {guarantee}</p>
+          <p className="detail-product-text">Deskripsi produk :</p>
+          <div className="detail-page__informations">
+            <div className="detail-product-detail">
+              <p>{category}</p>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                Donec ut erat elit. Suspendisse enim enim, ornare vel massa sit amet,
+                luctus mattis odio. Aliquam tristique convallis eros.
+              </p>
             </div>
           </div>
         </div>
+      </div>
+      <div className="detail-page__detail-product">
+
         <div className="detail-page__button">
           <AjukanBarterButton />
           <HubungiPemilikButton />
@@ -51,10 +45,8 @@ ProductDetail.propTypes = {
 //   id: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   price: PropTypes.string.isRequired,
-  condition: PropTypes.string.isRequired,
-  brand: PropTypes.string.isRequired,
-  weight: PropTypes.number.isRequired,
-  guarantee: PropTypes.string.isRequired,
+  category: PropTypes.string.isRequired,
+  // description: PropTypes.string.isRequired,
 };
 
 export default ProductDetail;

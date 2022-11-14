@@ -16,8 +16,6 @@ import AddPage from '../pages/AddPage';
 import TransactionPage from '../pages/TransactionPage';
 // Styles
 import '../styles/App.css';
-import '../styles/DetailPage.css';
-import '../styles/AddPage.css';
 // Icons
 import { BsFacebook, BsInstagram, BsTwitter } from 'react-icons/bs';
 import { FaCopyright } from 'react-icons/fa';

@@ -1,5 +1,6 @@
 import React from 'react';
 import ProductInput from '../components/ProductInput';
+import '../styles/AddPage.css';
 
 function AddPage() {
   return (
