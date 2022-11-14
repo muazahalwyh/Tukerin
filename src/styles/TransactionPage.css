@@ -1,0 +1,91 @@
+* {
+    margin: 0;
+    padding: 0;
+  }
+  
+  .transaction-page {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 20px;
+    width: 100%;
+  }
+
+  .transaction-page__container {
+    width: 50%;
+    margin-top: 20px;
+  }
+
+  .transaction-item {
+    border: 2px solid black;
+    border-radius: 20px;
+    margin: 20px 50px;
+  }
+  
+  .transaction-item__header {
+    background-color: #97b9a8;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    border-bottom: 1px solid black;
+    padding: 10px;
+    font-size: 12px;
+    text-align: center;
+  }
+  
+  .transaction-item__body {
+    padding: 10px;
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    grid-template-rows: 2fr 3fr;
+  }
+  
+  .transaction-item__body-image {
+    border: 1px solid black;
+    grid-row-start: 1;
+    grid-row-end: 4;
+  }
+  
+  .transaction-item__body-title {
+    padding-left: 10px;
+  }
+  
+  .transaction-item__body-action {
+    grid-row-start: 2;
+    grid-row-end: 4;
+  }
+  
+  .transaction-item__body-action button {
+    border-radius: 5px;
+    width: 100px;
+    padding: 5px 15px;
+    margin: 30px 20px 5px 0;
+    display: flex;
+    float: right;
+  }
+  
+  .button-accept {
+    justify-content: center;
+    background-color: #386159;
+    border: 1px solid black;
+    color: white;
+  }
+  
+  .button-reject {
+    border: 1px solid #386159;
+    justify-content: center;
+  }
+  
+  .transaction-item__message {
+    padding: 10px;
+    padding-left: 20px;
+    border-top: 1px solid black;
+  }
+
+  .transaction-item__label {
+    padding: 10px;
+    padding-left: 20px;
+    border-top: 1px solid black;
+    text-align: center;
+    font-weight: bold;
+  }
+  

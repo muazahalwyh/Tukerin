@@ -1,27 +1,24 @@
 const categories = [
   {
-    category: 'laptop',
+    category: 'Elektronik',
   },
   {
-    category: 'kulkas',
+    category: 'Fashion Wanita',
   },
   {
-    category: 'handphone',
+    category: 'Fashion Pria',
   },
   {
-    category: 'sofa',
+    category: 'Fashion Anak',
   },
   {
-    category: 'pakaian',
+    category: 'Makanan dan Minuman',
   },
   {
-    category: 'sepatuk',
+    category: 'Kecantikan',
   },
   {
-    category: 'makanan',
-  },
-  {
-    category: 'kamera',
+    category: 'Hobi',
   },
 ];
 

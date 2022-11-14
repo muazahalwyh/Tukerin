@@ -10,13 +10,20 @@ import ProfileModal from './pop-up/ProfileModal';
 // Pages
 import Homepage from '../pages/HomePage';
 import DetailPage from '../pages/DetailPage';
+import RegisterPage from '../pages/RegisterPage';
+import LoginPage from '../pages/LoginPage';
+import AddPage from '../pages/AddPage';
+import TransactionPage from '../pages/TransactionPage';
 // Styles
 import '../styles/App.css';
 import '../styles/DetailPage.css';
+import '../styles/AddPage.css';
+// Icons
 import { BsFacebook, BsInstagram, BsTwitter } from 'react-icons/bs';
 import { FaCopyright } from 'react-icons/fa';
 import { CgProfile } from 'react-icons/cg';
 import { MdNotifications } from 'react-icons/md';
+
 import brandTukerin from '../images/brand-tukerin.png';
 import brandTukerinFooter from '../images/tukerinn-removebg.png';
 
@@ -76,6 +83,10 @@ function App() {
           <Routes>
             <Route path="/" element={<Homepage />} />
             <Route path="/products/:id" element={<DetailPage />} />
+            <Route path="/register" element={<RegisterPage />} />
+            <Route path="/login" element={<LoginPage />} />
+            <Route path="/add" element={<AddPage />} />
+            <Route path="/transaction" element={<TransactionPage />} />
           </Routes>
         </main>
         <footer>
@@ -120,7 +131,7 @@ function App() {
             <li><a href="/">Hubungi Kami</a></li>
           </ul>
         </nav>
-        <div>
+        <div className="header-main">
           <div className="brand-container">
             <Link to="/" className="brand-logo"><img src={brandTukerin} alt="logo tukerin" /></Link>
             <h1>Tukerin</h1>
@@ -131,8 +142,8 @@ function App() {
             keywordChange={onKeywordChangeHandler}
           />
           <div className="authentication-button">
-            <button type="button">Masuk</button>
-            <button type="button">Register</button>
+            <button type="button"><Link to="/login">Masuk</Link></button>
+            <button type="button"><Link to="/register">Register</Link></button>
           </div>
         </div>
       </header>
@@ -140,6 +151,10 @@ function App() {
         <Routes>
           <Route path="/" element={<Homepage />} />
           <Route path="/products/:id" element={<DetailPage />} />
+          <Route path="/register" element={<RegisterPage />} />
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/add" element={<AddPage />} />
+          <Route path="/transaction" element={<TransactionPage />} />
         </Routes>
       </main>
       <footer>
@@ -162,6 +177,11 @@ function App() {
               <li><a href="/" aria-label="facebook"><BsFacebook /></a></li>
               <li><a href="/" aria-label="instagram"><BsInstagram /></a></li>
               <li><a href="/" aria-label="twitter"><BsTwitter /></a></li>
+            </ul>
+            <ul>
+              <li><button type="button">Facebook</button></li>
+              <li><button type="button">Instagram</button></li>
+              <li><button type="button">Twitter </button></li>
             </ul>
           </div>
         </div>
