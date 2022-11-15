@@ -7,6 +7,7 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
     margin-top: 20px;
     width: 100%;
   }
@@ -14,6 +15,7 @@
   .transaction-page__container {
     width: 50%;
     margin-top: 20px;
+    margin-bottom: 30px;
   }
 
   .transaction-item {
@@ -89,3 +91,28 @@
     font-weight: bold;
   }
   
+  @media screen and (max-width: 650px) {
+    .hps{
+      margin-left: 140px;
+    }
+
+    .transaction-page__container {
+      width: 80%;
+      margin-top: 20px;
+    }
+  }
+
+  @media screen and (max-width: 550px) {
+    .barang-saya_container {
+      width: 100%;
+    }
+  }
+
+  @media screen and (max-width: 380px) {
+    .hapus-btn{
+      margin-left: 20px;
+    }
+    .transaction-page__container {
+      width: 100%;
+    }
+  }
