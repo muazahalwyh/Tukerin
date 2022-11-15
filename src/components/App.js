@@ -14,6 +14,7 @@ import RegisterPage from '../pages/RegisterPage';
 import LoginPage from '../pages/LoginPage';
 import AddPage from '../pages/AddPage';
 import TransactionPage from '../pages/TransactionPage';
+import MyAccount from '../pages/MyAccountPage';
 // Styles
 import '../styles/App.css';
 // Icons
@@ -27,11 +28,10 @@ import brandTukerinFooter from '../images/tukerinn-removebg.png';
 
 function App() {
   const [searchParams, setSearchParams] = useSearchParams();
-  // const [products, setProduct] = useState([]);
   const [keyword, setKeyword] = useState(() => searchParams.get('keywordSearch') || '');
 
   function onKeywordChangeHandler(keywordSearch) {
-    setKeyword(keyword);
+    setKeyword(keywordSearch);
     setSearchParams({ keywordSearch });
   }
 
@@ -85,6 +85,7 @@ function App() {
             <Route path="/login" element={<LoginPage />} />
             <Route path="/add" element={<AddPage />} />
             <Route path="/transaction" element={<TransactionPage />} />
+            <Route path="/profile" element={<MyAccount />} />
           </Routes>
         </main>
         <footer>

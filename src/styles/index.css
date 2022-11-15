@@ -19,6 +19,8 @@ header {
   flex-direction: column;
   width: 100%;
   background-color: #97B9A8;
+  box-shadow: 1px 1px 5px 5px #ccc;
+  padding-bottom: 10px;
 }
 
 nav {
@@ -75,12 +77,14 @@ header div .search-bar input {
   width: 690px;
   height: 50px;
   border-radius: 5px;
+  padding-left: 10px;
 }
 
 .fa-search {
   color: white;
   background-color: #386159;
   padding: 1.2em;
+  border-radius: 5px;
   max-height: 50px;
 }
 
@@ -203,27 +207,32 @@ header .authentication-button button{
   position: fixed;
   width: 100%;
   height: 100%;
-  top: 130px;
-  left: 0;
+  top: 120px;
+  left: 1250px;
   right: 0;
   bottom: 0;
 }
 
 .profile-modal {
-  float: right;
+  position: relative;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
+  align-items: left;
   text-align: center;
   padding: 30px;
-  width: 230px;
+  width: 150px;
   border: solid;
   border-color: #D9D9D9;
   z-index: 10;
   color: black;
   background-color: white;
-  gap: 10px;
+  gap: 30px;
+}
+
+.profile-modal div {
+  display: flex;
+  gap: 20px;
 }
 
 /* LOGIN */
