@@ -1,6 +1,9 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import React from 'react';
+import { CgProfile } from 'react-icons/cg';
+import { AiOutlineShoppingCart } from 'react-icons/ai';
+import { MdOutlineInventory2, MdOutlineLogout } from 'react-icons/md';
 
 function ProfileModal() {
   function onClick() {
@@ -10,10 +13,22 @@ function ProfileModal() {
   return (
     <div onClick={onClick} className="root-popup-profile">
       <div className="profile-modal">
-        <a href="/profile"><p>Profile</p></a>
-        <a href="/profile"><p>Transaksi</p></a>
-        <a href="/profile"><p>Barang Saya</p></a>
-        <a href="/profile"><p>Log Out</p></a>
+        <div>
+          <CgProfile />
+          <a href="/profile"><p>Profile</p></a>
+        </div>
+        <div>
+          <AiOutlineShoppingCart />
+          <a href="/transaction"><p>Transaksi</p></a>
+        </div>
+        <div>
+          <MdOutlineInventory2 />
+          <a href="/profile"><p>Barang Saya</p></a>
+        </div>
+        <div>
+          <MdOutlineLogout />
+          <a href="/profile"><p>Log Out</p></a>
+        </div>
       </div>
     </div>
   );

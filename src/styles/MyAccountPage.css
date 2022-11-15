@@ -1,0 +1,60 @@
+.myaccount-container {
+    margin: 0;
+    padding: 0;
+}
+
+.myaccount-container h1 {
+    margin: 20px;
+    font-size: 28px;
+    font-weight: 500;
+    text-align: center;
+}
+
+.profile-picture {
+    display: flex;
+    margin: auto;
+    justify-content: center;
+    align-items: center;
+    width: 85px;
+    height: 85px;
+    background-color: #97B9A8;
+    border-radius: 10px;
+  }
+
+  .profile-picture input {
+    position: absolute;
+    width: 85px;
+    height: 85px;
+    opacity: 0;
+    z-index: +20;
+  }
+
+  .icon-add {
+    color: white;
+    margin: auto;
+    z-index: +10;
+    width: 24px;
+    height: 24px;
+  }
+
+  .profile-setting {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: left;
+    text-align: center;
+    margin: 30px auto;
+    margin-bottom: 200px;
+    padding: 30px;
+    width: 200px;
+    z-index: 10;
+    color: black;
+    background-color: white;
+    gap: 30px;
+  }
+
+  .profile-setting div {
+    display: flex;
+    gap: 20px;
+    border-bottom: 2px solid #97B9A8;
+  }

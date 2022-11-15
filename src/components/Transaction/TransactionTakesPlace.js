@@ -1,6 +1,12 @@
 import React from 'react';
+import Popup from 'reactjs-popup';
+import TransactionPopup from '../pop-up/TransactionPopup';
 
 function TransactionTakesPlace() {
+  function onClick() {
+    const root = document.querySelector('.root-popup-transaction');
+    root.style.display = 'none';
+  }
   return (
     <article className="transaction-item">
       <div className="transaction-item__header">
@@ -14,7 +20,9 @@ function TransactionTakesPlace() {
         </div>
         <div className="transaction-item__body-action">
           <button type="submit" className="button-reject">Tolak</button>
-          <button type="submit" className="button-accept">Terima</button>
+          <Popup trigger={<button onClick={onClick} type="submit" className="button-accept">Terima</button>}>
+            <TransactionPopup />
+          </Popup>
         </div>
       </div>
       <div className="transaction-item__message">Ayo kita barter yuk..</div>
