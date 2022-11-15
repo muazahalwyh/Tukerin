@@ -15,16 +15,19 @@ import LoginPage from '../pages/LoginPage';
 import AddPage from '../pages/AddPage';
 import TransactionPage from '../pages/TransactionPage';
 import MyAccount from '../pages/MyAccountPage';
+import BarangSayaPage from '../pages/BarangSayaPage';
 // Styles
 import '../styles/App.css';
+import '../styles/AddPage.css';
+// eslint-disable-next-line no-unused-vars
+import brandLogo from '../images/logo192.png';
+import brandTukerin from '../images/brand-tukerin.png';
+import brandTukerinFooter from '../images/tukerinn-removebg.png';
 // Icons
 import { BsFacebook, BsInstagram, BsTwitter } from 'react-icons/bs';
 import { FaCopyright } from 'react-icons/fa';
 import { CgProfile } from 'react-icons/cg';
 import { MdNotifications } from 'react-icons/md';
-
-import brandTukerin from '../images/brand-tukerin.png';
-import brandTukerinFooter from '../images/tukerinn-removebg.png';
 
 function App() {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -86,6 +89,7 @@ function App() {
             <Route path="/add" element={<AddPage />} />
             <Route path="/transaction" element={<TransactionPage />} />
             <Route path="/profile" element={<MyAccount />} />
+            <Route path="/barang-saya" element={<BarangSayaPage />} />
           </Routes>
         </main>
         <footer>
@@ -135,6 +139,7 @@ function App() {
             <Link to="/" className="brand-logo"><img src={brandTukerin} alt="logo tukerin" /></Link>
             <h1>Tukerin</h1>
           </div>
+
           <SearchBar
             keyword={keyword}
             // eslint-disable-next-line react/jsx-no-bind
@@ -154,6 +159,7 @@ function App() {
           <Route path="/login" element={<LoginPage />} />
           <Route path="/add" element={<AddPage />} />
           <Route path="/transaction" element={<TransactionPage />} />
+          <Route path="/barang-saya" element={<BarangSayaPage />} />
         </Routes>
       </main>
       <footer>

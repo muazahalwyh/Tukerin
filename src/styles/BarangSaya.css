@@ -1,0 +1,108 @@
+* {
+    margin: 0;
+    padding: 0;
+  }
+  
+  .barang-saya {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 40px;
+    width: 100%;
+  }
+
+  .barang-saya_container {
+    width: 50%;
+    margin-top: 20px;
+  }
+
+  .Barang-saya_item {
+    border: 2px solid gainsboro;
+    border-radius: 20px;
+    margin: 20px 50px;
+  }
+  
+  .Barang-saya_item__header {
+    background-color: #97b9a8;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    border-bottom: 1px solid black;
+    padding: 20px;
+    font-size: 14px;
+    text-align: center;
+  }
+  
+  .Barang-saya_item__body {
+    padding: 20px;
+    display: flex;
+  }
+  
+  .Barang-saya_item__body-image {
+    border: 1px solid black;
+    width: 25%;
+    padding: 12px;
+  }
+
+  .Barang-saya_itemful{
+    margin: 10px;
+  }
+  
+  .Barang-saya_item__body-deskripsi {
+    padding-left: 10px;
+  }
+
+  .hapus-btn{
+    padding: 10px 25px;
+    margin-top: 70px;
+    font-weight: bold;
+    border-radius: 20px;
+    border: #ffffff;
+    margin-left: 255px;
+    cursor: pointer;
+  }
+
+  .add-barang-saya_btn {
+    background-color:#386159 ;
+    border: 1px solid gainsboro;
+    border-radius: 10px;
+    padding: 10px 32px;
+    text-align: center;
+    font-size: 16px;
+    margin: 20px 2px;
+    cursor: pointer;
+    color: white;
+    margin-bottom: 50px;
+  }
+
+  @media screen and (max-width: 650px) {
+    .hapus-btn{
+      margin-left: 140px;
+    }
+
+    .barang-saya_container {
+      width: 80%;
+      margin-top: 20px;
+    }
+  }
+
+  @media screen and (max-width: 550px) {
+    .hapus-btn{
+      margin-left: 70px;
+    }
+    .barang-saya_container {
+      width: 100%;
+    }
+  }
+
+  @media screen and (max-width: 380px) {
+    .hapus-btn{
+      margin-left: 20px;
+    }
+    .barang-saya_container {
+      width: 100%;
+    }
+  }
+  
+
+ 
