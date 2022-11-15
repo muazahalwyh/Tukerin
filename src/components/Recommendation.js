@@ -8,6 +8,7 @@ function Recommendation() {
       {
         products.map((product) => (
           <ProductItem
+            id={product.id}
             image={product.image}
             name={product.name}
             category={product.category}
