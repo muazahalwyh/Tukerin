@@ -177,6 +177,7 @@ header .authentication-button button{
 .product-item__body p {
   margin: 5px;
   font-size: 12px;
+}
 
 /* LOGIN */
 
@@ -348,6 +349,7 @@ footer ul li a:hover{
   font-size: 18px;
   display: flex;
   opacity: 50%;
+}
 
 .ikuti-kami button{
   margin: 1px;
