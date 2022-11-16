@@ -23,7 +23,7 @@ function ProfileModal() {
         </div>
         <div>
           <MdOutlineInventory2 />
-          <a href="/profile"><p>Barang Saya</p></a>
+          <a href="/barang-saya"><p>Barang Saya</p></a>
         </div>
         <div>
           <MdOutlineLogout />
