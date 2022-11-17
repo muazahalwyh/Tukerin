@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-no-bind */
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
@@ -21,7 +22,7 @@ function LoginPage({ loginSuccess }) {
       </div>
       <div className="container-content">
         <h2>LOGIN TUKERIN</h2>
-        <LoginInput login={onLogin()} />
+        <LoginInput login={onLogin} />
         <p>
           Belum punya akun?
           <Link className="link" to="/register">Daftar di sini.</Link>

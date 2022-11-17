@@ -1,8 +1,10 @@
+/* eslint-disable react/jsx-no-bind */
 /* eslint-disable import/order */
 import React, { useState, useEffect } from 'react';
 import {
   Routes, Route, Link, useSearchParams,
 } from 'react-router-dom';
+import { getUserLogged, putAccessToken } from '../utils/api-endpoint';
 import Popup from 'reactjs-popup';
 // Components
 import SearchBar from './SearchBar';
@@ -29,12 +31,28 @@ import { CgProfile } from 'react-icons/cg';
 import { MdNotifications } from 'react-icons/md';
 
 function App() {
+  const [authedUser, setAuthedUser] = useState(JSON.parse(localStorage.getItem('AUTHED_USER')) || null);
+
   const [myProduct, setMyProduct] = useState(JSON.parse(localStorage.getItem('MY_APP_STATE')) || []);
   // const [productDijual, setProductDijual] = useState([]);
   const [productDiajukan, setProductDiajukan] = useState([]);
 
   const [searchParams, setSearchParams] = useSearchParams();
   const [keyword, setKeyword] = useState(() => searchParams.get('keywordSearch') || '');
+
+  const onLoginSuccess = async ({ accessToken }) => {
+    putAccessToken(accessToken);
+    const { data } = await getUserLogged();
+    setAuthedUser(data.name);
+  };
+
+  const onLogout = () => {
+    setAuthedUser(null);
+  };
+
+  useEffect(() => {
+    localStorage.setItem('AUTHED_USER', JSON.stringify(authedUser));
+  }, [authedUser]);
 
   useEffect(() => {
     localStorage.setItem('MY_APP_STATE', JSON.stringify(myProduct));
@@ -49,8 +67,7 @@ function App() {
   //   keyword.toLocaleLowerCase(),
   // ));
 
-  const authedUser = 'alan';
-  if (authedUser === 'alan') {
+  if (authedUser === null) {
     return (
       <div className="app-container">
         <header>
@@ -72,31 +89,20 @@ function App() {
               keywordChange={onKeywordChangeHandler}
             />
             <div className="authentication-button">
-              <li>
-                <Popup trigger={<MdNotifications className="notification-icon" />} position="right center">
-                  <ProfileModal />
-                </Popup>
-                <div className="profile-icon">
-                  <Popup trigger={<CgProfile className="profile-icon__icon" />}>
-                    <ProfileModal />
-                  </Popup>
-                  {' '}
-                  <p>{authedUser}</p>
-                </div>
-              </li>
+              <button type="button"><Link to="/login">Masuk</Link></button>
+              <button type="button"><Link to="/register">Register</Link></button>
             </div>
           </div>
         </header>
         <main className="content">
           <Routes>
             <Route path="/" element={<Homepage />} />
-            <Route path="/products/:id" element={<DetailPage productDiajukan={productDiajukan} setProductDiajukan={setProductDiajukan} />} />
+            <Route path="/products/:id" element={<DetailPage authedUser={authedUser} />} />
             <Route path="/register" element={<RegisterPage />} />
-            <Route path="/login" element={<LoginPage />} />
-            <Route path="/add" element={<AddPage myProduct={myProduct} setMyProduct={setMyProduct} />} />
+            <Route path="/login" element={<LoginPage loginSuccess={onLoginSuccess} />} />
+            <Route path="/add" element={<AddPage />} />
             <Route path="/transaction" element={<TransactionPage />} />
-            <Route path="/profile" element={<MyAccount />} />
-            <Route path="/barang-saya" element={<BarangSayaPage myProduct={myProduct} setMyProduct={setMyProduct} />} />
+            <Route path="/barang-saya" element={<BarangSayaPage />} />
           </Routes>
         </main>
         <footer>
@@ -153,20 +159,31 @@ function App() {
             keywordChange={onKeywordChangeHandler}
           />
           <div className="authentication-button">
-            <button type="button"><Link to="/login">Masuk</Link></button>
-            <button type="button"><Link to="/register">Register</Link></button>
+            <li>
+              <Popup trigger={<MdNotifications className="notification-icon" />} position="right center">
+                <ProfileModal />
+              </Popup>
+              <div className="profile-icon">
+                <Popup trigger={<CgProfile className="profile-icon__icon" />}>
+                  <ProfileModal onLogout={onLogout} />
+                </Popup>
+                {' '}
+                <p>{authedUser}</p>
+              </div>
+            </li>
           </div>
         </div>
       </header>
       <main className="content">
         <Routes>
           <Route path="/" element={<Homepage />} />
-          <Route path="/products/:id" element={<DetailPage />} />
+          <Route path="/products/:id" element={<DetailPage productDiajukan={productDiajukan} setProductDiajukan={setProductDiajukan} />} />
           <Route path="/register" element={<RegisterPage />} />
           <Route path="/login" element={<LoginPage />} />
-          <Route path="/add" element={<AddPage />} />
+          <Route path="/add" element={<AddPage myProduct={myProduct} setMyProduct={setMyProduct} />} />
           <Route path="/transaction" element={<TransactionPage />} />
-          <Route path="/barang-saya" element={<BarangSayaPage />} />
+          <Route path="/profile" element={<MyAccount />} />
+          <Route path="/barang-saya" element={<BarangSayaPage myProduct={myProduct} setMyProduct={setMyProduct} />} />
         </Routes>
       </main>
       <footer>
