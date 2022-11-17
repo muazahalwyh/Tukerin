@@ -5,6 +5,8 @@
   
   .add-product__container {
     display: flex;
+    flex-direction: column;
+    align-items: center;
     justify-content: center;
     margin-top: 40px;
     width: 100%;

@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-no-bind */
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import RegisterInput from '../components/RegisterInput';
@@ -15,7 +16,7 @@ function RegisterPage() {
   return (
     <div className="register-page">
       <h2>Register Sekarang</h2>
-      <RegisterInput register={onRegisterHandler()} />
+      <RegisterInput register={onRegisterHandler} />
       <p>
         Sudah punya akun?
         <Link className="link" to="/login">Login</Link>
