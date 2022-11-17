@@ -7,11 +7,16 @@ import ProductDetail from '../components/product/ProductDetail';
 import products from '../utils/data/products';
 import '../styles/DetailPage.css';
 
-function DetailPageWrapper() {
+function DetailPageWrapper({ authedUser, productDiajukan, setProductDiajukan }) {
   const { id } = useParams();
 
   return (
-    <DetailPage id={id} />
+    <DetailPage
+      authedUser={authedUser}
+      id={id}
+      productDiajukan={productDiajukan}
+      setProductDiajukan={setProductDiajukan}
+    />
   );
 }
 
@@ -20,6 +25,7 @@ class DetailPage extends React.Component {
     super(props);
 
     this.state = {
+      authedUser: props.authedUser,
       product: null,
     };
   }
@@ -41,6 +47,7 @@ class DetailPage extends React.Component {
     return (
       <section>
         <ProductDetail
+          authedUser={this.state.authedUser}
           {...this.state.product}
         />
       </section>
@@ -48,7 +55,15 @@ class DetailPage extends React.Component {
   }
 }
 
+DetailPageWrapper.propTypes = {
+  authedUser: PropTypes.string.isRequired,
+  // eslint-disable-next-line react/forbid-prop-types
+  productDiajukan: PropTypes.arrayOf(PropTypes.object).isRequired,
+  setProductDiajukan: PropTypes.func.isRequired,
+};
+
 DetailPage.propTypes = {
+  authedUser: PropTypes.string.isRequired,
   id: PropTypes.string.isRequired,
 };
 

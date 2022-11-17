@@ -5,7 +5,7 @@ import { CgProfile } from 'react-icons/cg';
 import { AiOutlineShoppingCart } from 'react-icons/ai';
 import { MdOutlineInventory2, MdOutlineLogout } from 'react-icons/md';
 
-function ProfileModal() {
+function ProfileModal(onLogout) {
   function onClick() {
     const root = document.querySelector('.root-popup-profile');
     root.style.display = 'none';
@@ -27,7 +27,7 @@ function ProfileModal() {
         </div>
         <div>
           <MdOutlineLogout />
-          <a href="/profile"><p>Log Out</p></a>
+          <a href="/home" onClick={onLogout}><p>Log Out</p></a>
         </div>
       </div>
     </div>

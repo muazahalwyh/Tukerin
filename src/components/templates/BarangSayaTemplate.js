@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 function BarangSayaTemplate({
-  name, image, description, price,
+  name, image, description, price, category,
 }) {
   console.log(image);
   return (
@@ -18,6 +18,7 @@ function BarangSayaTemplate({
               Rp.
               {price}
             </h4>
+            <p>{category}</p>
             <p>Deskripsi:</p>
             <p>{description}</p>
           </div>
@@ -33,6 +34,7 @@ BarangSayaTemplate.propTypes = {
   price: PropTypes.string.isRequired,
   image: PropTypes.arrayOf.isRequired,
   description: PropTypes.string.isRequired,
+  category: PropTypes.string.isRequired,
 };
 
 export default BarangSayaTemplate;

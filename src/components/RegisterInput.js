@@ -52,7 +52,7 @@ class RegisterInput extends React.Component {
           <input type="email" placeholder="Email" value={this.state.email} onChange={this.onEmailChange} />
           <input type="Password" placeholder="Password" autoComplete="current-password" value={this.state.password} onChange={this.onPasswordChange} />
         </div>
-        <button type="button">Daftar</button>
+        <button type="submit">Daftar</button>
       </form>
     );
   }

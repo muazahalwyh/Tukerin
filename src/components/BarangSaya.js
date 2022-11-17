@@ -13,6 +13,7 @@ function BarangSaya({ barangsaya }) {
               image={barang.image}
               price={barang.price}
               description={barang.description}
+              category={barang.category}
               // eslint-disable-next-line react/jsx-props-no-spreading
               {...barang}
             />
