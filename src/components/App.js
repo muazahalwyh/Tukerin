@@ -11,9 +11,11 @@ import RegisterPage from '../pages/RegisterPage';
 import LoginPage from '../pages/LoginPage';
 import AddPage from '../pages/AddPage';
 import TransactionPage from '../pages/TransactionPage';
+import BarangSayaPage from '../pages/BarangSayaPage';
 // Styles
 import '../styles/App.css';
 import '../styles/AddPage.css';
+// eslint-disable-next-line no-unused-vars
 import brandLogo from '../images/logo192.png';
 import brandTukerin from '../images/brand-tukerin.png';
 import brandTukerinFooter from '../images/tukerinn-removebg.png';
@@ -44,11 +46,6 @@ function App() {
             <li><a href="/">Hubungi Kami</a></li>
           </ul>
         </nav>
-         <div>
-          <div className="brand-container">
-            <Link to="/" className="brand-logo"><img src={brandTukerin} alt="logo tukerin" /></Link>
-            <h1>Tukerin</h1>
-          </div>
         <div className="header-main">
           <Link to="/" className="brand-logo"><img src={brandTukerin} alt="logo tukerin" /></Link>
           <h1>Tukerin</h1>
@@ -70,6 +67,7 @@ function App() {
           <Route path="/login" element={<LoginPage />} />
           <Route path="/add" element={<AddPage />} />
           <Route path="/transaction" element={<TransactionPage />} />
+          <Route path="/barang-saya" element={<BarangSayaPage />} />
         </Routes>
       </main>
       <footer>
@@ -92,10 +90,6 @@ function App() {
               <li><a href="/" aria-label="facebook"><BsFacebook /></a></li>
               <li><a href="/" aria-label="instagram"><BsInstagram /></a></li>
               <li><a href="/" aria-label="twitter"><BsTwitter /></a></li>
-            <ul>
-              <li><button type="button">Facebook</button></li>
-              <li><button type="button">Instagram</button></li>
-              <li><button type="button">Twitter </button></li>
             </ul>
           </div>
         </div>
