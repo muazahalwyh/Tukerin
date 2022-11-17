@@ -17,7 +17,7 @@ function MyAccount() {
       <h1>Akun Saya</h1>
       <div className="profile-picture">
         <input type="file" onChange={handlePicture} />
-        <BsCamera className="icon-add" />
+        <BsCamera className="icon-add-profile" />
       </div>
       <div className="profile-setting">
         <div>
