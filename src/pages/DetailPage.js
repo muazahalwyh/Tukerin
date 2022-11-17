@@ -7,11 +7,11 @@ import ProductDetail from '../components/product/ProductDetail';
 import products from '../utils/data/products';
 import '../styles/DetailPage.css';
 
-function DetailPageWrapper() {
+function DetailPageWrapper({ productDiajukan, setProductDiajukan }) {
   const { id } = useParams();
 
   return (
-    <DetailPage id={id} />
+    <DetailPage id={id} productDiajukan={productDiajukan} setProductDiajukan={setProductDiajukan} />
   );
 }
 
@@ -47,6 +47,12 @@ class DetailPage extends React.Component {
     );
   }
 }
+
+DetailPageWrapper.propTypes = {
+  // eslint-disable-next-line react/forbid-prop-types
+  productDiajukan: PropTypes.arrayOf(PropTypes.object).isRequired,
+  setProductDiajukan: PropTypes.func.isRequired,
+};
 
 DetailPage.propTypes = {
   id: PropTypes.string.isRequired,

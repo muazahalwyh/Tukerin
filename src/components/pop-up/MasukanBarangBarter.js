@@ -85,7 +85,6 @@ function MasukanBarangBarter({ prevBarangSaya, setBarangSaya }) {
 }
 
 MasukanBarangBarter.propTypes = {
-  // addBarangSaya: PropTypes.func.isRequired,
   // eslint-disable-next-line react/forbid-prop-types
   prevBarangSaya: PropTypes.arrayOf(PropTypes.object).isRequired,
   setBarangSaya: PropTypes.func.isRequired,

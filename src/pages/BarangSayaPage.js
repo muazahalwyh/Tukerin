@@ -1,37 +1,26 @@
-import React, { useState, useEffect } from 'react';
-import Popup from 'reactjs-popup';
+import React from 'react';
+import PropTypes from 'prop-types';
+// import Popup from 'reactjs-popup';
 import BarangSaya from '../components/BarangSaya';
-import MasukanBarangBarter from '../components/pop-up/MasukanBarangBarter';
+// import MasukanBarangBarter from '../components/pop-up/MasukanBarangBarter';
 import '../styles/BarangSaya.css';
 
-function BarangSayaPage() {
-  const [barangsaya, setBarangSaya] = useState([]);
-
-  useEffect(() => {
-    const data = localStorage.getItem('MY_APP_STATE');
-    if (data) {
-      setBarangSaya(JSON.parse(data));
-    }
-  }, []);
-
-  useEffect(() => {
-    localStorage.setItem('MY_APP_STATE', JSON.stringify(barangsaya));
-  }, [barangsaya]);
-
+function BarangSayaPage({ myProduct }) {
   return (
     <div className="barang-saya">
       <h1>Barang Saya</h1>
       <div className="barang-saya_container">
-        <BarangSaya barangsaya={barangsaya} />
+        <BarangSaya barangsaya={myProduct} />
       </div>
-      <Popup trigger={<button type="submit" className="add-barang-saya_btn">Tambahkan Barang Baru</button>}>
-        <MasukanBarangBarter
-          prevBarangSaya={barangsaya}
-          setBarangSaya={setBarangSaya}
-        />
-      </Popup>
+      <a href="/add" className="add-barang-saya_btn">Tambahkan Barang Baru</a>
     </div>
   );
 }
+
+BarangSayaPage.propTypes = {
+  // eslint-disable-next-line react/forbid-prop-types
+  myProduct: PropTypes.arrayOf(PropTypes.object).isRequired,
+  // setMyProduct: PropTypes.func.isRequired,
+};
 
 export default BarangSayaPage;

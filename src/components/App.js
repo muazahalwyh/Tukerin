@@ -1,5 +1,5 @@
 /* eslint-disable import/order */
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   Routes, Route, Link, useSearchParams,
 } from 'react-router-dom';
@@ -12,6 +12,7 @@ import Homepage from '../pages/HomePage';
 import DetailPage from '../pages/DetailPage';
 import RegisterPage from '../pages/RegisterPage';
 import LoginPage from '../pages/LoginPage';
+// eslint-disable-next-line import/no-named-as-default
 import AddPage from '../pages/AddPage';
 import TransactionPage from '../pages/TransactionPage';
 import MyAccount from '../pages/MyAccountPage';
@@ -19,8 +20,6 @@ import BarangSayaPage from '../pages/BarangSayaPage';
 // Styles
 import '../styles/App.css';
 import '../styles/AddPage.css';
-// eslint-disable-next-line no-unused-vars
-import brandLogo from '../images/logo192.png';
 import brandTukerin from '../images/brand-tukerin.png';
 import brandTukerinFooter from '../images/tukerinn-removebg.png';
 // Icons
@@ -30,8 +29,16 @@ import { CgProfile } from 'react-icons/cg';
 import { MdNotifications } from 'react-icons/md';
 
 function App() {
+  const [myProduct, setMyProduct] = useState(JSON.parse(localStorage.getItem('MY_APP_STATE')) || []);
+  // const [productDijual, setProductDijual] = useState([]);
+  const [productDiajukan, setProductDiajukan] = useState([]);
+
   const [searchParams, setSearchParams] = useSearchParams();
   const [keyword, setKeyword] = useState(() => searchParams.get('keywordSearch') || '');
+
+  useEffect(() => {
+    localStorage.setItem('MY_APP_STATE', JSON.stringify(myProduct));
+  }, [myProduct]);
 
   function onKeywordChangeHandler(keywordSearch) {
     setKeyword(keywordSearch);
@@ -83,13 +90,13 @@ function App() {
         <main className="content">
           <Routes>
             <Route path="/" element={<Homepage />} />
-            <Route path="/products/:id" element={<DetailPage />} />
+            <Route path="/products/:id" element={<DetailPage productDiajukan={productDiajukan} setProductDiajukan={setProductDiajukan} />} />
             <Route path="/register" element={<RegisterPage />} />
             <Route path="/login" element={<LoginPage />} />
-            <Route path="/add" element={<AddPage />} />
+            <Route path="/add" element={<AddPage myProduct={myProduct} setMyProduct={setMyProduct} />} />
             <Route path="/transaction" element={<TransactionPage />} />
             <Route path="/profile" element={<MyAccount />} />
-            <Route path="/barang-saya" element={<BarangSayaPage />} />
+            <Route path="/barang-saya" element={<BarangSayaPage myProduct={myProduct} setMyProduct={setMyProduct} />} />
           </Routes>
         </main>
         <footer>
