@@ -1,0 +1,24 @@
+  .carousel-inner {
+    width: 80vw;
+    height: 300px;
+    border-radius: 20px;
+  }
+  #carousel .carousel-item.boat{
+    background-image:url("../images/img1.jpeg");
+  }
+  #carousel .carousel-item.sea{
+    background-image:url("../images/img2.jpeg");
+  }
+  #carousel .carousel-item.river{
+    background-image:url("../images/img3.png");
+  }
+  #carousel .carousel-item{
+    height: 300px;
+    background:no-repeat center center scroll;
+    background-size:cover;
+  }
+  #carousel .carousel-inner .carousel-item{
+    transition:-webkit-transform 2s ease;
+    transition:transform 2s ease;
+    transition:transform 2s ease, -webkit-transform 2s ease;
+  }

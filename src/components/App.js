@@ -207,11 +207,6 @@ function App() {
               <li><a href="/" aria-label="instagram"><BsInstagram /></a></li>
               <li><a href="/" aria-label="twitter"><BsTwitter /></a></li>
             </ul>
-            <ul>
-              <li><button type="button">Facebook</button></li>
-              <li><button type="button">Instagram</button></li>
-              <li><button type="button">Twitter </button></li>
-            </ul>
           </div>
         </div>
         <div className="copyright">
