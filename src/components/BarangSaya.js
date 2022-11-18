@@ -1,23 +1,37 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+import BarangSayaTemplate from './templates/BarangSayaTemplate';
 
-function BarangSaya() {
+function BarangSaya({ barangsaya }) {
+  if (barangsaya.length > 0) {
+    return (
+      <div className="barangsaya-list">
+        {
+          barangsaya.map((barang) => (
+            <BarangSayaTemplate
+              name={barang.name}
+              image={barang.image}
+              price={barang.price}
+              description={barang.description}
+              category={barang.category}
+              // eslint-disable-next-line react/jsx-props-no-spreading
+              {...barang}
+            />
+          ))
+        }
+      </div>
+    );
+  }
   return (
-    <article className="Barang-saya_item">
-      <div className="Barang-saya_item__header">
-        <h3>Sepatu Olahraga Ivan Gunawan</h3>
-      </div>
-      <div className="Barang-saya_item__body">
-        <img className="Barang-saya_item__body-image" src="./images/sepatu.jpeg" alt="sepatu" />
-        <div className="Barang-saya_itemful">
-          <div className="Barang-saya_item__body-deskripsi">
-            <h4>Olahraga</h4>
-            <h4>Rp.1.500.000</h4>
-          </div>
-          <button type="submit" className="hapus-btn">Hapus</button>
-        </div>
-      </div>
-    </article>
+    <div className="barangsaya-list">
+      <p>Barang Anda masih kosong</p>
+    </div>
   );
 }
+
+BarangSaya.propTypes = {
+  // eslint-disable-next-line react/forbid-prop-types
+  barangsaya: PropTypes.arrayOf(PropTypes.object).isRequired,
+};
 
 export default BarangSaya;

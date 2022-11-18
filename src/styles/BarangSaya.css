@@ -8,17 +8,26 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-top: 40px;
+    text-align: center;
+    margin-top: 20px;
     width: 100%;
+  }
+
+  .barang-saya h1 {
+    font-size: 32px;
+  }
+
+  .barangsaya-list {
+    margin-top: 40px;
+    margin-bottom: 40px;
   }
 
   .barang-saya_container {
     width: 50%;
-    margin-top: 20px;
   }
 
   .Barang-saya_item {
-    border: 2px solid gainsboro;
+    border: 2px solid #d9d9d9;
     border-radius: 20px;
     margin: 20px 50px;
   }
@@ -29,7 +38,7 @@
     border-top-right-radius: 20px;
     border-bottom: 1px solid black;
     padding: 20px;
-    font-size: 14px;
+    font-size: 20px; 
     text-align: center;
   }
   
@@ -45,20 +54,31 @@
   }
 
   .Barang-saya_itemful{
-    margin: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+    text-align: left;
+    margin-left: 20px;
+    gap: 50px;
   }
   
   .Barang-saya_item__body-deskripsi {
-    padding-left: 10px;
+    font-size: 16px;
+    gap: 20px;
+  }
+
+  .Barang-saya_item__body-deskripsi h4 {
+    font-size: 20px;
   }
 
   .hapus-btn{
+    margin-left: auto;
+    max-width: 100px;
     padding: 10px 25px;
-    margin-top: 70px;
     font-weight: bold;
-    border-radius: 20px;
-    border: #ffffff;
-    margin-left: 255px;
+    border-radius: 5px;
+    border: 1px solid #386159;
     cursor: pointer;
   }
 
@@ -76,10 +96,6 @@
   }
 
   @media screen and (max-width: 650px) {
-    .hapus-btn{
-      margin-left: 140px;
-    }
-
     .barang-saya_container {
       width: 80%;
       margin-top: 20px;
@@ -87,18 +103,12 @@
   }
 
   @media screen and (max-width: 550px) {
-    .hapus-btn{
-      margin-left: 70px;
-    }
     .barang-saya_container {
       width: 100%;
     }
   }
 
   @media screen and (max-width: 380px) {
-    .hapus-btn{
-      margin-left: 20px;
-    }
     .barang-saya_container {
       width: 100%;
     }

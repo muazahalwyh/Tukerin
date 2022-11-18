@@ -1,16 +1,20 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { useNavigate } from 'react-router-dom';
 import useInput from '../hooks/useInput';
 
 function LoginInput({ login }) {
   const [email, onEmailChange] = useInput('');
   const [password, onPasswordChange] = useInput('');
+  const navigate = useNavigate();
 
-  const onlogin = () => {
+  const onlogin = (e) => {
+    e.preventDefault();
     login({
       email,
       password,
     });
+    navigate('/');
   };
 
   return (

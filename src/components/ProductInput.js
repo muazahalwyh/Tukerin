@@ -1,29 +1,38 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import { useNavigate } from 'react-router-dom';
+import { AiOutlinePlus } from 'react-icons/ai';
 import useInput from '../hooks/useInput';
-import { addProduct } from '../utils/data/local-data';
+// import { addProduct } from '../utils/data/local-data';
 
-function ProductInput() {
-  const [picture, setPicture] = useState('');
+function ProductInput({ prevBarangSaya, setBarangSaya }) {
+  const [image, setImage] = useState([]);
   const [name, handleNameChange] = useInput('');
   const [price, handlePriceChange] = useInput('');
   const [category, handleCategoryChange] = useInput('');
   const [description, handleDescriptionChange] = useInput('');
 
-  const handleImage = (event) => {
-    setPicture(event.target.files[0]);
-  };
-
   const navigate = useNavigate();
 
-  const onAddProductHandler = (product) => {
-    addProduct(product);
-    navigate('/');
+  const onSubmit = (e) => {
+    e.preventDefault();
+    setBarangSaya([...prevBarangSaya, {
+      name, price, description, image, category,
+    }]);
+    navigate('/barang-saya');
+  };
+
+  const handleImage = (e) => {
+    console.log(e.target.files);
+    setImage(URL.createObjectURL(e.target.files[0]));
   };
 
   return (
-    <form className="add-product__input" onSubmit={onAddProductHandler}>
-      <div className="add-product__input-image" onChange={handleImage} value={picture}> + </div>
+    <form className="add-product__input" onSubmit={onSubmit}>
+      <div className="input-image">
+        <input type="file" onChange={handleImage} />
+        <AiOutlinePlus className="icon-add" />
+      </div>
       <h4>Nama</h4>
       <input
         className="add-product__input-text"
@@ -68,5 +77,11 @@ function ProductInput() {
     </form>
   );
 }
+
+ProductInput.propTypes = {
+  // eslint-disable-next-line react/forbid-prop-types
+  prevBarangSaya: PropTypes.arrayOf(PropTypes.object).isRequired,
+  setBarangSaya: PropTypes.func.isRequired,
+};
 
 export default ProductInput;
