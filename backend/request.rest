@@ -1,0 +1,27 @@
+GET http://localhost:5000/users
+
+###
+GET http://localhost:5000/users/63774eed821b926f7e3fde09
+
+###
+POST http://localhost:5000/users
+Content-Type: application/json
+
+{
+    "name": "tukerin",
+    "email": "tukerin@gmail.com",
+    "gender": "Male"
+}
+
+###
+PATCH  http://localhost:5000/users/63774eed821b926f7e3fde09
+Content-Type: application/json
+
+{
+    "name": "James",
+    "email": "james@gmail.com",
+    "gender": "Male"
+}
+
+###
+Delete http://localhost:5000/users/63774eed821b926f7e3fde09
