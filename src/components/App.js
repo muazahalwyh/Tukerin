@@ -51,9 +51,9 @@ function App() {
     setAuthedUser(null);
   };
 
-  // useEffect(() => {
-  //   localStorage.setItem('AUTHED_USER', JSON.stringify(authedUser));
-  // }, [authedUser]);
+  useEffect(() => {
+    localStorage.setItem('AUTHED_USER', JSON.stringify(authedUser));
+  }, [authedUser]);
 
   useEffect(() => {
     localStorage.setItem('MY_APP_STATE', JSON.stringify(myProduct));
