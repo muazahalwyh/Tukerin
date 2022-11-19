@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react';
 import {
   Routes, Route, Link, useSearchParams,
 } from 'react-router-dom';
+import AddUser from './AddUser';
 import { getUserLogged, putAccessToken } from '../utils/api-endpoint';
 import Popup from 'reactjs-popup';
 // Components
@@ -19,6 +20,7 @@ import AddPage from '../pages/AddPage';
 import TransactionPage from '../pages/TransactionPage';
 import MyAccount from '../pages/MyAccountPage';
 import BarangSayaPage from '../pages/BarangSayaPage';
+import UserList from './UserList';
 // Styles
 import '../styles/App.css';
 import '../styles/AddPage.css';
@@ -75,7 +77,7 @@ function App() {
             <ul>
               <li><a href="/">Beranda</a></li>
               <li><a href="/">Tentang Kami</a></li>
-              <li><a href="/">Hubungi Kami</a></li>
+              <li><a href="/user-list">Hubungi Kami</a></li>
             </ul>
           </nav>
           <div>
@@ -103,6 +105,8 @@ function App() {
             <Route path="/add" element={<AddPage />} />
             <Route path="/transaction" element={<TransactionPage />} />
             <Route path="/barang-saya" element={<BarangSayaPage />} />
+            <Route path="/user-list" element={<UserList />} />
+            <Route path="/add-user" element={<AddUser />} />
           </Routes>
         </main>
         <footer>
