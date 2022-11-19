@@ -4,7 +4,6 @@ import PropTypes from 'prop-types';
 function BarangSayaTemplate({
   name, image, description, price, category,
 }) {
-  console.log(image);
   return (
     <article className="Barang-saya_item">
       <div className="Barang-saya_item__header">
@@ -32,7 +31,8 @@ function BarangSayaTemplate({
 BarangSayaTemplate.propTypes = {
   name: PropTypes.string.isRequired,
   price: PropTypes.string.isRequired,
-  image: PropTypes.arrayOf.isRequired,
+  // eslint-disable-next-line react/forbid-prop-types
+  image: PropTypes.arrayOf(PropTypes.object).isRequired,
   description: PropTypes.string.isRequired,
   category: PropTypes.string.isRequired,
 };

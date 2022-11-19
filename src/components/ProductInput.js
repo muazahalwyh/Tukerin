@@ -14,6 +14,14 @@ function ProductInput({ prevBarangSaya, setBarangSaya }) {
 
   const navigate = useNavigate();
 
+  // const reader = new FileReader();
+  // reader.readAsDataURL(image);
+
+  // Convert Blob into File
+  // const myFile = new File([image], 'image.jpeg', {
+  //   type: image.type,
+  // });
+
   const onSubmit = (e) => {
     e.preventDefault();
     setBarangSaya([...prevBarangSaya, {
@@ -23,7 +31,6 @@ function ProductInput({ prevBarangSaya, setBarangSaya }) {
   };
 
   const handleImage = (e) => {
-    console.log(e.target.files);
     setImage(URL.createObjectURL(e.target.files[0]));
   };
 

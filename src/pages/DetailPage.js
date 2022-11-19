@@ -5,7 +5,6 @@ import { useParams } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import ProductDetail from '../components/product/ProductDetail';
 import products from '../utils/data/products';
-import '../styles/DetailPage.css';
 
 function DetailPageWrapper({ authedUser, productDiajukan, setProductDiajukan }) {
   const { id } = useParams();
@@ -31,16 +30,13 @@ class DetailPage extends React.Component {
   }
 
   async componentDidMount() {
-    const Product = await products;
-    console.log(Product);
-
-    // this.setState(() => ({
-    //   product: Product.findIndex((product) => product.id === '1'),
-    // }));
+    this.setState(() => ({
+      product: products.filter((product) => product.id.includes(this.props.id)),
+    }));
   }
 
   render() {
-    if (this.state.product === 'alan') {
+    if (this.state.product === null) {
       return <p>Product tidak ditemukan</p>;
     }
 
@@ -48,7 +44,8 @@ class DetailPage extends React.Component {
       <section>
         <ProductDetail
           authedUser={this.state.authedUser}
-          {...this.state.product}
+          product={this.state.product}
+          // {...this.state.product}
         />
       </section>
     );

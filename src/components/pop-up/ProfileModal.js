@@ -27,7 +27,7 @@ function ProfileModal(onLogout) {
         </div>
         <div>
           <MdOutlineLogout />
-          <a href="/home" onClick={onLogout}><p>Log Out</p></a>
+          <a href="/" onClick={onLogout}><p>Log Out</p></a>
         </div>
       </div>
     </div>

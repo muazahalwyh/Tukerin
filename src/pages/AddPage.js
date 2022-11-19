@@ -1,3 +1,4 @@
+/* eslint-disable react/forbid-prop-types */
 import React from 'react';
 import PropTypes from 'prop-types';
 import ProductInput from '../components/ProductInput';
@@ -8,13 +9,15 @@ function AddPage({ myProduct, setMyProduct }) {
     <div className="add-product__container">
       <h1>Tambah Produk</h1>
       <br />
-      <ProductInput prevBarangSaya={myProduct} setBarangSaya={setMyProduct} />
+      <ProductInput
+        prevBarangSaya={myProduct}
+        setBarangSaya={setMyProduct}
+      />
     </div>
   );
 }
 
 AddPage.propTypes = {
-  // eslint-disable-next-line react/forbid-prop-types
   myProduct: PropTypes.arrayOf(PropTypes.object).isRequired,
   setMyProduct: PropTypes.func.isRequired,
 };

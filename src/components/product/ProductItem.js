@@ -7,7 +7,7 @@ import ProductItemImage from './ProductItemImage';
 function ProductItem({ id, image, name, category, price }) {
   return (
     <div className="product-item">
-      <ProductItemImage imageUrl={image} />
+      <ProductItemImage image={image} />
       <ProductItemBody id={id} name={name} category={category} price={price} />
     </div>
   );
