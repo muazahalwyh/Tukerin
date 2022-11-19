@@ -8,7 +8,7 @@ function ProductItemBody({ id, name, category, price }) {
     <div className="product-item__body">
       <Link to={`/products/${id}`}><h3 className="product-item__name">{name}</h3></Link>
       <p className="product-item__category">{category}</p>
-      <p className="product-item__price">{price}</p>
+      <h3 className="product-item__price">{price}</h3>
     </div>
   );
 }

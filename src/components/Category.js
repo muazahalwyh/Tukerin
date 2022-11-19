@@ -6,7 +6,7 @@ function Category() {
     return (
       <div className="categories">
         {
-            categories.map((category) => `${category.category}, `)
+          categories.map((category) => `${category.category}, `)
         }
       </div>
     );

@@ -1,10 +1,10 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Category from '../components/Category';
 import Recommendation from '../components/Recommendation';
-// import heroImage from '../images/hero.webp';
 import '../styles/HomePage.css';
 
-function Homepage() {
+function Homepage({ filteredProducts }) {
   return (
     <div className="homepage-container">
       <div className="hero-image">
@@ -36,11 +36,16 @@ function Homepage() {
         <Category />
       </div>
       <div className="recommendation-container">
-        <h2>Rekomendasi</h2>
-        <Recommendation />
+        <h2>Daftar Barang</h2>
+        <Recommendation filteredProducts={filteredProducts} />
       </div>
     </div>
   );
 }
+
+Homepage.propTypes = {
+  // eslint-disable-next-line react/forbid-prop-types
+  filteredProducts: PropTypes.arrayOf(PropTypes.object).isRequired,
+};
 
 export default Homepage;
