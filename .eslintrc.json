@@ -29,6 +29,7 @@
         "no-param-reassign": 0,
         "no-alert":0,
         "react/destructuring-assignment": 0,
-        "react/jsx-no-bind": [ "error", { "ignoreDOMComponents": true }]
+        "react/jsx-no-bind": [ "error", { "ignoreDOMComponents": true }],
+        "prefer-regex-literals": 0
     }
 }

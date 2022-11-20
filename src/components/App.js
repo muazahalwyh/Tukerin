@@ -25,6 +25,7 @@ import '../styles/App.css';
 import '../styles/AddPage.css';
 import brandTukerin from '../images/brand-tukerin.png';
 import brandTukerinFooter from '../images/tukerinn-removebg.png';
+import products from '../utils/data/products';
 // Icons
 import { BsFacebook, BsInstagram, BsTwitter } from 'react-icons/bs';
 import { FaCopyright } from 'react-icons/fa';
@@ -64,9 +65,9 @@ function App() {
     setSearchParams({ keywordSearch });
   }
 
-  // const filteredProducts = products.filter((product) => product.name.toLowerCase().includes(
-  //   keyword.toLocaleLowerCase(),
-  // ));
+  const filteredProducts = products.filter((product) => product.name.toLowerCase().includes(
+    keyword.toLocaleLowerCase(),
+  ));
 
   if (authedUser === null) {
     return (
@@ -97,7 +98,7 @@ function App() {
         </header>
         <main className="content">
           <Routes>
-            <Route path="/" element={<Homepage />} />
+            <Route path="/" element={<Homepage filteredProducts={filteredProducts} />} />
             <Route path="/products/:id" element={<DetailPage authedUser={authedUser} />} />
             <Route path="/register" element={<RegisterPage />} />
             <Route path="/login" element={<LoginPage loginSuccess={onLoginSuccess} />} />
@@ -162,7 +163,7 @@ function App() {
           <div className="authentication-button">
             <li>
               <Popup trigger={<MdNotifications className="notification-icon" />} position="right center">
-                <ProfileModal />
+                {/* <ProfileModal onLogout={onLogout} /> */}
               </Popup>
               <div className="profile-icon">
                 <Popup trigger={<CgProfile className="profile-icon__icon" />}>
@@ -177,7 +178,7 @@ function App() {
       </header>
       <main className="content">
         <Routes>
-          <Route path="/" element={<Homepage />} />
+          <Route path="/" element={<Homepage filteredProducts={filteredProducts} />} />
           <Route path="/products/:id" element={<DetailPage productDiajukan={productDiajukan} setProductDiajukan={setProductDiajukan} />} />
           <Route path="/register" element={<RegisterPage />} />
           <Route path="/login" element={<LoginPage />} />
@@ -207,11 +208,6 @@ function App() {
               <li><a href="/" aria-label="facebook"><BsFacebook /></a></li>
               <li><a href="/" aria-label="instagram"><BsInstagram /></a></li>
               <li><a href="/" aria-label="twitter"><BsTwitter /></a></li>
-            </ul>
-            <ul>
-              <li><button type="button">Facebook</button></li>
-              <li><button type="button">Instagram</button></li>
-              <li><button type="button">Twitter </button></li>
             </ul>
           </div>
         </div>
