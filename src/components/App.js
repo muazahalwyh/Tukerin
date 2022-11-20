@@ -14,6 +14,7 @@ import Homepage from '../pages/HomePage';
 import DetailPage from '../pages/DetailPage';
 import RegisterPage from '../pages/RegisterPage';
 import LoginPage from '../pages/LoginPage';
+import AboutPage from '../pages/AboutPage';
 // eslint-disable-next-line import/no-named-as-default
 import AddPage from '../pages/AddPage';
 import TransactionPage from '../pages/TransactionPage';
@@ -21,7 +22,6 @@ import MyAccount from '../pages/MyAccountPage';
 import BarangSayaPage from '../pages/BarangSayaPage';
 // Styles
 import '../styles/App.css';
-import '../styles/AddPage.css';
 import brandTukerin from '../images/brand-tukerin.png';
 import brandTukerinFooter from '../images/tukerinn-removebg.png';
 import products from '../utils/data/products';
@@ -75,7 +75,7 @@ function App() {
           <nav>
             <ul>
               <li><a href="/">Beranda</a></li>
-              <li><a href="/">Tentang Kami</a></li>
+              <li><a href="/about">Tentang Kami</a></li>
               <li><a href="/">Hubungi Kami</a></li>
             </ul>
           </nav>
@@ -104,6 +104,7 @@ function App() {
             <Route path="/add" element={<AddPage />} />
             <Route path="/transaction" element={<TransactionPage />} />
             <Route path="/barang-saya" element={<BarangSayaPage />} />
+            <Route path="/about" element={<AboutPage />} />
           </Routes>
         </main>
         <footer>
@@ -116,7 +117,7 @@ function App() {
               <h3>Jelajahi Tukerin</h3>
               <ul className="usefull-links__list">
                 <li><a href="/">Beranda</a></li>
-                <li><a href="/">Tentang Kami</a></li>
+                <li><a href="/about">Tentang Kami</a></li>
                 <li><a href="/">FAQ</a></li>
               </ul>
             </div>
@@ -144,7 +145,7 @@ function App() {
         <nav>
           <ul>
             <li><a href="/">Beranda</a></li>
-            <li><a href="/">Tentang Kami</a></li>
+            <li><a href="/about">Tentang Kami</a></li>
             <li><a href="/">Hubungi Kami</a></li>
           </ul>
         </nav>
@@ -197,7 +198,7 @@ function App() {
             <h3>Jelajahi Tukerin</h3>
             <ul className="usefull-links__list">
               <li><a href="/">Beranda</a></li>
-              <li><a href="/">Tentang Kami</a></li>
+              <li><a href="/about">Tentang Kami</a></li>
               <li><a href="/">FAQ</a></li>
             </ul>
           </div>
