@@ -1,6 +1,7 @@
 import React from 'react';
 import TransactionTakesPlace from '../components/Transaction/TransactionTakesPlace';
 import TransactionCompleted from '../components/Transaction/TransactionsCompleted';
+import TransactionPending from '../components/Transaction/TransactionPending';
 import '../styles/TransactionPage.css';
 
 function TransactionPage() {
@@ -8,6 +9,8 @@ function TransactionPage() {
     <div className="transaction-page">
       <h1>Transaksi</h1>
       <div className="transaction-page__container">
+        <h2>Pending</h2>
+        <TransactionPending />
         <h2>Berlangsung</h2>
         <TransactionTakesPlace />
         <h2>Selesai</h2>

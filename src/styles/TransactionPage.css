@@ -13,7 +13,7 @@
   }
 
   .transaction-page__container {
-    width: 50%;
+    width: 60%;
     margin-top: 20px;
     margin-bottom: 30px;
   }
@@ -33,12 +33,16 @@
     font-size: 12px;
     text-align: center;
   }
+
+  /* .transaction-item__header h3 {
+    font-size: 12px;
+  } */
   
   .transaction-item__body {
     padding: 10px;
     display: grid;
     grid-template-columns: 1fr 3fr;
-    grid-template-rows: 2fr 3fr;
+    grid-template-rows: 2fr 2fr;
   }
   
   .transaction-item__body-image {
@@ -70,11 +74,13 @@
     background-color: #386159;
     border: 1px solid black;
     color: white;
+    cursor: pointer;
   }
   
   .button-reject {
     border: 1px solid #386159;
     justify-content: center;
+    cursor: pointer;
   }
   
   .transaction-item__message {
@@ -89,6 +95,64 @@
     border-top: 1px solid black;
     text-align: center;
     font-weight: bold;
+  }
+
+  /* PENDING */
+
+  .transaction-item__body-pending {
+    padding: 10px;
+    display: grid;
+    grid-template-columns: 1fr, 1fr;
+    grid-template-rows: repeat (3, 1fr);
+    grid-row-gap: 10px;
+  }
+  
+  .transaction-item__body-image-pending {
+    border: 1px solid black;
+    grid-row-start: 1;
+    grid-row-end: 3;
+  }
+  
+  .transaction-item__body-title-pending {
+    padding-left: 10px;
+    grid-column-start: 2;
+    grid-column-end: 5;
+  }
+  
+  .transaction-item__body-action-pending {
+    display: flex;
+    flex-direction: column;
+    grid-column-start: 4;
+    grid-column-end: 5;
+    grid-row-start: 2;
+    grid-row-end: 3;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .button-tochat {
+    border-radius: 5px;
+    min-height: 30px;
+    width: 125px;
+    justify-content: center;
+    background-color: #386159;
+    border: 1px solid black;
+    color: white;
+    cursor: pointer;
+  }
+  
+  .button-tochat span {
+    margin-right: 2px;
+  }
+  
+  .button-pending {
+    border-radius: 5px;
+    min-height: 30px;
+    width: 125px;
+    border: 1px solid #386159;
+    justify-content: center;
+    float: right;
+    cursor: pointer;
   }
   
 
