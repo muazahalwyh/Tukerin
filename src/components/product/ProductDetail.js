@@ -25,16 +25,12 @@ function ProductDetail({ authedUser, product }) {
             <p className="detail-product-text">Deskripsi produk :</p>
             <div className="detail-page__informations">
               <div className="detail-product-detail">
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                  Donec ut erat elit. Suspendisse enim enim, ornare vel massa sit amet,
-                  luctus mattis odio. Aliquam tristique convallis eros.
-                </p>
+                <p>{product[0].description}</p>
               </div>
             </div>
           </div>
         </div>
         <div className="detail-page__detail-product">
-
           <div className="detail-page__button">
             <AjukanBarterButton />
             <HubungiPemilikButton />
