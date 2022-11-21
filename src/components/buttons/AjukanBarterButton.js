@@ -3,7 +3,6 @@ import React from 'react';
 import Popup from 'reactjs-popup';
 import SilahkanLogin from '../pop-up/SilahkanLogin';
 import MasukanBarangBarter from '../pop-up/MasukanBarangBarter';
-// import { getUserLogged } from '../../utils/api-endpoint';
 
 function AjukanBarterButton() {
   const data = localStorage.getItem('AUTHED_USER');

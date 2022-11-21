@@ -41,15 +41,20 @@
     font-size: 20px; 
     text-align: center;
   }
+
+  .Barang-saya_item__header h3 {
+    margin-bottom: 0;
+  }
   
   .Barang-saya_item__body {
     padding: 20px;
     display: flex;
+    flex: 1;
   }
   
   .Barang-saya_item__body-image {
     border: 1px solid black;
-    width: 25%;
+    width: 50%;
     padding: 12px;
   }
 
@@ -70,6 +75,9 @@
 
   .Barang-saya_item__body-deskripsi h4 {
     font-size: 20px;
+  }
+  .Barang-saya_item__body-deskripsi p {
+    margin-bottom: 0;
   }
 
   .hapus-btn{

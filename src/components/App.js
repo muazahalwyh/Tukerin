@@ -34,6 +34,8 @@ import { MdNotifications } from 'react-icons/md';
 function App() {
   const [authedUser, setAuthedUser] = useState(JSON.parse(localStorage.getItem('AUTHED_USER')) || null);
 
+  const [publishedProducts, setPublishedProducts] = useState(JSON.parse(localStorage.getItem('PUBLISHED_PRODUCTS')) || products);
+
   const [myProduct, setMyProduct] = useState(JSON.parse(localStorage.getItem('MY_APP_STATE')) || []);
   // const [productDijual, setProductDijual] = useState([]);
   const [productDiajukan, setProductDiajukan] = useState([]);
@@ -48,12 +50,17 @@ function App() {
   };
 
   const onLogout = () => {
-    setAuthedUser(null);
+    localStorage.setItem('AUTHED_USER', null);
+    // setAuthedUser(null);
   };
 
   useEffect(() => {
     localStorage.setItem('AUTHED_USER', JSON.stringify(authedUser));
   }, [authedUser]);
+
+  useEffect(() => {
+    localStorage.setItem('PUBLISHED_PRODUCTS', JSON.stringify(publishedProducts));
+  }, [publishedProducts]);
 
   useEffect(() => {
     localStorage.setItem('MY_APP_STATE', JSON.stringify(myProduct));
@@ -64,7 +71,8 @@ function App() {
     setSearchParams({ keywordSearch });
   }
 
-  const filteredProducts = products.filter((product) => product.name.toLowerCase().includes(
+  // eslint-disable-next-line max-len
+  const filteredProducts = publishedProducts.filter((product) => product.name.toLowerCase().includes(
     keyword.toLocaleLowerCase(),
   ));
 
@@ -178,10 +186,10 @@ function App() {
       <main className="content">
         <Routes>
           <Route path="/" element={<Homepage filteredProducts={filteredProducts} />} />
-          <Route path="/products/:id" element={<DetailPage productDiajukan={productDiajukan} setProductDiajukan={setProductDiajukan} />} />
+          <Route path="/products/:id" element={<DetailPage filteredProducts={filteredProducts} productDiajukan={productDiajukan} setProductDiajukan={setProductDiajukan} />} />
           <Route path="/register" element={<RegisterPage />} />
           <Route path="/login" element={<LoginPage />} />
-          <Route path="/add" element={<AddPage myProduct={myProduct} setMyProduct={setMyProduct} />} />
+          <Route path="/add" element={<AddPage publishedProducts={publishedProducts} setPublishedProducts={setPublishedProducts} myProduct={myProduct} setMyProduct={setMyProduct} />} />
           <Route path="/transaction" element={<TransactionPage />} />
           <Route path="/profile" element={<MyAccount />} />
           <Route path="/barang-saya" element={<BarangSayaPage myProduct={myProduct} setMyProduct={setMyProduct} />} />
