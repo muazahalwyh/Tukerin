@@ -21,6 +21,7 @@ import TransactionPage from '../pages/TransactionPage';
 import MyAccount from '../pages/MyAccountPage';
 import BarangSayaPage from '../pages/BarangSayaPage';
 import UserList from './UserList';
+import EditUser from './EditUser';
 // Styles
 import '../styles/App.css';
 import '../styles/AddPage.css';
@@ -107,6 +108,7 @@ function App() {
             <Route path="/barang-saya" element={<BarangSayaPage />} />
             <Route path="/user-list" element={<UserList />} />
             <Route path="/add-user" element={<AddUser />} />
+            <Route path="/edit-user/:id" element={<EditUser />} />
           </Routes>
         </main>
         <footer>

@@ -1,6 +1,7 @@
 /* eslint-disable react/button-has-type */
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 function UserList() {
   // eslint-disable-next-line no-unused-vars
@@ -13,9 +14,20 @@ function UserList() {
     const response = await axios.get('http://localhost:5000/users');
     setUser(response.data);
   };
+
+  const deleteUser = async (id) => {
+    try {
+      await axios.delete(`http://localhost:5000/users/${id}`);
+      getUsers();
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <div className="columns">
       <div className="column is-half">
+        <Link to="/add-user" className="button is-success">Add User</Link>
         <table className="table is-striped is-fullwidth mt-5">
           <thead>
             <tr>
@@ -36,8 +48,8 @@ function UserList() {
                 <td>{user.gender}</td>
                 <td>{user.city}</td>
                 <td>
-                  <button className="button is-info is-small">Edit</button>
-                  <button className="button is-info is-danger">Delete</button>
+                  <Link to={`/edit-user/${user._id}`} className="button is-info is-danger">Edit</Link>
+                  <button onClick={() => deleteUser(user._id)} className="button is-info is-danger">Delete</button>
                 </td>
               </tr>
             ))}

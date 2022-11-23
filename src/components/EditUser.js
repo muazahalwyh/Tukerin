@@ -1,20 +1,33 @@
 /* eslint-disable react/button-has-type */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 
-function AddUser() {
+function EditUser() {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [gender, setGender] = useState('Male');
   const [city, setCity] = useState('');
   const navigate = useNavigate();
-  const saveUser = async (e) => {
+  const { id } = useParams();
+
+  useEffect(() => {
+    getUserById();
+  }, []);
+
+  const getUserById = async () => {
+    const response = await axios.get(`http://localhost:5000/users/${id}`);
+    setName(response.data.name);
+    setEmail(response.data.email);
+    setGender(response.data.gender);
+    setCity(response.data.city);
+  };
+  const updateUser = async (e) => {
     e.preventDefault();
     try {
-      await axios.post('http://localhost:5000/users', {
+      await axios.patch(`http://localhost:5000/users/${id}`, {
         name,
         email,
         gender,
@@ -29,7 +42,7 @@ function AddUser() {
   return (
     <div className="columns">
       <div className="column is-half">
-        <form onSubmit={saveUser}>
+        <form onSubmit={updateUser}>
           <div className="field">
             <label className="label">Name</label>
             <div className="control">
@@ -82,7 +95,7 @@ function AddUser() {
           </div>
           <div className="field">
             <div className="control">
-              <button type="submit" className="button is-success">Save</button>
+              <button onClick={updateUser} type="submit" className="button is-success">Update</button>
             </div>
           </div>
         </form>
@@ -91,4 +104,4 @@ function AddUser() {
   );
 }
 
-export default AddUser;
+export default EditUser;
