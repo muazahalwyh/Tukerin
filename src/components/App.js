@@ -51,6 +51,7 @@ function App() {
 
   const onLogout = () => {
     setAuthedUser(null);
+    putAccessToken('');
   };
 
   useEffect(() => {
@@ -150,7 +151,7 @@ function App() {
           <ul>
             <li><a href="/">Beranda</a></li>
             <li><a href="/">Tentang Kami</a></li>
-            <li><a href="/">Hubungi Kami</a></li>
+            <li><a href="/user-list">Hubungi Kami</a></li>
           </ul>
         </nav>
         <div className="header-main">
@@ -169,14 +170,17 @@ function App() {
               <Popup trigger={<MdNotifications className="notification-icon" />} position="right center">
                 <ProfileModal />
               </Popup>
-              <div className="profile-icon">
+            </li>
+            <div className="profile-icon">
+              <li>
                 <Popup trigger={<CgProfile className="profile-icon__icon" />}>
                   <ProfileModal onLogout={onLogout} />
                 </Popup>
                 {' '}
                 <p>{authedUser}</p>
-              </div>
-            </li>
+              </li>
+            </div>
+
           </div>
         </div>
       </header>
@@ -189,6 +193,9 @@ function App() {
           <Route path="/add" element={<AddPage myProduct={myProduct} setMyProduct={setMyProduct} />} />
           <Route path="/transaction" element={<TransactionPage />} />
           <Route path="/profile" element={<MyAccount />} />
+          <Route path="/user-list" element={<UserList />} />
+          <Route path="/add-user" element={<AddUser />} />
+          <Route path="/edit-user/:id" element={<EditUser />} />
           <Route path="/barang-saya" element={<BarangSayaPage myProduct={myProduct} setMyProduct={setMyProduct} />} />
         </Routes>
       </main>

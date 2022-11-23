@@ -14,20 +14,28 @@ function ProfileModal(onLogout) {
     <div onClick={onClick} className="root-popup-profile">
       <div className="profile-modal">
         <div>
-          <CgProfile />
-          <a href="/profile"><p>Profile</p></a>
+          <a href="/profile">
+            <CgProfile />
+            <p>Profile</p>
+          </a>
         </div>
         <div>
-          <AiOutlineShoppingCart />
-          <a href="/transaction"><p>Transaksi</p></a>
+          <a href="/transaction">
+            <AiOutlineShoppingCart />
+            <p>Transaksi</p>
+          </a>
         </div>
         <div>
-          <MdOutlineInventory2 />
-          <a href="/barang-saya"><p>Barang Saya</p></a>
+          <a href="/barang-saya">
+            <MdOutlineInventory2 />
+            <p>Barang Saya</p>
+          </a>
         </div>
         <div>
-          <MdOutlineLogout />
-          <a href="/home" onClick={onLogout}><p>Log Out</p></a>
+          <a href="/" onClick={onLogout}>
+            <MdOutlineLogout />
+            <p>Log Out</p>
+          </a>
         </div>
       </div>
     </div>
