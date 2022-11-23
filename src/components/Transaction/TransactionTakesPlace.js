@@ -1,33 +1,69 @@
+/* eslint-disable react/jsx-props-no-spreading */
+/* eslint-disable react/jsx-no-bind */
+/* eslint-disable react/button-has-type */
+/* eslint-disable react/forbid-prop-types */
 import React from 'react';
-import Popup from 'reactjs-popup';
-import TransactionPopup from '../pop-up/TransactionPopup';
+import PropTypes from 'prop-types';
+// import Popup from 'reactjs-popup';
+import BarangDitawar from './BarangDitawar';
+import BarangDiajukan from './BarangDiajukan';
+// import products from '../../utils/data/products';
+// import TransactionPopup from '../pop-up/TransactionPopup';
 
-function TransactionTakesPlace() {
-  function onClick() {
-    const root = document.querySelector('.root-popup-transaction');
-    root.style.display = 'none';
+function TransactionTakesPlace({ productDiajukan, setProductDiajukan, productDitawar }) {
+  function onTerima() {
+    setProductDiajukan([{
+      name: productDiajukan[0].name,
+      image: productDiajukan[0].image,
+      price: productDiajukan[0].price,
+      description: productDiajukan[0].description,
+      status: 'selesai',
+    }]);
+  }
+  if (productDiajukan[0].status === 'pending') {
+    return (
+      <article className="transaction-item">
+        <div>
+          {
+            productDitawar.map((product) => (
+              <BarangDitawar
+                key={product.id}
+                image={product.image}
+                name={product.name}
+                price={product.price}
+                description={product.description}
+                {...product}
+              />
+            ))
+          }
+        </div>
+        <div>
+          {
+            productDiajukan.map((product) => (
+              <BarangDiajukan
+                key={product.id}
+                image={product.image}
+                name={product.name}
+                price={product.price}
+                description={product.description}
+                onTerima={onTerima}
+                {...product}
+              />
+            ))
+          }
+        </div>
+      </article>
+    );
   }
   return (
-    <article className="transaction-item">
-      <div className="transaction-item__header">
-        <h3>Sepatu Sekolah</h3>
-      </div>
-      <div className="transaction-item__body">
-        <img className="transaction-item__body-image" src="./images/gambar-kamera.jpg" alt="kamera" />
-        <div className="transaction-item__body-title">
-          <h4>Kamera baru beli kemarin</h4>
-          <h4>Rp.200.000</h4>
-        </div>
-        <div className="transaction-item__body-action">
-          <button type="submit" className="button-reject">Tolak</button>
-          <Popup trigger={<button onClick={onClick} type="submit" className="button-accept">Terima</button>}>
-            <TransactionPopup />
-          </Popup>
-        </div>
-      </div>
-      <div className="transaction-item__message">Ayo kita barter yuk..</div>
-    </article>
+    <p>Barang masih kosong</p>
   );
 }
+
+TransactionTakesPlace.propTypes = {
+  productDiajukan: PropTypes.arrayOf(PropTypes.object).isRequired,
+  setProductDiajukan: PropTypes.func.isRequired,
+  productDitawar: PropTypes.arrayOf(PropTypes.object).isRequired,
+};
 
 export default TransactionTakesPlace;
