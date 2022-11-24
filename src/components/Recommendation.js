@@ -1,14 +1,13 @@
 import React from 'react';
-import products from '../utils/data/products';
 import ProductItem from './product/ProductItem';
 
-function Recommendation() {
+function Recommendation(filteredProducts) {
   return (
     <div className="recommendations">
       {
-        products.map((product) => (
+        filteredProducts.filteredProducts.map((product) => (
           <ProductItem
-            id={product.id}
+            key={product.id}
             image={product.image}
             name={product.name}
             category={product.category}
@@ -17,7 +16,7 @@ function Recommendation() {
             {...product}
           />
         ))
-        }
+      }
     </div>
   );
 }

@@ -15,6 +15,7 @@ import Homepage from '../pages/HomePage';
 import DetailPage from '../pages/DetailPage';
 import RegisterPage from '../pages/RegisterPage';
 import LoginPage from '../pages/LoginPage';
+import AboutPage from '../pages/AboutPage';
 // eslint-disable-next-line import/no-named-as-default
 import AddPage from '../pages/AddPage';
 import TransactionPage from '../pages/TransactionPage';
@@ -24,9 +25,9 @@ import UserList from './UserList';
 import EditUser from './EditUser';
 // Styles
 import '../styles/App.css';
-import '../styles/AddPage.css';
 import brandTukerin from '../images/brand-tukerin.png';
 import brandTukerinFooter from '../images/tukerinn-removebg.png';
+import products from '../utils/data/products';
 // Icons
 import { BsFacebook, BsInstagram, BsTwitter } from 'react-icons/bs';
 import { FaCopyright } from 'react-icons/fa';
@@ -35,6 +36,8 @@ import { MdNotifications } from 'react-icons/md';
 
 function App() {
   const [authedUser, setAuthedUser] = useState(JSON.parse(localStorage.getItem('AUTHED_USER')) || null);
+
+  const [publishedProducts, setPublishedProducts] = useState(JSON.parse(localStorage.getItem('PUBLISHED_PRODUCTS')) || products);
 
   const [myProduct, setMyProduct] = useState(JSON.parse(localStorage.getItem('MY_APP_STATE')) || []);
   // const [productDijual, setProductDijual] = useState([]);
@@ -50,13 +53,17 @@ function App() {
   };
 
   const onLogout = () => {
-    setAuthedUser(null);
-    putAccessToken('');
+    localStorage.setItem('AUTHED_USER', null);
+    // setAuthedUser(null);
   };
 
   useEffect(() => {
     localStorage.setItem('AUTHED_USER', JSON.stringify(authedUser));
   }, [authedUser]);
+
+  useEffect(() => {
+    localStorage.setItem('PUBLISHED_PRODUCTS', JSON.stringify(publishedProducts));
+  }, [publishedProducts]);
 
   useEffect(() => {
     localStorage.setItem('MY_APP_STATE', JSON.stringify(myProduct));
@@ -67,9 +74,10 @@ function App() {
     setSearchParams({ keywordSearch });
   }
 
-  // const filteredProducts = products.filter((product) => product.name.toLowerCase().includes(
-  //   keyword.toLocaleLowerCase(),
-  // ));
+  // eslint-disable-next-line max-len
+  const filteredProducts = publishedProducts.filter((product) => product.name.toLowerCase().includes(
+    keyword.toLocaleLowerCase(),
+  ));
 
   if (authedUser === null) {
     return (
@@ -100,16 +108,20 @@ function App() {
         </header>
         <main className="content">
           <Routes>
-            <Route path="/" element={<Homepage />} />
+            <Route path="/" element={<Homepage filteredProducts={filteredProducts} />} />
             <Route path="/products/:id" element={<DetailPage authedUser={authedUser} />} />
             <Route path="/register" element={<RegisterPage />} />
             <Route path="/login" element={<LoginPage loginSuccess={onLoginSuccess} />} />
             <Route path="/add" element={<AddPage />} />
             <Route path="/transaction" element={<TransactionPage />} />
             <Route path="/barang-saya" element={<BarangSayaPage />} />
+
             <Route path="/user-list" element={<UserList />} />
             <Route path="/add-user" element={<AddUser />} />
             <Route path="/edit-user/:id" element={<EditUser />} />
+
+            <Route path="/about" element={<AboutPage />} />
+
           </Routes>
         </main>
         <footer>
@@ -122,7 +134,7 @@ function App() {
               <h3>Jelajahi Tukerin</h3>
               <ul className="usefull-links__list">
                 <li><a href="/">Beranda</a></li>
-                <li><a href="/">Tentang Kami</a></li>
+                <li><a href="/about">Tentang Kami</a></li>
                 <li><a href="/">FAQ</a></li>
               </ul>
             </div>
@@ -168,7 +180,7 @@ function App() {
           <div className="authentication-button">
             <li>
               <Popup trigger={<MdNotifications className="notification-icon" />} position="right center">
-                <ProfileModal />
+                {/* <ProfileModal onLogout={onLogout} /> */}
               </Popup>
             </li>
             <div className="profile-icon">
@@ -186,11 +198,11 @@ function App() {
       </header>
       <main className="content">
         <Routes>
-          <Route path="/" element={<Homepage />} />
-          <Route path="/products/:id" element={<DetailPage productDiajukan={productDiajukan} setProductDiajukan={setProductDiajukan} />} />
+          <Route path="/" element={<Homepage filteredProducts={filteredProducts} />} />
+          <Route path="/products/:id" element={<DetailPage filteredProducts={filteredProducts} productDiajukan={productDiajukan} setProductDiajukan={setProductDiajukan} />} />
           <Route path="/register" element={<RegisterPage />} />
           <Route path="/login" element={<LoginPage />} />
-          <Route path="/add" element={<AddPage myProduct={myProduct} setMyProduct={setMyProduct} />} />
+          <Route path="/add" element={<AddPage publishedProducts={publishedProducts} setPublishedProducts={setPublishedProducts} myProduct={myProduct} setMyProduct={setMyProduct} />} />
           <Route path="/transaction" element={<TransactionPage />} />
           <Route path="/profile" element={<MyAccount />} />
           <Route path="/user-list" element={<UserList />} />
@@ -209,7 +221,7 @@ function App() {
             <h3>Jelajahi Tukerin</h3>
             <ul className="usefull-links__list">
               <li><a href="/">Beranda</a></li>
-              <li><a href="/">Tentang Kami</a></li>
+              <li><a href="/about">Tentang Kami</a></li>
               <li><a href="/">FAQ</a></li>
             </ul>
           </div>
@@ -219,11 +231,6 @@ function App() {
               <li><a href="/" aria-label="facebook"><BsFacebook /></a></li>
               <li><a href="/" aria-label="instagram"><BsInstagram /></a></li>
               <li><a href="/" aria-label="twitter"><BsTwitter /></a></li>
-            </ul>
-            <ul>
-              <li><button type="button">Facebook</button></li>
-              <li><button type="button">Instagram</button></li>
-              <li><button type="button">Twitter </button></li>
             </ul>
           </div>
         </div>

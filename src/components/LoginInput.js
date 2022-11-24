@@ -15,6 +15,9 @@ function LoginInput({ login }) {
       password,
     });
     navigate('/');
+    // if (status === 200) {
+    //   navigate('/');
+    // }
   };
 
   return (

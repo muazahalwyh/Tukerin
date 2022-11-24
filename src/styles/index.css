@@ -12,6 +12,10 @@ code {
     monospace;
 }
 
+h2 {
+  font-weight: 550;
+}
+
 /* HEADER */
 
 header {
@@ -54,17 +58,16 @@ header div {
 }
 
 .brand-container {
-  padding: 0px;
-  display: flex;
-  gap: 5px;
+  gap: 10px;
 }
 
 .brand-container h1{
   color: #386159;
+  font-weight: bold;
+  margin-bottom: 0;
 }
 
 .brand-logo img{
-  margin-top: 5px;
   max-width: 78px;
   max-height: 71px;
 }
@@ -83,14 +86,22 @@ header div .search-bar input {
 .fa-search {
   color: white;
   background-color: #386159;
-  padding: 1.2em;
+  padding: 15px;
   border-radius: 5px;
-  max-height: 50px;
+  height: 50px;
+  width: 50px;
 }
 
 .profile-icon {
   color: white;
-  gap: 5px;
+  gap: 10px;
+}
+
+.profile-icon p {
+  margin-bottom: 0;
+  color: #386159;
+  font-size: 20px;
+  font-weight: bold;
 }
 
 .profile-icon__icon, .notification-icon {
@@ -130,77 +141,6 @@ header .authentication-button button{
 }
 
 /* MAIN */
-/* HOMEPAGE */
-
-.homepage-container {
-  text-align: center;
-  padding: 2em;
-}
-
-.homepage-container img {
-  border-radius: 20px;
-}
-
-.category {
-  margin: auto;
-}
-
-.recommendation-container {
-  margin: auto;
-  margin-top: 30px;
-  display: flex;
-  flex-direction: column;
-  max-width: 1060px;
-  border-style: groove;
-  border-color: #D9D9D9;
-}
-
-.recommendation-container h2 {
-  margin: auto;
-  width: 80%;
-  border-bottom: groove;
-  margin-bottom: 45px;
-  padding: 15px;
-}
-
-.recommendations {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 25px;
-  align-items: center;
-  justify-content: center;
-  padding-bottom: 40px;
-}
-
-/* PRODUCT ITEM */
-
-.product-item {
-  width: 140px;
-  height: 215px;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-  border-radius: 8px;
-  overflow: hidden;
-}
-
-.product-item__image {
-  width: 100%;
-  height: 50%;
-}
-
-.product-item__body {
-  text-align: left;
-  padding: 12px;
-}
-
-.product-item__body h3 {
-  margin: 5px;
-  font-size: 12px;
-}
-
-.product-item__body p {
-  margin: 5px;
-  font-size: 12px;
-}
 
 /* POP UP */
 
@@ -209,20 +149,18 @@ header .authentication-button button{
   width: 100%;
   height: 100%;
   top: 120px;
-  left: 1250px;
-  right: 0;
+  padding-right: 100px;
   bottom: 0;
 }
 
 .profile-modal {
-  position: relative;
+  float: right;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: left;
-  text-align: center;
   padding: 30px;
-  width: 150px;
+  width: 210px;
   border: solid;
   border-color: #D9D9D9;
   z-index: 10;
@@ -272,9 +210,9 @@ header .authentication-button button{
 .input-login button{
   padding: 10px 25px;
   font-weight: bold;
-  border-radius: 20px;
+  border-radius: 10px;
   border: #ffffff;
-  margin-left: 155px;
+  margin-left: 130px;
 }
 
 .input-login button:hover{
@@ -300,9 +238,9 @@ header .authentication-button button{
 
 .register-input button{
   margin: 20px auto;
-  padding: 15px 100px;
+  padding: 10px 90px;
   border: #ffffff;
-  border-radius: 20px;
+  border-radius: 10px;
   font-weight: bold;
   font-size: 18px;
   cursor: pointer;
@@ -353,13 +291,18 @@ footer .footer-container{
   margin: auto;
   display: flex;
   justify-content: space-evenly;
-  padding-top: 30px;
+  padding-top: 40px;
 }
 
 .brand-footer {
   display: flex;
   flex-direction: column;
-  gap: 5px;
+}
+
+.brand-footer h1 {
+  color: #386159;
+  font-weight: bold;
+  margin-bottom: 0;
 }
 
 footer div img {
@@ -384,7 +327,18 @@ footer ul li a:hover{
 .usefull-links, .ikuti-kami {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  color: #386159;
+}
+
+.usefull-links h3, .ikuti-kami h3 {
+  font-size: 24px;
+  font-weight: bold;
+  padding: 20px;
+}
+
+.usefull-links a, .ikuti-kami a {
+  font-weight: 500;
+  color: #386159;
 }
 
 .usefull-links ul, .ikuti-kami ul {
@@ -403,15 +357,20 @@ footer ul li a:hover{
 .ikuti-kami__list {
   display: flex;
   flex-direction: row;
-  gap: 10px;
+  font-size: 30px;
+  gap: 30px;
 }
 
 .copyright {
+  margin: auto;
+  margin-top: 20px;
+  display: flex;
   justify-content: center;
   align-items: center;
   font-size: 18px;
-  display: flex;
   opacity: 50%;
+  border-top: #386159 solid 3px;
+  max-width: 80%;
 }
 
 .ikuti-kami button{
@@ -420,8 +379,10 @@ footer ul li a:hover{
 }
 
 footer h4 {
+  font-size: 18px;
+  margin-bottom: 0;
   text-align: center;
-  padding: 10px;
+  padding: 20px;
   gap: 10px;
   border-color: #386159;
 }

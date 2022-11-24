@@ -1,3 +1,4 @@
+/* eslint-disable react/forbid-prop-types */
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { useNavigate } from 'react-router-dom';
@@ -5,7 +6,9 @@ import { AiOutlinePlus } from 'react-icons/ai';
 import useInput from '../hooks/useInput';
 // import { addProduct } from '../utils/data/local-data';
 
-function ProductInput({ prevBarangSaya, setBarangSaya }) {
+function ProductInput({
+  publishedProducts, setPublishedProducts, prevBarangSaya, setBarangSaya,
+}) {
   const [image, setImage] = useState([]);
   const [name, handleNameChange] = useInput('');
   const [price, handlePriceChange] = useInput('');
@@ -14,16 +17,26 @@ function ProductInput({ prevBarangSaya, setBarangSaya }) {
 
   const navigate = useNavigate();
 
+  // const reader = new FileReader();
+  // reader.readAsDataURL(image);
+
+  // Convert Blob into File
+  // const myFile = new File([image], 'image.jpeg', {
+  //   type: image.type,
+  // });
+
   const onSubmit = (e) => {
     e.preventDefault();
+    setPublishedProducts([...publishedProducts, {
+      id: Date.now().toString(), name, price, description, image, category,
+    }]);
     setBarangSaya([...prevBarangSaya, {
-      name, price, description, image, category,
+      id: Date(), name, price, description, image, category,
     }]);
     navigate('/barang-saya');
   };
 
   const handleImage = (e) => {
-    console.log(e.target.files);
     setImage(URL.createObjectURL(e.target.files[0]));
   };
 
@@ -79,7 +92,8 @@ function ProductInput({ prevBarangSaya, setBarangSaya }) {
 }
 
 ProductInput.propTypes = {
-  // eslint-disable-next-line react/forbid-prop-types
+  publishedProducts: PropTypes.arrayOf(PropTypes.object).isRequired,
+  setPublishedProducts: PropTypes.func.isRequired,
   prevBarangSaya: PropTypes.arrayOf(PropTypes.object).isRequired,
   setBarangSaya: PropTypes.func.isRequired,
 };
