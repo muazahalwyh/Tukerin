@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react';
 import {
   Routes, Route, Link, useSearchParams,
 } from 'react-router-dom';
+import AddUser from './AddUser';
 import { getUserLogged, putAccessToken } from '../utils/api-endpoint';
 import Popup from 'reactjs-popup';
 // Components
@@ -20,6 +21,8 @@ import AddPage from '../pages/AddPage';
 import TransactionPage from '../pages/TransactionPage';
 import MyAccount from '../pages/MyAccountPage';
 import BarangSayaPage from '../pages/BarangSayaPage';
+import UserList from './UserList';
+import EditUser from './EditUser';
 // Styles
 import '../styles/App.css';
 import brandTukerin from '../images/brand-tukerin.png';
@@ -83,8 +86,8 @@ function App() {
           <nav>
             <ul>
               <li><a href="/">Beranda</a></li>
-              <li><a href="/about">Tentang Kami</a></li>
-              <li><a href="/">Hubungi Kami</a></li>
+              <li><a href="/">Tentang Kami</a></li>
+              <li><a href="/user-list">Hubungi Kami</a></li>
             </ul>
           </nav>
           <div>
@@ -112,7 +115,13 @@ function App() {
             <Route path="/add" element={<AddPage />} />
             <Route path="/transaction" element={<TransactionPage />} />
             <Route path="/barang-saya" element={<BarangSayaPage />} />
+
+            <Route path="/user-list" element={<UserList />} />
+            <Route path="/add-user" element={<AddUser />} />
+            <Route path="/edit-user/:id" element={<EditUser />} />
+
             <Route path="/about" element={<AboutPage />} />
+
           </Routes>
         </main>
         <footer>
@@ -153,8 +162,8 @@ function App() {
         <nav>
           <ul>
             <li><a href="/">Beranda</a></li>
-            <li><a href="/about">Tentang Kami</a></li>
-            <li><a href="/">Hubungi Kami</a></li>
+            <li><a href="/">Tentang Kami</a></li>
+            <li><a href="/user-list">Hubungi Kami</a></li>
           </ul>
         </nav>
         <div className="header-main">
@@ -173,14 +182,17 @@ function App() {
               <Popup trigger={<MdNotifications className="notification-icon" />} position="right center">
                 {/* <ProfileModal onLogout={onLogout} /> */}
               </Popup>
-              <div className="profile-icon">
+            </li>
+            <div className="profile-icon">
+              <li>
                 <Popup trigger={<CgProfile className="profile-icon__icon" />}>
                   <ProfileModal onLogout={onLogout} />
                 </Popup>
                 {' '}
                 <p>{authedUser}</p>
-              </div>
-            </li>
+              </li>
+            </div>
+
           </div>
         </div>
       </header>
@@ -193,6 +205,9 @@ function App() {
           <Route path="/add" element={<AddPage publishedProducts={publishedProducts} setPublishedProducts={setPublishedProducts} myProduct={myProduct} setMyProduct={setMyProduct} />} />
           <Route path="/transaction" element={<TransactionPage />} />
           <Route path="/profile" element={<MyAccount />} />
+          <Route path="/user-list" element={<UserList />} />
+          <Route path="/add-user" element={<AddUser />} />
+          <Route path="/edit-user/:id" element={<EditUser />} />
           <Route path="/barang-saya" element={<BarangSayaPage myProduct={myProduct} setMyProduct={setMyProduct} />} />
         </Routes>
       </main>

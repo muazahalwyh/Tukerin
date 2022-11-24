@@ -1,0 +1,19 @@
+.columns {
+    display: flex;
+    flex-direction: column;
+}
+
+.columns > table {
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+.columns > table > thead > tr > th {
+    color: aqua;
+}
+
+.user-list {
+    flex: 1;
+}
+.user-list__container {
+    background-color: black;
+}

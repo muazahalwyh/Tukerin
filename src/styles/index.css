@@ -109,6 +109,7 @@ header div .search-bar input {
   color: white;
   min-width: 38px;
   min-height: 38px;
+  cursor: pointer;
 }
 
 header .authentication-button {
