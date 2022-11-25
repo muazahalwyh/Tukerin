@@ -105,7 +105,7 @@ function App() {
           <nav>
             <ul>
               <li><a href="/">Beranda</a></li>
-              <li><a href="/">Tentang Kami</a></li>
+              <li><a href="/about">Tentang Kami</a></li>
               <li><a href="/user-list">Hubungi Kami</a></li>
             </ul>
           </nav>
@@ -181,7 +181,7 @@ function App() {
         <nav>
           <ul>
             <li><a href="/">Beranda</a></li>
-            <li><a href="/">Tentang Kami</a></li>
+            <li><a href="/about">Tentang Kami</a></li>
             <li><a href="/user-list">Hubungi Kami</a></li>
           </ul>
         </nav>
@@ -228,6 +228,7 @@ function App() {
           <Route path="/add-user" element={<AddUser />} />
           <Route path="/edit-user/:id" element={<EditUser />} />
           <Route path="/barang-saya" element={<BarangSayaPage myProduct={myProduct} setMyProduct={setMyProduct} />} />
+          <Route path="/about" element={<AboutPage />} />
         </Routes>
       </main>
       <footer>
