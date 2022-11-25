@@ -1,3 +1,6 @@
+/* eslint-disable max-len */
+/* eslint-disable no-unused-vars */
+/* eslint-disable react/forbid-prop-types */
 /* eslint-disable react/jsx-no-bind */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
@@ -6,19 +9,70 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { AiOutlinePlus } from 'react-icons/ai';
 import { GrFormClose } from 'react-icons/gr';
+import { useNavigate, useParams } from 'react-router-dom';
 
-function MasukanBarangBarter({ prevBarangSaya, setBarangSaya }) {
+function MasukanBarangBarter({
+  filteredProducts, productDiajukan, productDitawar, setProductDiajukan, setProductDitawar,
+}) {
+  // useEffect(() => {
+  //   if (productDitawar === null) {
+  //     setProductDitawar(filteredProducts.filter((productt) => productt.id === id));
+  //   } else {
+  //     setProductDitawar([...productDitawar, (
+  //       filteredProducts.filter((productt) => productt.id === id)
+  //     ),
+  //     ]);
+  //   }
+  // }, []);
+
   const [name, setName] = useState('');
   const [price, setPrice] = useState('');
   const [description, setDescription] = useState('');
   const [image, setImage] = useState([]);
+  const { id } = useParams();
+
+  const navigate = useNavigate();
 
   const onSubmit = (e) => {
     e.preventDefault();
-    setBarangSaya([...prevBarangSaya, {
-      name, price, description, image,
-    }]);
+    if (productDiajukan === null) {
+      setProductDiajukan([{
+        id: Date.now().toString(), name, price, description, image, status: 'pending',
+      }]);
+    }
+    if (productDiajukan != null) {
+      setProductDiajukan([...productDiajukan, {
+        id: Date.now().toString(), name, price, description, image, status: 'pending',
+      }]);
+    }
+    if (productDitawar === null) {
+      // setProductDitawar(filteredProducts.filter((product) => product.id === id));
+      setProductDitawar(
+        filteredProducts.filter((product) => {
+          if (product.id === id) {
+            product.status = 'pending';
+          }
+          return product.id === id;
+        }),
+      );
+    }
+    if (productDitawar != null) {
+      setProductDitawar([...productDitawar, filteredProducts.filter((product) => {
+        if (product.id === id) {
+          product.status = 'pending';
+        }
+        return product.id === id;
+      })]);
+    }
+    navigate('/transaction');
   };
+
+  // filteredProducts.filter((product) => {
+  //   if (product.id === id) {
+  //     product.status = 'pending';
+  //   }
+  //   return product;
+  // });
 
   const handleName = (e) => {
     setName(e.target.value);
@@ -85,9 +139,11 @@ function MasukanBarangBarter({ prevBarangSaya, setBarangSaya }) {
 }
 
 MasukanBarangBarter.propTypes = {
-  // eslint-disable-next-line react/forbid-prop-types
-  prevBarangSaya: PropTypes.arrayOf(PropTypes.object).isRequired,
-  setBarangSaya: PropTypes.func.isRequired,
+  filteredProducts: PropTypes.arrayOf(PropTypes.object).isRequired,
+  productDitawar: PropTypes.arrayOf(PropTypes.object).isRequired,
+  productDiajukan: PropTypes.arrayOf(PropTypes.object).isRequired,
+  setProductDiajukan: PropTypes.func.isRequired,
+  setProductDitawar: PropTypes.func.isRequired,
 };
 
 export default MasukanBarangBarter;

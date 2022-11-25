@@ -41,10 +41,20 @@ function App() {
 
   const [myProduct, setMyProduct] = useState(JSON.parse(localStorage.getItem('MY_APP_STATE')) || []);
   // const [productDijual, setProductDijual] = useState([]);
-  const [productDiajukan, setProductDiajukan] = useState([]);
+  const [productDiajukan, setProductDiajukan] = useState(JSON.parse(localStorage.getItem('PRODUCT_DIAJUKAN')) || null);
+
+  const [productDitawar, setProductDitawar] = useState(JSON.parse(localStorage.getItem('PRODUCT_DITAWAR')) || null);
 
   const [searchParams, setSearchParams] = useSearchParams();
   const [keyword, setKeyword] = useState(() => searchParams.get('keywordSearch') || '');
+
+  // useEffect(() => {
+  //   const getUser = async () => {
+  //     const { data } = await getUserLogged();
+  //     setAuthedUser(data.name);
+  //   };
+  //   getUser();
+  // }, []);
 
   const onLoginSuccess = async ({ accessToken }) => {
     putAccessToken(accessToken);
@@ -53,8 +63,9 @@ function App() {
   };
 
   const onLogout = () => {
-    localStorage.setItem('AUTHED_USER', null);
-    // setAuthedUser(null);
+    // localStorage.setItem('AUTHED_USER', null);
+    setAuthedUser(null);
+    putAccessToken('');
   };
 
   useEffect(() => {
@@ -64,6 +75,14 @@ function App() {
   useEffect(() => {
     localStorage.setItem('PUBLISHED_PRODUCTS', JSON.stringify(publishedProducts));
   }, [publishedProducts]);
+
+  useEffect(() => {
+    localStorage.setItem('PRODUCT_DIAJUKAN', JSON.stringify(productDiajukan));
+  }, [productDiajukan]);
+
+  useEffect(() => {
+    localStorage.setItem('PRODUCT_DITAWAR', JSON.stringify(productDitawar));
+  }, [productDitawar]);
 
   useEffect(() => {
     localStorage.setItem('MY_APP_STATE', JSON.stringify(myProduct));
@@ -199,11 +218,11 @@ function App() {
       <main className="content">
         <Routes>
           <Route path="/" element={<Homepage filteredProducts={filteredProducts} />} />
-          <Route path="/products/:id" element={<DetailPage filteredProducts={filteredProducts} productDiajukan={productDiajukan} setProductDiajukan={setProductDiajukan} />} />
+          <Route path="/products/:id" element={<DetailPage filteredProducts={filteredProducts} productDiajukan={productDiajukan} setProductDiajukan={setProductDiajukan} productDitawar={productDitawar} setProductDitawar={setProductDitawar} />} />
           <Route path="/register" element={<RegisterPage />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/add" element={<AddPage publishedProducts={publishedProducts} setPublishedProducts={setPublishedProducts} myProduct={myProduct} setMyProduct={setMyProduct} />} />
-          <Route path="/transaction" element={<TransactionPage />} />
+          <Route path="/transaction" element={<TransactionPage productDiajukan={productDiajukan} setProductDiajukan={setProductDiajukan} productDitawar={productDitawar} />} />
           <Route path="/profile" element={<MyAccount />} />
           <Route path="/user-list" element={<UserList />} />
           <Route path="/add-user" element={<AddUser />} />

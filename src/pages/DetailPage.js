@@ -1,43 +1,54 @@
 /* eslint-disable react/forbid-prop-types */
 /* eslint-disable react/jsx-props-no-spreading */
 /* eslint-disable react/destructuring-assignment */
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { useParams } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import ProductDetail from '../components/product/ProductDetail';
-// import products from '../utils/data/products';
 
 function DetailPage({
-  filteredProducts,
+  filteredProducts, productDiajukan, setProductDiajukan, productDitawar, setProductDitawar,
 }) {
-  console.log(filteredProducts);
   const { id } = useParams();
 
-  // const [user, setAuthedUser] = useState('');
-  const [product, setProduct] = useState(null);
-
-  useEffect(() => {
-    setProduct(filteredProducts.filter((productt) => productt.id === id));
-  }, []);
-
-  if (product === null) {
-    return <p>Product tidak ditemukan</p>;
-  }
   return (
     <section>
       <ProductDetail
-        // authedUser={authedUser}
-        product={product}
+        id={id}
+        filteredProducts={filteredProducts}
+        productDiajukan={productDiajukan}
+        productDitawar={productDitawar}
+        setProductDiajukan={setProductDiajukan}
+        setProductDitawar={setProductDitawar}
       />
     </section>
   );
 }
 
 DetailPage.propTypes = {
-  // user: PropTypes.string.isRequired,
   filteredProducts: PropTypes.arrayOf(PropTypes.object).isRequired,
-  // productDiajukan: PropTypes.arrayOf(PropTypes.object).isRequired,
-  // setProductDiajukan: PropTypes.func.isRequired,
+  productDiajukan: PropTypes.arrayOf(PropTypes.object).isRequired,
+  setProductDiajukan: PropTypes.func.isRequired,
+  productDitawar: PropTypes.arrayOf(PropTypes.object).isRequired,
+  setProductDitawar: PropTypes.func.isRequired,
 };
 
 export default DetailPage;
+
+// const arrProductDitawar = filteredProducts.filter((productt) => productt.id === id);
+// console.log(arrProductDitawar);
+// const objProductDitawar = arrProductDitawar.map((productt) => productt[0]);
+// console.log(objProductDitawar);
+// useEffect(() => {
+//   if (productDitawar === null) {
+//     eslint-disable-next-line max-len
+//     setProductDitawar(filteredProducts.filter((productt) => productt.id === id));
+//   }
+//   if (productDitawar != null) {
+//   eslint-disable-next-line max-len
+//     setProductDitawar([filteredProducts.filter((productt) => productt.id === id), ...productDitawar]);
+//   }
+// }, []);
+// if (productDitawar === null) {
+//   return <p>Product tidak ditemukan</p>;
+// }
