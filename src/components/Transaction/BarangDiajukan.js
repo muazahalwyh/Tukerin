@@ -2,6 +2,8 @@
 /* eslint-disable react/button-has-type */
 import React from 'react';
 import PropTypes from 'prop-types';
+import Popup from 'reactjs-popup';
+import TransactionPopup from '../pop-up/TransactionPopup';
 
 function BarangDiajukan({
   id, image, name, description, price, onTerima,
@@ -26,11 +28,10 @@ function BarangDiajukan({
           <p>{description}</p>
         </div>
         <div className="transaction-item__body-action">
-          {/* <Popup trigger={<button onClick={onTerima}
-              type="submit" className="button-accept">Terima</button>}>
-                <TransactionPopup />
-              </Popup> */}
-          <button onClick={onTerima} type="submit" className="button-reject">Terima</button>
+          <Popup trigger={<button onClick={onTerima(id)} type="submit" className="button-accept">Terima</button>}>
+            <TransactionPopup />
+          </Popup>
+          {/* <button onClick={onTerima} type="submit" className="button-reject">Terima</button> */}
           <button type="submit" className="button-reject">Tolak</button>
         </div>
       </div>

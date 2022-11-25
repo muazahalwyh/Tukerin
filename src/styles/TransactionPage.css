@@ -25,10 +25,11 @@
   .transaction-item {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-evenly;
+    justify-content: center;
     align-items: center;
     border-radius: 20px;
     margin: 20px 50px;
+    gap: 40px;
   }
 
   .barang-ditawar, .barang-diajukan {
@@ -109,15 +110,16 @@
 
   /* PENDING */
 
+  .barang-ditawar, .barang-diajukan {
+    margin-bottom: 20px;
+  }
+
   .transaction-item__body-pending {
     padding: 15px;
     display: flex;
     flex-direction: column;
     gap: 10px;
     align-items: flex-end;
-    /* grid-template-columns: 1fr, 1fr;
-    grid-template-rows: repeat (3, 1fr);
-    grid-row-gap: 10px; */
   }
 
   .img-name-price_container {
@@ -140,6 +142,7 @@
   }
 
   .transaction-item__body-title-pending p {
+    text-align: left;
     padding: 10px;
     min-height: 125px;
     max-height: 100px;
@@ -155,6 +158,16 @@
     gap: 10px;
   }
   
+  .selesai {
+    width: 100%;
+    align-items: center;
+    text-align: center;
+  }
+
+  .selesai p {
+    margin-bottom: 0;
+  }
+
   .button-tochat {
     padding: 10px;
     border-radius: 10px;
@@ -209,13 +222,16 @@
     bottom: auto;
     margin-right: -50%;
     transform: translate(-50%, -50%);
-    gap: 20px;
   }
 
   .transaksi-sukses {
     display: flex;
     flex-direction: column;
     gap: 15px;
+  }
+
+  .transaksi-sukses h4, h5 {
+    margin-bottom: 0;
   }
 
   .transaksi-sukses img {
@@ -232,7 +248,10 @@
     color: white;
     background-color: #386159;
     padding: 10px;
-    margin-top: 60px;
+  }
+
+  .transaksi-sukses p {
+    margin-bottom: 0;
   }
 
   .product-match-container {

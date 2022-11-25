@@ -10,17 +10,26 @@ import BarangDiajukan from './BarangDiajukan';
 // import products from '../../utils/data/products';
 // import TransactionPopup from '../pop-up/TransactionPopup';
 
-function TransactionTakesPlace({ productDiajukan, setProductDiajukan, productDitawar }) {
-  function onTerima() {
-    setProductDiajukan([{
-      name: productDiajukan[0].name,
-      image: productDiajukan[0].image,
-      price: productDiajukan[0].price,
-      description: productDiajukan[0].description,
-      status: 'selesai',
-    }]);
+function TransactionTakesPlace({ productDiajukan, productDitawar }) {
+  function onTerima(id) {
+    productDiajukan.forEach((obj) => {
+      if (obj.id === id) {
+        obj.status = 'selesai';
+      }
+      return (obj);
+    });
+
+    productDitawar.forEach((obj) => {
+      obj.status = 'selesai';
+    });
+
+    // const index = productDiajukan.findIndex((product) => product.id === id);
+    // setProductDiajukan([productDiajukan[index].status = 'selesai']);
+    // const idFiltered = productDiajukan.filter((product) => (product.id === id));
+    // setProductDiajukan(idFiltered.forEach((product) => product.status = 'selesai'));
   }
-  if (productDiajukan[0].status === 'pending') {
+
+  if (productDiajukan != null) {
     return (
       <article className="transaction-item">
         <div>
@@ -55,9 +64,11 @@ function TransactionTakesPlace({ productDiajukan, setProductDiajukan, productDit
       </article>
     );
   }
-  return (
-    <p>Barang masih kosong</p>
-  );
+  if (productDiajukan.forEach((obj) => obj.status !== 'pending')) {
+    return (
+      <p>Barang masih kosong</p>
+    );
+  }
 }
 
 TransactionTakesPlace.propTypes = {

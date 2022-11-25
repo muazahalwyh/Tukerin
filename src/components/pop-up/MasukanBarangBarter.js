@@ -1,17 +1,18 @@
+/* eslint-disable max-len */
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/forbid-prop-types */
 /* eslint-disable react/jsx-no-bind */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/label-has-associated-control */
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { AiOutlinePlus } from 'react-icons/ai';
 import { GrFormClose } from 'react-icons/gr';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 
 function MasukanBarangBarter({
-  id, filteredProducts, productDiajukan, productDitawar, setProductDiajukan, setProductDitawar,
+  filteredProducts, productDiajukan, productDitawar, setProductDiajukan, setProductDitawar,
 }) {
   // useEffect(() => {
   //   if (productDitawar === null) {
@@ -28,6 +29,7 @@ function MasukanBarangBarter({
   const [price, setPrice] = useState('');
   const [description, setDescription] = useState('');
   const [image, setImage] = useState([]);
+  const { id } = useParams();
 
   const navigate = useNavigate();
 
@@ -37,13 +39,40 @@ function MasukanBarangBarter({
       setProductDiajukan([{
         id: Date.now().toString(), name, price, description, image, status: 'pending',
       }]);
-      navigate('/transaction');
     }
-    setProductDiajukan([...productDiajukan, {
-      id: Date.now().toString(), name, price, description, image, status: 'pending',
-    }]);
+    if (productDiajukan != null) {
+      setProductDiajukan([...productDiajukan, {
+        id: Date.now().toString(), name, price, description, image, status: 'pending',
+      }]);
+    }
+    if (productDitawar === null) {
+      // setProductDitawar(filteredProducts.filter((product) => product.id === id));
+      setProductDitawar(
+        filteredProducts.filter((product) => {
+          if (product.id === id) {
+            product.status = 'pending';
+          }
+          return product.id === id;
+        }),
+      );
+    }
+    if (productDitawar != null) {
+      setProductDitawar([...productDitawar, filteredProducts.filter((product) => {
+        if (product.id === id) {
+          product.status = 'pending';
+        }
+        return product.id === id;
+      })]);
+    }
     navigate('/transaction');
   };
+
+  // filteredProducts.filter((product) => {
+  //   if (product.id === id) {
+  //     product.status = 'pending';
+  //   }
+  //   return product;
+  // });
 
   const handleName = (e) => {
     setName(e.target.value);
@@ -110,7 +139,6 @@ function MasukanBarangBarter({
 }
 
 MasukanBarangBarter.propTypes = {
-  id: PropTypes.string.isRequired,
   filteredProducts: PropTypes.arrayOf(PropTypes.object).isRequired,
   productDitawar: PropTypes.arrayOf(PropTypes.object).isRequired,
   productDiajukan: PropTypes.arrayOf(PropTypes.object).isRequired,

@@ -13,19 +13,22 @@ function ProductDetail({
 }) {
   // const idImage = `${CONFIG.BASE_IMAGE_URL} + ${id}`;
   const idImage = `${CONFIG.BASE_IMAGE_URL}`;
+  // console.log(productDitawar[0].map((data) => data));
+
+  const data = filteredProducts.filter((productt) => productt.id === id);
 
   return (
     <div className="detail-page">
       <div className="detail-page__headline-product">
         <img src={idImage} alt="product-img" />
         <div className="detail-page__headline-product__text">
-          <p className="detail-page__name">{productDitawar[0].name} </p>
-          <p className="detail-page__category">{productDitawar[0].category}</p>
-          <p className="detail-page__price">Rp. {productDitawar[0].price} </p>
+          <p className="detail-page__name">{data[0].name} </p>
+          <p className="detail-page__category">{data[0].category}</p>
+          <p className="detail-page__price">Rp. {data[0].price} </p>
           <p className="detail-product-text">Deskripsi produk :</p>
           <div className="detail-page__informations">
             <div className="detail-product-detail">
-              <p>{productDitawar[0].description}</p>
+              <p>{data[0].description}</p>
             </div>
           </div>
         </div>
