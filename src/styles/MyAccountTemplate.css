@@ -62,3 +62,9 @@
 .add-akun__input h4{
     font-size: 20px;
 }
+
+@media screen and (max-width: 550px) {
+    .add-akun__input {
+        width: 80%;
+    }
+}

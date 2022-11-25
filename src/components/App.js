@@ -1,12 +1,15 @@
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
+/* eslint-disable react/jsx-no-comment-textnodes */
 /* eslint-disable react/jsx-no-bind */
 /* eslint-disable import/order */
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import {
   Routes, Route, Link, useSearchParams,
 } from 'react-router-dom';
 import { getUserLogged, putAccessToken } from '../utils/api-endpoint';
 import Popup from 'reactjs-popup';
-
 // Components
 import SearchBar from './SearchBar';
 import ProfileModal from './pop-up/ProfileModal';
@@ -20,6 +23,8 @@ import AddPage from '../pages/AddPage';
 import TransactionPage from '../pages/TransactionPage';
 import MyAccount from '../pages/MyAccountPage';
 import BarangSayaPage from '../pages/BarangSayaPage';
+import AddAkun from '../pages/AddAkun';
+import ProfilNav from './ProfilNav';
 // Styles
 import '../styles/App.css';
 import '../styles/AddPage.css';
@@ -32,12 +37,13 @@ import { BsFacebook, BsInstagram, BsTwitter } from 'react-icons/bs';
 import { FaCopyright } from 'react-icons/fa';
 import { CgProfile } from 'react-icons/cg';
 import { MdNotifications } from 'react-icons/md';
-
 import { GoThreeBars } from 'react-icons/go';
 import { GrClose } from 'react-icons/gr';
-import AddAkun from '../pages/AddAkun';
 
 function App() {
+  // useref untuk drawer hamburger
+  const ref = useRef();
+
   const [authedUser, setAuthedUser] = useState(JSON.parse(localStorage.getItem('AUTHED_USER')) || null);
 
   const [myProduct, setMyProduct] = useState(JSON.parse(localStorage.getItem('MY_APP_STATE')) || []);
@@ -45,13 +51,23 @@ function App() {
 
   // const [productDijual, setProductDijual] = useState([]);
   const [productDiajukan, setProductDiajukan] = useState([]);
+  // const untuk drawer hamburger;
+  const [activeHam, setActiveHam] = useState(false);
+
+  // showprof untuk menu profil saat responsif
+  const [showProf, setShowProf] = useState(false);
 
   const [searchParams, setSearchParams] = useSearchParams();
   const [keyword, setKeyword] = useState(() => searchParams.get('keywordSearch') || '');
 
-  const [activeHam, setActiveHam] = useState(false);
+  // fungsi untuk drawer hamburger
   const handleClose = () => {
     setActiveHam(!activeHam);
+  };
+
+  // untuk menu profil saat responsif
+  const closeProf = () => {
+    setShowProf(!showProf);
   };
 
   const onLoginSuccess = async ({ accessToken }) => {
@@ -76,6 +92,20 @@ function App() {
     localStorage.setItem('MY_Profil_STATE', JSON.stringify(myProfil));
   }, [myProfil]);
 
+  // useeffect untuk drawer hamburger
+  useEffect(() => {
+    const checkIfClickedOutside = (e) => {
+      if (activeHam && ref.current && !ref.current.contains(e.target)) {
+        setActiveHam(false);
+      }
+    };
+    document.addEventListener('mousedown', checkIfClickedOutside);
+
+    return () => {
+      document.removeEventListener('mousedown', checkIfClickedOutside);
+    };
+  }, [activeHam]);
+
   function onKeywordChangeHandler(keywordSearch) {
     setKeyword(keywordSearch);
     setSearchParams({ keywordSearch });
@@ -87,6 +117,8 @@ function App() {
 
   if (authedUser === null) {
     return (
+      // eslint-disable-next-line max-len
+      // eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions
       <div className="app-container">
         <header>
           <nav className="menu">
@@ -96,8 +128,8 @@ function App() {
               <li><a href="/">Hubungi Kami</a></li>
             </ul>
           </nav>
-          <div className="header-main">
-            <button type="submit" className={activeHam ? 'hamburger active-hamburger' : 'hamburger'} onClick={handleClose}>
+          <div className="header-main-login">
+            <button type="submit" className={activeHam ? 'hamburger active-hamburger' : 'hamburger'} onClick={() => handleClose(true)}>
               {activeHam ? <GrClose /> : <GoThreeBars />}
             </button>
             <div className="brand-container">
@@ -115,7 +147,14 @@ function App() {
             </div>
           </div>
           {activeHam && (
-          <div className="nav-dropdown">
+          <div className="nav-dropdown-login" ref={ref}>
+            <div className="header-main-dropdown">
+              <SearchBar
+                keyword={keyword}
+                  // eslint-disable-next-line react/jsx-no-bind
+                keywordChange={onKeywordChangeHandler}
+              />
+            </div>
             <nav>
               <ul>
                 <li><a href="/">Beranda</a></li>
@@ -124,11 +163,6 @@ function App() {
               </ul>
             </nav>
             <div className="header-main-dropdown">
-              <SearchBar
-                keyword={keyword}
-                // eslint-disable-next-line react/jsx-no-bind
-                keywordChange={onKeywordChangeHandler}
-              />
               <div className="authentication-button">
                 <button type="button"><Link to="/login">Masuk</Link></button>
                 <button type="button"><Link to="/register">Register</Link></button>
@@ -155,23 +189,21 @@ function App() {
               <img src={brandTukerinFooter} alt="logo tukerin" />
               <h1>Tukerin</h1>
             </div>
-            <div className="footer-flex">
-              <div className="usefull-links">
-                <h3>Jelajahi Tukerin</h3>
-                <ul className="usefull-links__list">
-                  <li><a href="/">Beranda</a></li>
-                  <li><a href="/">Tentang Kami</a></li>
-                  <li><a href="/">FAQ</a></li>
-                </ul>
-              </div>
-              <div className="ikuti-kami">
-                <h3>Ikuti Kami</h3>
-                <ul className="ikuti-kami__list">
-                  <li><a href="/" aria-label="facebook"><BsFacebook /></a></li>
-                  <li><a href="/" aria-label="instagram"><BsInstagram /></a></li>
-                  <li><a href="/" aria-label="twitter"><BsTwitter /></a></li>
-                </ul>
-              </div>
+            <div className="usefull-links">
+              <h3>Jelajahi Tukerin</h3>
+              <ul className="usefull-links__list">
+                <li><a href="/">Beranda</a></li>
+                <li><a href="/">Tentang Kami</a></li>
+                <li><a href="/">FAQ</a></li>
+              </ul>
+            </div>
+            <div className="ikuti-kami">
+              <h3>Ikuti Kami</h3>
+              <ul className="ikuti-kami__list">
+                <li><a href="/" aria-label="facebook"><BsFacebook /></a></li>
+                <li><a href="/" aria-label="instagram"><BsInstagram /></a></li>
+                <li><a href="/" aria-label="twitter"><BsTwitter /></a></li>
+              </ul>
             </div>
           </div>
           <div className="copyright">
@@ -184,6 +216,8 @@ function App() {
   }
 
   return (
+    // eslint-disable-next-line max-len
+    // eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions
     <div className="app-container">
       <header>
         <nav className="menu">
@@ -195,7 +229,7 @@ function App() {
         </nav>
         <div className="header-main">
           <div className="icon-toggle">
-            <button type="submit" className={activeHam ? 'hamburger active-hamburger' : 'hamburger'} onClick={handleClose}>
+            <button type="submit" className={activeHam ? 'hamburger active-hamburger' : 'hamburger'} onClick={() => handleClose(true)}>
               {activeHam ? <GrClose /> : <GoThreeBars />}
             </button>
           </div>
@@ -225,7 +259,14 @@ function App() {
           </div>
         </div>
         {activeHam && (
-          <div className="nav-dropdown">
+          <div className="nav-dropdown" ref={ref}>
+            <div className="header-main-dropdown">
+              <SearchBar
+                keyword={keyword}
+                  // eslint-disable-next-line react/jsx-no-bind
+                keywordChange={onKeywordChangeHandler}
+              />
+            </div>
             <nav>
               <ul>
                 <li><a href="/">Beranda</a></li>
@@ -234,21 +275,27 @@ function App() {
               </ul>
             </nav>
             <div className="header-main-dropdown">
-              <SearchBar
-                keyword={keyword}
-                // eslint-disable-next-line react/jsx-no-bind
-                keywordChange={onKeywordChangeHandler}
-              />
               <div className="authentication-button">
-                <li>
-                  <div className="profile-icon">
-                    <Popup trigger={<CgProfile className="profile-icon__icon" />}>
-                      <ProfileModal onLogout={onLogout} />
-                    </Popup>
-                    {' '}
-                    <p>{authedUser}</p>
+                <div className="profile-icon">
+                  <div className={showProf ? 'prof active-prof' : 'prof'} onClick={closeProf}>
+                    {showProf ? (
+                      <>
+                        <CgProfile className="profile-icon__icon" />
+                        {' '}
+                        <p>{authedUser}</p>
+                      </>
+                    ) : (
+                      <>
+                        <CgProfile className="profile-icon__icon" />
+                        {' '}
+                        <p>{authedUser}</p>
+                      </>
+                    )}
                   </div>
-                </li>
+                  {showProf && (
+                    <ProfilNav onLogout={onLogout} />
+                  )}
+                </div>
               </div>
             </div>
           </div>
@@ -273,23 +320,21 @@ function App() {
             <img src={brandTukerinFooter} alt="logo tukerin" />
             <h1>Tukerin</h1>
           </div>
-          <div className="footer-flex">
-            <div className="usefull-links">
-              <h3>Jelajahi Tukerin</h3>
-              <ul className="usefull-links__list">
-                <li><a href="/">Beranda</a></li>
-                <li><a href="/">Tentang Kami</a></li>
-                <li><a href="/">FAQ</a></li>
-              </ul>
-            </div>
-            <div className="ikuti-kami">
-              <h3>Ikuti Kami</h3>
-              <ul className="ikuti-kami__list">
-                <li><a href="/" aria-label="facebook"><BsFacebook /></a></li>
-                <li><a href="/" aria-label="instagram"><BsInstagram /></a></li>
-                <li><a href="/" aria-label="twitter"><BsTwitter /></a></li>
-              </ul>
-            </div>
+          <div className="usefull-links">
+            <h3>Jelajahi Tukerin</h3>
+            <ul className="usefull-links__list">
+              <li><a href="/">Beranda</a></li>
+              <li><a href="/">Tentang Kami</a></li>
+              <li><a href="/">FAQ</a></li>
+            </ul>
+          </div>
+          <div className="ikuti-kami">
+            <h3>Ikuti Kami</h3>
+            <ul className="ikuti-kami__list">
+              <li><a href="/" aria-label="facebook"><BsFacebook /></a></li>
+              <li><a href="/" aria-label="instagram"><BsInstagram /></a></li>
+              <li><a href="/" aria-label="twitter"><BsTwitter /></a></li>
+            </ul>
           </div>
         </div>
         <div className="copyright">

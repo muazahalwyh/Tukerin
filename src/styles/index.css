@@ -225,6 +225,23 @@ header .authentication-button button{
   background-color: #FF9F45;
 }
 
+@media screen and (max-width: 650px) {
+  .login-page{
+      flex-direction: column;
+      height: 750px;
+      width: 95%;
+  }
+
+  .container-img{
+      margin: 90px auto;
+  }
+
+  .container-content{
+      width: 100%;
+      border-radius: 0 0px 10px 10px;
+    }
+}
+
 /* REGISTER */
 
 .register-page {
@@ -285,6 +302,12 @@ header .authentication-button button{
   margin-left: 5px;
 }
 
+@media screen and (max-width: 650px) {
+  .register-page {
+      width: 95%;
+  }
+}
+
 /* FOOTER */
 
 footer {
@@ -310,10 +333,6 @@ footer .footer-container{
   margin-bottom: 0;
 }
 
-.footer-flex{
-  display: flex;
-}
-
 footer div img {
   max-width: 160px;
   max-height: 160px;
@@ -331,10 +350,6 @@ footer ul li a{
 
 footer ul li a:hover{
   color: #FF9F45;
-}
-
-.usefull-links {
-  margin-right: 205px;
 }
 
 .usefull-links, .ikuti-kami {

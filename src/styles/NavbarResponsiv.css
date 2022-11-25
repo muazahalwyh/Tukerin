@@ -1,7 +1,7 @@
 /* Toggle */
 .hamburger {
   display: block;
-  font-size: 40px;
+  font-size: 30px;
   color: white;
   user-select: none;
   appearance: none;
@@ -11,17 +11,21 @@
   cursor: pointer;
 }
 
-.nav-dropdown {
+.nav-dropdown, .nav-dropdown-login {
   width: 100%;
   display: block;
   position: absolute;
   z-index: 99;
   left: 0;
-  top: 9rem;
+  top: 7rem;
   padding: 45px;
+  height: 550px;
   background-color:#97B9A8;
-  /* flex-direction: column;
-  flex-wrap: wrap; */
+}
+
+.nav-dropdown-login {
+  top: 6rem;
+  height: 400px;
 }
 
 header {
@@ -29,6 +33,11 @@ header {
 }
 
 .nav-dropdown ul li {
+  margin-top: 0px;
+  padding: 10px;
+}
+
+.nav-dropdown-login ul li {
   margin-top: 0px;
   padding: 15px;
 }
@@ -48,40 +57,54 @@ header {
   margin-top: 30px;
 }
 
+div.prof {
+  gap: 10px;
+}
+
 /* Responsive */
 
 @media screen and (max-width: 450px) {
 
   /* footer */
-  .brand-footer img{
-    width: 80%;
-    margin-left: 40px;
-    margin-top: 25px;
-  }
-  
-  .brand-footer h1 {
-    margin-left: 40px;
-    font-size: 30px;
+  .footer-container {
+    align-items: center;
   }
 
-  .footer-flex{
-    display: inline;
+  div.brand-footer { 
+    width: 50%;
+    align-items: center;
+    margin-right: 60px;
+    flex-direction: row;
+  }
+
+  div.brand-footer img{
+    width: 50% ;
+    margin-left: 10px;
+    flex-direction: row;
+  }
+  
+  div.brand-footer h1 {
+    margin: 5px 0px 0px 10px;
+    font-size: 30px;
+  }
+  
+  .usefull-links h3, .ikuti-kami h3 {
+    font-size: 18px;
   }
 
   .usefull-links {
-    margin: auto;
-    margin-left: 20px;
+    margin-bottom: 10px;
   }
 
-  .ikuti-kami {
-    margin-top: 10px;
-    margin-right: 50px;
-  }
-  
   .ikuti-kami h3 {
-    text-align: center;
-    font-size: 20px;
+    margin-bottom: 0px;
   }
+
+  .ikuti-kami__list {
+    font-size: 5px;
+  }
+
+  /* header */
 
   .hamburger {
     margin-right: 0px;
@@ -90,32 +113,38 @@ header {
   .brand-container {
     margin-right: 0px;
     margin-left: 0;
-    border: 1px solid black;
   }
 
   .brand-container h1{
     margin-right: 0px;
-    font-size: 20px;
+    font-size: 35px;
   }
 
   .brand-logo img{
     margin-left: 0px;
-    max-width: 40px;
-    max-height: 41px;
+    max-width: 50px;
+    max-height: 51px;
   }
 
   div.brand-container {
-    border: 1px solid black;
     margin: auto;
   }
 
-  div.authentication-button {
+  .header-main-dropdown .authentication-button {
     width: 20%;
-    text-align: center;
+    padding: 0px;
   }
 
   .notification-icon {
     margin-left: 0px;
+  }
+
+  .header-main-dropdown .search-bar input {
+    width: 300px;
+  }
+  
+  .header-main-dropdown .fa-search {
+    padding: 4px;
   }
   
   .category h2 {
@@ -128,9 +157,61 @@ header {
     width: 80%;
     font-size: 20px;
   }
+
+  /* profil */
+  /* div.prof.active-prof{
+    margin-top: 0;
+  } */
+  
+  .profil-nav {
+    flex-direction: column;
+    margin-top: 100px;
+    margin-left: 0px;
+  }
+
+  .header-main-dropdown .authentication-button .profile-icon {
+    margin-top: 0px;
+  }
+
+  .profil-nav .icon {
+    width: 100%;
+    padding: 10px;
+    align-items: inherit;
+    font-size: 35px;
+    color: white;
+  }
+
+  .profil-nav .icon p {
+    font-size: 10px;
+  }
+
+  .profile {
+    z-index: 0;
+    background-color: #97B9A8;
+    position:absolute;
+  }
+}
+
+@media screen and (min-width:500px) {
+  div.prof.active-prof {
+    margin-top: 250px;
+  }
+  
 }
 
 @media screen and (max-width: 650px) {
+  .header-main-login .search-bar{
+    display: none;
+  }
+
+  .header-main-login .authentication-button .profile-icon{
+    display: none;
+  }
+  
+  .header-main-login .authentication-button button{
+    display: none;
+  }
+
   .header-main .search-bar{
     display: none;
   }
@@ -148,7 +229,11 @@ header {
   }
 
   .header-main{
-    margin-top: 15px;
+    margin-top: 0px;
+  }
+
+  .header-main-login{
+    padding: 30px;
   }
 
   header div .search-bar input {
@@ -156,6 +241,11 @@ header {
   }
   
   .nav-dropdown ul {
+    margin-top: 10px;
+    display: inline;
+  }
+
+  .nav-dropdown-login ul {
     margin-top: 10px;
     display: inline;
   }
@@ -179,35 +269,24 @@ header {
     margin-left: 0px;
   }
   
-  /* footer */
-  .brand-footer img{
-    width: 80%;
-    margin-left: 40px;
-    margin-top: 25px;
-  }
-  
-  .brand-footer h1 {
-    margin-left: 65px;
-    font-size: 30px;
+  .header-main-dropdown .authentication-button {
+      width: 20%;
+      padding: 0px;
   }
 
-  .footer-flex{
-    display: inline;
-  }
-
-  .usefull-links {
-    margin: auto;
-    margin-left: 20px;
-  }
-
-  .ikuti-kami {
-    margin-top: 10px;
-    margin-right: 50px;
-  }
-  
-  .ikuti-kami h3 {
+  div.authentication-button {
+    width: 20%;
     text-align: center;
-    font-size: 20px;
+    padding: 45px;
+  }
+
+  .header-main-login div.authentication-button {
+    width: 0%;
+    padding: 0;
+  }
+
+  .notification-icon {
+    margin-left: 0px;
   }
 
   .category h2 {
@@ -219,14 +298,74 @@ header {
     margin: 30px auto;
     width: 80%;
     font-size: 25px;
+  } 
+  
+  /* footer */
+  .footer-container {
+    align-items: center;
+  }
+
+  div.brand-footer { 
+    align-items: center;
+    margin-right: 50px;
+    flex-direction: row;
+  }
+  
+  .usefull-links h3, .ikuti-kami h3 {
+    font-size: 22px;
+  }
+
+  .usefull-links {
+    margin-bottom: 10px;
+  }
+
+  .ikuti-kami h3 {
+    margin-bottom: 0px;
+  }
+
+  .ikuti-kami__list {
+    font-size: 28px;
+  }
+
+  /* profil */
+  /* div.prof.active-prof {
+    margin-top: 200px;
+  } */
+
+  .profil-nav {
+    flex-direction: column;
+    margin-top: 0px;
+    margin-left: 0px;
+    width: 100%;
+  }
+
+  .header-main-dropdown .authentication-button .profile-icon {
+    margin-top: 0px;
+    display: inline;
+  }
+
+  .profil-nav .icon {
+    width: 100%;
+    padding: 10px;
+    font-size: 35px;
+    color: white;
+  }
+
+  .profil-nav .icon p {
+    padding: 0px;
+    margin-left: 0px ;
+    font-size: 15px;
+    color: #386159;
+    
   }
 }
 
-@media screen and (max-width:950px) {
+@media screen and (max-width:750px) {
   
   /* footer */
-  .usefull-links {
-    margin-right: 70px;
+  footer .footer-container{
+    flex-direction: column;
+    flex-wrap: wrap;
   }
 }
 
@@ -240,6 +379,10 @@ header {
   }
 
   .nav-dropdown {
+    display: none;
+  }
+
+  .nav-dropdown-login {
     display: none;
   }
 }
