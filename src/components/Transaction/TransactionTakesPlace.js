@@ -22,11 +22,6 @@ function TransactionTakesPlace({ productDiajukan, productDitawar }) {
     productDitawar.forEach((obj) => {
       obj.status = 'selesai';
     });
-
-    // const index = productDiajukan.findIndex((product) => product.id === id);
-    // setProductDiajukan([productDiajukan[index].status = 'selesai']);
-    // const idFiltered = productDiajukan.filter((product) => (product.id === id));
-    // setProductDiajukan(idFiltered.forEach((product) => product.status = 'selesai'));
   }
 
   if (productDiajukan != null) {
@@ -78,3 +73,8 @@ TransactionTakesPlace.propTypes = {
 };
 
 export default TransactionTakesPlace;
+
+// const index = productDiajukan.findIndex((product) => product.id === id);
+// setProductDiajukan([productDiajukan[index].status = 'selesai']);
+// const idFiltered = productDiajukan.filter((product) => (product.id === id));
+// setProductDiajukan(idFiltered.forEach((product) => product.status = 'selesai'));
