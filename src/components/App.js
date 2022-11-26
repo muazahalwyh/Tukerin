@@ -16,6 +16,10 @@ import DetailPage from '../pages/DetailPage';
 import RegisterPage from '../pages/RegisterPage';
 import LoginPage from '../pages/LoginPage';
 import AboutPage from '../pages/AboutPage';
+// kategori
+import {
+  Elektronik, FashionWanita, FashionPria, FashionAnak, MakananMinuman, Kecantikan, Hobi,
+} from '../pages/categories/CategoryPage';
 // eslint-disable-next-line import/no-named-as-default
 import AddPage from '../pages/AddPage';
 import TransactionPage from '../pages/TransactionPage';
@@ -128,6 +132,15 @@ function App() {
         <main className="content">
           <Routes>
             <Route path="/" element={<Homepage filteredProducts={filteredProducts} />} />
+
+            <Route path="/category/elektronik" element={<Elektronik publishedProduct={publishedProducts} />} />
+            <Route path="/category/fashion-wanita" element={<FashionWanita publishedProduct={publishedProducts} />} />
+            <Route path="/category/fashion-pria" element={<FashionPria publishedProduct={publishedProducts} />} />
+            <Route path="/category/fashion-anak" element={<FashionAnak publishedProduct={publishedProducts} />} />
+            <Route path="/category/makanan-minuman" element={<MakananMinuman publishedProduct={publishedProducts} />} />
+            <Route path="/category/kecantikan" element={<Kecantikan publishedProduct={publishedProducts} />} />
+            <Route path="/category/hobi" element={<Hobi publishedProduct={publishedProducts} />} />
+
             <Route path="/products/:id" element={<DetailPage authedUser={authedUser} />} />
             <Route path="/register" element={<RegisterPage />} />
             <Route path="/login" element={<LoginPage loginSuccess={onLoginSuccess} />} />
@@ -140,6 +153,8 @@ function App() {
             <Route path="/edit-user/:id" element={<EditUser />} />
 
             <Route path="/about" element={<AboutPage />} />
+
+            <Route path="/*" element={<p>Path not resolved</p>} />
 
           </Routes>
         </main>
@@ -218,6 +233,15 @@ function App() {
       <main className="content">
         <Routes>
           <Route path="/" element={<Homepage filteredProducts={filteredProducts} />} />
+
+          <Route path="/category/elektronik" element={<Elektronik publishedProduct={publishedProducts} />} />
+          <Route path="/category/fashion-wanita" element={<FashionWanita publishedProduct={publishedProducts} />} />
+          <Route path="/category/fashion-pria" element={<FashionPria publishedProduct={publishedProducts} />} />
+          <Route path="/category/fashion-anak" element={<FashionAnak publishedProduct={publishedProducts} />} />
+          <Route path="/category/makanan-minuman" element={<MakananMinuman publishedProduct={publishedProducts} />} />
+          <Route path="/category/kecantikan" element={<Kecantikan publishedProduct={publishedProducts} />} />
+          <Route path="/category/hobi" element={<Hobi publishedProduct={publishedProducts} />} />
+
           <Route path="/products/:id" element={<DetailPage filteredProducts={filteredProducts} productDiajukan={productDiajukan} setProductDiajukan={setProductDiajukan} productDitawar={productDitawar} setProductDitawar={setProductDitawar} />} />
           <Route path="/register" element={<RegisterPage />} />
           <Route path="/login" element={<LoginPage />} />
