@@ -1,0 +1,83 @@
+.faq {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px;
+    width: 100%;
+}
+
+.faq-jumbotron {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+}
+
+.jumbotron-image {
+    height: 200px;
+    border-radius: 100px;
+    background-color: #fff7f0;
+}
+
+.jumbotron-text {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    width: 50%;
+    font-size: 22px;
+    font-weight: 500;
+}
+
+.accordion {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    max-width: 1000px;
+    width: 100%;
+    background-color: #fff;
+    margin: 0 15px;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0,2);
+}
+
+.accordion-content {
+    border-radius: 4px;
+    background-color: #fff7f0;
+    color: #333;
+    border: 1px solid #386159;
+    margin: 10px 0;
+    overflow: hidden;
+}
+
+.accordion-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 50px;
+    padding: 0 15px;
+    cursor: pointer;
+}
+
+.question {
+    font-size: 15px;
+    font-weight: 500;
+    color: #333;
+}
+
+.answer {
+    padding: 0 15px;
+    font-size: 15px;
+    font-weight: 400;
+    color: #333;
+    height: 0;
+    transition: all 0,2s linear;
+}
+
+.answer.open {
+    height: auto;
+    padding-bottom: 15px;
+    max-height: 100;
+    transition: all 0.2s linear;
+}
