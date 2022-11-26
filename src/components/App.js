@@ -16,6 +16,7 @@ import DetailPage from '../pages/DetailPage';
 import RegisterPage from '../pages/RegisterPage';
 import LoginPage from '../pages/LoginPage';
 import AboutPage from '../pages/AboutPage';
+import FAQpage from '../pages/FAQpage';
 // kategori
 import {
   Elektronik, FashionWanita, FashionPria, FashionAnak, MakananMinuman, Kecantikan, Hobi,
@@ -154,7 +155,7 @@ function App() {
 
             <Route path="/about" element={<AboutPage />} />
 
-            <Route path="/*" element={<p>Path not resolved</p>} />
+            <Route path="/FAQ" element={<FAQpage />} />
 
           </Routes>
         </main>
