@@ -169,7 +169,7 @@ function App() {
               <ul className="usefull-links__list">
                 <li><a href="/">Beranda</a></li>
                 <li><a href="/about">Tentang Kami</a></li>
-                <li><a href="/">FAQ</a></li>
+                <li><a href="/FAQ">FAQ</a></li>
               </ul>
             </div>
             <div className="ikuti-kami">
@@ -266,7 +266,7 @@ function App() {
             <ul className="usefull-links__list">
               <li><a href="/">Beranda</a></li>
               <li><a href="/about">Tentang Kami</a></li>
-              <li><a href="/">FAQ</a></li>
+              <li><a href="/FAQ">FAQ</a></li>
             </ul>
           </div>
           <div className="ikuti-kami">
