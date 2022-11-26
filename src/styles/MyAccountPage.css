@@ -4,7 +4,7 @@
 }
 
 .myaccount-container h1 {
-    margin: 20px;
+    margin: 50px;
     text-align: center;
 }
 
@@ -42,7 +42,7 @@
     align-items: left;
     text-align: center;
     margin: 30px auto;
-    margin-bottom: 200px;
+    margin-bottom: 20px;
     padding: 30px;
     width: 200px;
     z-index: 10;

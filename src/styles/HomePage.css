@@ -66,6 +66,30 @@
   padding-bottom: 40px;
 }
 
+@media screen and (max-width: 920px) {
+  /* .recommendation-container {
+    width: 106%;
+  } */
+  /* #carousel .carousel-item.boat{
+    width: 1000px;
+  }
+  #carousel .carousel-item.sea{
+    width: 1000px;
+  } */
+
+  header div .search-bar input {
+    width: 300px;
+  }
+
+  .recommendation-container {
+    width: 100%;
+  }
+}
+
+@media screen and (min-width: 800px) {
+  
+}
+
 /* PRODUCT ITEM */
 
 .product-item {

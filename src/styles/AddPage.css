@@ -72,4 +72,36 @@
     margin: 20px 2px;
     cursor: pointer;
   }
+
+  @media screen and (max-width: 450px){
+    .add-product__container, 
+    .add-product__input-text, 
+    .add-product__input-select {
+      width: 100%;
+    }
+
+    .add-product__input {
+      width: 80%;
+    }
+
+    .add-product__container h1 {
+      text-align: center;
+      font-size: 30px;
+    }
+
+    .add-product__input-description {
+      width: 100%;
+      min-height: 100px;
+      margin-top: 10px;
+      padding: 5px;
+    }
+    
+    .add-product__input-checkbox {
+      margin-top: 20px;
+    }
+    
+    .add-product__action {
+      padding: 8px 20px;
+    }
+  }
   

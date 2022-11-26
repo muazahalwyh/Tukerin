@@ -293,19 +293,52 @@
       width: 80%;
       margin-top: 20px;
     }
-  }
 
-  @media screen and (max-width: 550px) {
-    .barang-saya_container {
-      width: 100%;
+    .transaction-item {
+      margin: 20px 20px;
     }
+
+    .transaction-page__container h2 {
+      font-size: 25px;
+    }
+
   }
 
   @media screen and (max-width: 380px) {
     .hapus-btn{
       margin-left: 20px;
     }
+
+    .transaction-page h1 {
+      font-size: 30px;
+      margin-top: 30px;
+    }
+
     .transaction-page__container {
-      width: 100%;
+      width: 90%;
+    }
+
+    .transaction-page__container h2 {
+      font-size: 18px;
+    }
+
+    .transaction-item {
+      margin: 20px 0px;
+    }
+
+    .transaction-item__header h3 {
+      font-size: 18px;
+    }
+
+    .transaction-item__body-title-pending h4 {
+      font-size: 16px;
+    }
+
+    .transaction-item__body-title h4 {
+      font-size: 16px;
+    }
+    
+    .transaction-item__body-action button {
+      margin: 5px 20px 5px 0;
     }
   }
