@@ -19,6 +19,11 @@ import Homepage from '../pages/HomePage';
 import DetailPage from '../pages/DetailPage';
 import RegisterPage from '../pages/RegisterPage';
 import LoginPage from '../pages/LoginPage';
+import AboutPage from '../pages/AboutPage';
+// Kategori
+import {
+  Elektronik, FashionWanita, FashionPria, FashionAnak, MakananMinuman, Kecantikan, Hobi,
+} from '../pages/categories/CategoryPage';
 // eslint-disable-next-line import/no-named-as-default
 import AddPage from '../pages/AddPage';
 import TransactionPage from '../pages/TransactionPage';
@@ -48,21 +53,22 @@ function App() {
   const ref = useRef();
 
   const [authedUser, setAuthedUser] = useState(JSON.parse(localStorage.getItem('AUTHED_USER')) || null);
+  
+  const [publishedProducts, setPublishedProducts] = useState(JSON.parse(localStorage.getItem('PUBLISHED_PRODUCTS')) || products);
 
   const [myProduct, setMyProduct] = useState(JSON.parse(localStorage.getItem('MY_APP_STATE')) || []);
+  
   const [myProfil, setProfil] = useState(JSON.parse(localStorage.getItem('MY_PROFIL_STATE')) || []);
+  
+  const [productDiajukan, setProductDiajukan] = useState(JSON.parse(localStorage.getItem('PRODUCT_DIAJUKAN')) || null);
 
-  // const [productDijual, setProductDijual] = useState([]);
+  const [productDitawar, setProductDitawar] = useState(JSON.parse(localStorage.getItem('PRODUCT_DITAWAR')) || null);
   
   // const untuk drawer hamburger;
   const [activeHam, setActiveHam] = useState(false);
 
   // showprof untuk menu profil saat responsif
   const [showProf, setShowProf] = useState(false);
-
-  const [productDiajukan, setProductDiajukan] = useState(JSON.parse(localStorage.getItem('PRODUCT_DIAJUKAN')) || null);
-
-  const [productDitawar, setProductDitawar] = useState(JSON.parse(localStorage.getItem('PRODUCT_DITAWAR')) || null);
 
   const [searchParams, setSearchParams] = useSearchParams();
   const [keyword, setKeyword] = useState(() => searchParams.get('keywordSearch') || '');
@@ -203,6 +209,15 @@ function App() {
         <main className="content">
           <Routes>
             <Route path="/" element={<Homepage filteredProducts={filteredProducts} />} />
+
+            <Route path="/category/elektronik" element={<Elektronik publishedProduct={publishedProducts} />} />
+            <Route path="/category/fashion-wanita" element={<FashionWanita publishedProduct={publishedProducts} />} />
+            <Route path="/category/fashion-pria" element={<FashionPria publishedProduct={publishedProducts} />} />
+            <Route path="/category/fashion-anak" element={<FashionAnak publishedProduct={publishedProducts} />} />
+            <Route path="/category/makanan-minuman" element={<MakananMinuman publishedProduct={publishedProducts} />} />
+            <Route path="/category/kecantikan" element={<Kecantikan publishedProduct={publishedProducts} />} />
+            <Route path="/category/hobi" element={<Hobi publishedProduct={publishedProducts} />} />
+
             <Route path="/products/:id" element={<DetailPage authedUser={authedUser} />} />
             <Route path="/register" element={<RegisterPage />} />
             <Route path="/login" element={<LoginPage loginSuccess={onLoginSuccess} />} />
@@ -216,6 +231,8 @@ function App() {
             <Route path="/edit-user/:id" element={<EditUser />} />
 
             <Route path="/about" element={<AboutPage />} />
+
+            <Route path="/*" element={<p>Path not resolved</p>} />
 
           </Routes>
         </main>
@@ -343,6 +360,15 @@ function App() {
       <main className="content">
         <Routes>
           <Route path="/" element={<Homepage filteredProducts={filteredProducts} />} />
+
+          <Route path="/category/elektronik" element={<Elektronik publishedProduct={publishedProducts} />} />
+          <Route path="/category/fashion-wanita" element={<FashionWanita publishedProduct={publishedProducts} />} />
+          <Route path="/category/fashion-pria" element={<FashionPria publishedProduct={publishedProducts} />} />
+          <Route path="/category/fashion-anak" element={<FashionAnak publishedProduct={publishedProducts} />} />
+          <Route path="/category/makanan-minuman" element={<MakananMinuman publishedProduct={publishedProducts} />} />
+          <Route path="/category/kecantikan" element={<Kecantikan publishedProduct={publishedProducts} />} />
+          <Route path="/category/hobi" element={<Hobi publishedProduct={publishedProducts} />} />
+
           <Route path="/products/:id" element={<DetailPage filteredProducts={filteredProducts} productDiajukan={productDiajukan} setProductDiajukan={setProductDiajukan} productDitawar={productDitawar} setProductDitawar={setProductDitawar} />} />
           <Route path="/register" element={<RegisterPage />} />
           <Route path="/login" element={<LoginPage />} />
