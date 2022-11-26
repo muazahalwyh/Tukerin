@@ -8,6 +8,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import {
   Routes, Route, Link, useSearchParams,
 } from 'react-router-dom';
+import AddUser from './AddUser';
 import { getUserLogged, putAccessToken } from '../utils/api-endpoint';
 import Popup from 'reactjs-popup';
 // Components
@@ -25,6 +26,8 @@ import MyAccount from '../pages/MyAccountPage';
 import BarangSayaPage from '../pages/BarangSayaPage';
 import AddAkun from '../pages/AddAkun';
 import ProfilNav from './ProfilNav';
+import UserList from './UserList';
+import EditUser from './EditUser';
 // Styles
 import '../styles/App.css';
 import '../styles/AddPage.css';
@@ -50,12 +53,16 @@ function App() {
   const [myProfil, setProfil] = useState(JSON.parse(localStorage.getItem('MY_PROFIL_STATE')) || []);
 
   // const [productDijual, setProductDijual] = useState([]);
-  const [productDiajukan, setProductDiajukan] = useState([]);
+  
   // const untuk drawer hamburger;
   const [activeHam, setActiveHam] = useState(false);
 
   // showprof untuk menu profil saat responsif
   const [showProf, setShowProf] = useState(false);
+
+  const [productDiajukan, setProductDiajukan] = useState(JSON.parse(localStorage.getItem('PRODUCT_DIAJUKAN')) || null);
+
+  const [productDitawar, setProductDitawar] = useState(JSON.parse(localStorage.getItem('PRODUCT_DITAWAR')) || null);
 
   const [searchParams, setSearchParams] = useSearchParams();
   const [keyword, setKeyword] = useState(() => searchParams.get('keywordSearch') || '');
@@ -70,6 +77,14 @@ function App() {
     setShowProf(!showProf);
   };
 
+  // useEffect(() => {
+  //   const getUser = async () => {
+  //     const { data } = await getUserLogged();
+  //     setAuthedUser(data.name);
+  //   };
+  //   getUser();
+  // }, []);
+
   const onLoginSuccess = async ({ accessToken }) => {
     putAccessToken(accessToken);
     const { data } = await getUserLogged();
@@ -77,12 +92,26 @@ function App() {
   };
 
   const onLogout = () => {
+    // localStorage.setItem('AUTHED_USER', null);
     setAuthedUser(null);
+    putAccessToken('');
   };
 
   useEffect(() => {
     localStorage.setItem('AUTHED_USER', JSON.stringify(authedUser));
   }, [authedUser]);
+
+  useEffect(() => {
+    localStorage.setItem('PUBLISHED_PRODUCTS', JSON.stringify(publishedProducts));
+  }, [publishedProducts]);
+
+  useEffect(() => {
+    localStorage.setItem('PRODUCT_DIAJUKAN', JSON.stringify(productDiajukan));
+  }, [productDiajukan]);
+
+  useEffect(() => {
+    localStorage.setItem('PRODUCT_DITAWAR', JSON.stringify(productDitawar));
+  }, [productDitawar]);
 
   useEffect(() => {
     localStorage.setItem('MY_APP_STATE', JSON.stringify(myProduct));
@@ -124,8 +153,8 @@ function App() {
           <nav className="menu">
             <ul>
               <li><a href="/">Beranda</a></li>
-              <li><a href="/">Tentang Kami</a></li>
-              <li><a href="/">Hubungi Kami</a></li>
+              <li><a href="/about">Tentang Kami</a></li>
+              <li><a href="/user-list">Hubungi Kami</a></li>
             </ul>
           </nav>
           <div className="header-main-login">
@@ -181,6 +210,13 @@ function App() {
             <Route path="/addakun" element={<AddAkun />} />
             <Route path="/transaction" element={<TransactionPage />} />
             <Route path="/barang-saya" element={<BarangSayaPage />} />
+            
+            <Route path="/user-list" element={<UserList />} />
+            <Route path="/add-user" element={<AddUser />} />
+            <Route path="/edit-user/:id" element={<EditUser />} />
+
+            <Route path="/about" element={<AboutPage />} />
+
           </Routes>
         </main>
         <footer>
@@ -223,8 +259,8 @@ function App() {
         <nav className="menu">
           <ul>
             <li><a href="/">Beranda</a></li>
-            <li><a href="/">Tentang Kami</a></li>
-            <li><a href="/">Hubungi Kami</a></li>
+            <li><a href="/about">Tentang Kami</a></li>
+            <li><a href="/user-list">Hubungi Kami</a></li>
           </ul>
         </nav>
         <div className="header-main">
@@ -248,14 +284,17 @@ function App() {
               <Popup trigger={<MdNotifications className="notification-icon" />} position="right center">
                 {/* <ProfileModal onLogout={onLogout} /> */}
               </Popup>
-              <div className="profile-icon">
+            </li>
+            <div className="profile-icon">
+              <li>
                 <Popup trigger={<CgProfile className="profile-icon__icon" />}>
                   <ProfileModal onLogout={onLogout} />
                 </Popup>
                 {' '}
                 <p>{authedUser}</p>
-              </div>
-            </li>
+              </li>
+            </div>
+
           </div>
         </div>
         {activeHam && (
@@ -304,14 +343,17 @@ function App() {
       <main className="content">
         <Routes>
           <Route path="/" element={<Homepage filteredProducts={filteredProducts} />} />
-          <Route path="/products/:id" element={<DetailPage productDiajukan={productDiajukan} setProductDiajukan={setProductDiajukan} />} />
+          <Route path="/products/:id" element={<DetailPage filteredProducts={filteredProducts} productDiajukan={productDiajukan} setProductDiajukan={setProductDiajukan} productDitawar={productDitawar} setProductDitawar={setProductDitawar} />} />
           <Route path="/register" element={<RegisterPage />} />
           <Route path="/login" element={<LoginPage />} />
-          <Route path="/add" element={<AddPage myProduct={myProduct} setMyProduct={setMyProduct} />} />
-          <Route path="/addakun" element={<AddAkun myProfil={myProfil} setProfil={setProfil} />} />
-          <Route path="/transaction" element={<TransactionPage />} />
-          <Route path="/profile" element={<MyAccount myProfil={myProfil} setProfil={setProfil} />} />
+          <Route path="/add" element={<AddPage publishedProducts={publishedProducts} setPublishedProducts={setPublishedProducts} myProduct={myProduct} setMyProduct={setMyProduct} />} />
+          <Route path="/transaction" element={<TransactionPage productDiajukan={productDiajukan} setProductDiajukan={setProductDiajukan} productDitawar={productDitawar} />} />
+          <Route path="/profile" element={<MyAccount />} />
+          <Route path="/user-list" element={<UserList />} />
+          <Route path="/add-user" element={<AddUser />} />
+          <Route path="/edit-user/:id" element={<EditUser />} />
           <Route path="/barang-saya" element={<BarangSayaPage myProduct={myProduct} setMyProduct={setMyProduct} />} />
+          <Route path="/about" element={<AboutPage />} />
         </Routes>
       </main>
       <footer>

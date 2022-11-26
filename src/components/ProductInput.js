@@ -31,7 +31,7 @@ function ProductInput({
       id: Date.now().toString(), name, price, description, image, category,
     }]);
     setBarangSaya([...prevBarangSaya, {
-      id: Date(), name, price, description, image, category,
+      id: Date.now().toString(), name, price, description, image, category,
     }]);
     navigate('/barang-saya');
   };
