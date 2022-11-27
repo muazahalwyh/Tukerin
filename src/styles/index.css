@@ -1,8 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap');
 
-body {
+*{
+  box-sizing: border-box;
   margin: 0;
-  font-family: 'Poppins', sans-serif;;
+  padding: 0;
+  font-family: 'Poppins', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -12,6 +14,10 @@ code {
     monospace;
 }
 
+h2 {
+  font-weight: 550;
+}
+
 /* HEADER */
 
 header {
@@ -19,6 +25,13 @@ header {
   flex-direction: column;
   width: 100%;
   background-color: #97B9A8;
+  box-shadow: 1px 1px 5px 5px #ccc;
+  padding-bottom: 10px;
+}
+
+nav {
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 
 nav ul {
@@ -35,25 +48,88 @@ nav ul li {
   font-size: 16px;
 }
 
+nav ul li a{
+  text-decoration: none;
+  color: white;
+}
+
+.menu {
+  display: none;
+}
+
 header div {
   display: flex;
   justify-content: space-evenly;
-  padding: 1em;
+  align-items: center;
 }
 
-.brand-logo {
+.brand-container {
+  gap: 10px;
+}
+
+.brand-container h1{
+  color: #386159;
+  font-weight: bold;
+  margin-bottom: 0;
+}
+
+.brand-logo img{
   max-width: 78px;
   max-height: 71px;
 }
 
-header div .search-bar input{
+header div .search-bar {
+  max-height: 50px;
+}
+
+header div .search-bar input {
   width: 690px;
+  height: 50px;
+  border-radius: 5px;
+  padding-left: 10px;
+}
+
+.fa-search {
+  color: white;
+  background-color: #386159;
+  padding: 15px;
+  border-radius: 5px;
+  height: 50px;
+  width: 50px;
+}
+
+.profile-icon {
+  color: white;
+  gap: 10px;
+}
+
+.profile-icon p {
+  margin-bottom: 0;
+  color: #386159;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.profile-icon__icon, .notification-icon {
+  margin: auto;
+  color: white;
+  min-width: 38px;
+  min-height: 38px;
+  cursor: pointer;
 }
 
 header .authentication-button {
   display: flex;
   justify-content: space-between;
   width: 200px;
+  gap: 10px;
+  max-height: 50px;
+}
+
+header .authentication-button li {
+  list-style: none;
+  display: flex;
+  gap: 15px;
 }
 
 header .authentication-button button{
@@ -64,16 +140,173 @@ header .authentication-button button{
   background-color: #386159;
   color: white;
 }
-/* MAIN */
-/* HOMEPAGE */
 
-.homepage-container {
-  text-align: center;
-  padding: 2em;
+.authentication-button a{
+  text-decoration: none;
+  color: white;
 }
 
-.homepage-container img {
-  border-radius: 20px;
+/* MAIN */
+
+/* POP UP */
+
+.root-popup-profile {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 120px;
+  padding-right: 100px;
+  bottom: 0;
+}
+
+.profile-modal {
+  float: right;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: left;
+  padding: 30px;
+  width: 210px;
+  border: solid;
+  border-color: #D9D9D9;
+  z-index: 10;
+  color: black;
+  background-color: white;
+  gap: 30px;
+}
+
+.profile-modal div {
+  display: flex;
+  gap: 20px;
+}
+
+
+/* LOGIN */
+
+.login-page{
+  display: flex;
+  flex-grow: 1;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0px 0px 25px 0px rgb(189, 187, 187);
+  border-radius: 5px;
+  height: 400px;
+  margin: 60px auto;
+  width: 80%;
+  border-radius: 10px;
+}
+
+.container-img{
+  margin: 0px auto;
+}
+
+.container-content{
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  justify-content: center;
+  background-color: #386159;
+  color: #ffffff;
+  width: 50%;
+  height: 100%;
+  border-radius: 0 10px 10px 0;
+}
+
+.input-login button{
+  padding: 10px 25px;
+  font-weight: bold;
+  border-radius: 10px;
+  border: #ffffff;
+  margin-left: 130px;
+}
+
+.input-login button:hover{
+  color: white;
+  background-color: #FF9F45;
+}
+
+@media screen and (max-width: 650px) {
+  .login-page{
+      flex-direction: column;
+      height: 750px;
+      width: 95%;
+  }
+
+  .container-img{
+      margin: 90px auto;
+  }
+
+  .container-content{
+      width: 100%;
+      border-radius: 0 0px 10px 10px;
+    }
+}
+
+/* REGISTER */
+
+.register-page {
+  width: 80%;
+}
+
+.input-login input, .register-input input {
+  font-size: 18px;
+  font-family: 'Inter', sans-serif;
+  display: block;
+  padding: 8px;
+  border-radius: 8px;
+  border: 3px solid grey;
+  margin:20px auto;
+}
+
+.register-input button{
+  margin: 20px auto;
+  padding: 10px 90px;
+  border: #ffffff;
+  border-radius: 10px;
+  font-weight: bold;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.register-input button:hover{
+  background-color: #FF9F45;
+  color: white;
+}
+
+.register-page{
+  background-color: #386159;
+  color: white;
+  text-align: center;
+  box-shadow: 0px 0px 25px 0px rgb(189, 187, 187);
+  border-radius: 10px;
+  width: 45%;
+  height: 550px;
+  margin: 60px auto;
+  padding: 15px;
+}
+
+.register-page h2{
+  margin-top: 50px;
+  margin-bottom: 40px;
+}
+
+.register-page p{
+  font-size: 18px;
+  margin-bottom: 2px;
+}
+
+.link{
+  text-decoration: none;
+  color: #FF9F45;
+  font-weight: bold;
+  margin-left: 5px;
+}
+
+@media screen and (max-width: 650px) {
+  .register-page {
+      width: 95%;
+  }
 }
 
 /* FOOTER */
@@ -82,21 +315,103 @@ footer {
   background-color: #97B9A8;
 }
 
-footer div{
+footer .footer-container{
+  max-width: 1600px;
+  margin: auto;
   display: flex;
   justify-content: space-evenly;
+  padding-top: 40px;
+}
+
+.brand-footer {
+  display: flex;
+  flex-direction: column;
+}
+
+.brand-footer h1 {
+  color: #386159;
+  font-weight: bold;
+  margin-bottom: 0;
+}
+
+footer div img {
+  max-width: 160px;
+  max-height: 160px;
 }
 
 footer div ul li{
   list-style: none;
 }
 
+footer ul li a{
+  text-decoration: none;
+  color: black;
+  font-weight: bold;
+}
+
+footer ul li a:hover{
+  color: #FF9F45;
+}
+
 .usefull-links, .ikuti-kami {
   display: flex;
   flex-direction: column;
+  color: #386159;
+}
+
+.usefull-links h3, .ikuti-kami h3 {
+  font-size: 24px;
+  font-weight: bold;
+  padding: 20px;
+}
+
+.usefull-links a, .ikuti-kami a {
+  font-weight: 500;
+  color: #386159;
+}
+
+.usefull-links ul, .ikuti-kami ul {
+  margin: auto;
+  text-align: center;
+  margin-block-start: 0;
+  padding-inline-start: 0;
+}
+
+.usefull-links__list, .ikuti-kami__list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.ikuti-kami__list {
+  display: flex;
+  flex-direction: row;
+  font-size: 30px;
+  gap: 30px;
+}
+
+.copyright {
+  margin: auto;
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 18px;
+  opacity: 50%;
+  border-top: #386159 solid 3px;
+  max-width: 80%;
+}
+
+.ikuti-kami button{
+  margin: 1px;
+  padding: 0px 20px;
 }
 
 footer h4 {
+  font-size: 18px;
+  margin-bottom: 0;
   text-align: center;
-  padding: 10px;
+  padding: 20px;
+  gap: 10px;
+  border-color: #386159;
 }

@@ -1,0 +1,344 @@
+* {
+    margin: 0;
+    padding: 0;
+  }
+  
+  .transaction-page {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    width: 100%;
+  }
+
+  .transaction-page p {
+    text-align: center;
+  }
+
+  .transaction-page__container {
+    width: 80%;
+    margin-top: 20px;
+    margin-bottom: 30px;
+  }
+
+  .transaction-item {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+    margin: 20px 50px;
+    gap: 40px;
+  }
+
+  .barang-ditawar, .barang-diajukan {
+    width: 500px;
+    border-radius: 20px;
+    border: 2px solid #d9d9d9;
+  }
+  
+  .transaction-item__header {
+    background-color: #97b9a8;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    border-bottom: 1px solid black;
+    padding: 10px;
+    font-size: 12px;
+    text-align: center;
+  }
+
+  /* .transaction-item__header h3 {
+    font-size: 12px;
+  } */
+  
+  .transaction-item__body {
+    padding: 10px;
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    grid-template-rows: 2fr 2fr;
+  }
+  
+  .transaction-item__body-image {
+    border: 1px solid black;
+    grid-row-start: 1;
+    grid-row-end: 4;
+  }
+  
+  .transaction-item__body-title {
+    padding-left: 10px;
+  }
+  
+  .transaction-item__body-action {
+    display: flex;
+    gap: 10px;
+  }
+  
+  .transaction-item__body-action button {
+    border-radius: 10px;
+    width: 200px;
+    padding: 10px;
+  }
+  
+  .button-accept {
+    justify-content: center;
+    background-color: #386159;
+    border: 1px solid black;
+    color: white;
+    cursor: pointer;
+  }
+  
+  .button-reject {
+    border: 1px solid #386159;
+    justify-content: center;
+    cursor: pointer;
+  }
+  
+  .transaction-item__message {
+    padding: 10px;
+    padding-left: 20px;
+    border-top: 1px solid black;
+  }
+
+  .transaction-item__label {
+    padding: 10px;
+    padding-left: 20px;
+    border-top: 1px solid black;
+    text-align: center;
+    font-weight: bold;
+  }
+
+  /* PENDING */
+
+  .barang-ditawar, .barang-diajukan {
+    margin-bottom: 20px;
+  }
+
+  .transaction-item__body-pending {
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: flex-end;
+  }
+
+  .img-name-price_container {
+    width: 100%;
+    display: flex;
+    flex: 1;
+    gap: 20px;
+  }
+  
+  .transaction-item__body-image-pending {
+    width: 40%;
+    min-height: 180px;
+    border: 1px solid black;
+  }
+  
+  .transaction-item__body-title-pending {
+    width: 100%;
+    border: 1px solid #D9D9D9;
+    border-radius: 10px;
+  }
+
+  .transaction-item__body-title-pending p {
+    text-align: left;
+    padding: 10px;
+    min-height: 125px;
+    max-height: 100px;
+    overflow-y: scroll;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  
+  .transaction-item__body-action-pending {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    gap: 10px;
+  }
+  
+  .selesai {
+    width: 100%;
+    align-items: center;
+    text-align: center;
+  }
+
+  .selesai p {
+    margin-bottom: 0;
+  }
+
+  .button-tochat {
+    padding: 10px;
+    border-radius: 10px;
+    background-color: #386159;
+    border: 1px solid black;
+    color: white;
+    cursor: pointer;
+  }
+  
+  .button-pending {
+    padding: 10px;
+    border-radius: 10px;
+    background-color: #eee;
+    border: 1px solid black;
+    color: #386159;
+    cursor: pointer;
+  }
+  
+
+  /* POPUP */
+
+  .root-popup-transaction {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    cursor: pointer;
+  }
+
+  .popup-transaction-success {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: left;
+    padding: 30px;
+    width: 400px;
+    height: 480px;
+    border: solid;
+    border-color: #D9D9D9;
+    position: absolute;
+    z-index: 10;
+    color: black;
+    background-color: white;
+    border-radius: 20px;
+    top: 50%;
+    left: 50%;
+    right: auto;
+    bottom: auto;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .transaksi-sukses {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .transaksi-sukses h4, h5 {
+    margin-bottom: 0;
+  }
+
+  .transaksi-sukses img {
+    border-radius: 10px;
+    max-width: 60px;
+    max-height: 60px;
+  }
+
+  .transaksi-sukses a {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    border-radius: 20px;
+    color: white;
+    background-color: #386159;
+    padding: 10px;
+  }
+
+  .transaksi-sukses p {
+    margin-bottom: 0;
+  }
+
+  .product-match-container {
+    min-height: 150px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    font-size: 14px;
+    padding: 15px;
+    border-radius: 15px;
+    background-color: #eee;
+    gap: 10px;
+  }
+
+  .product-match-container div {
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+  }
+
+  .product-match-container div div {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .product-match-container h5 {
+    font-weight: 550;
+    font-size: 14px;
+    text-align: center;
+  }
+
+  @media screen and (max-width: 650px) {
+    .hps{
+      margin-left: 140px;
+    }
+
+    .transaction-page__container {
+      width: 80%;
+      margin-top: 20px;
+    }
+
+    .transaction-item {
+      margin: 20px 20px;
+    }
+
+    .transaction-page__container h2 {
+      font-size: 25px;
+    }
+
+  }
+
+  @media screen and (max-width: 380px) {
+    .hapus-btn{
+      margin-left: 20px;
+    }
+
+    .transaction-page h1 {
+      font-size: 30px;
+      margin-top: 30px;
+    }
+
+    .transaction-page__container {
+      width: 90%;
+    }
+
+    .transaction-page__container h2 {
+      font-size: 18px;
+    }
+
+    .transaction-item {
+      margin: 20px 0px;
+    }
+
+    .transaction-item__header h3 {
+      font-size: 18px;
+    }
+
+    .transaction-item__body-title-pending h4 {
+      font-size: 16px;
+    }
+
+    .transaction-item__body-title h4 {
+      font-size: 16px;
+    }
+    
+    .transaction-item__body-action button {
+      margin: 5px 20px 5px 0;
+    }
+  }

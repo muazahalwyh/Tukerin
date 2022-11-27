@@ -1,0 +1,30 @@
+GET http://localhost:5000/users
+
+###
+GET http://localhost:5000/users/6378595897faeb24649b518
+
+###
+POST http://localhost:5000/users
+Content-Type: application/json
+
+{
+    "name": "iqbaal",
+    "email": "tukerin@gmail.com",
+    "gender": "Male",
+    "city": "Bandung"
+}
+
+
+###
+PATCH  http://localhost:5000/users/637b59cb5a3b2d552fb448e6
+Content-Type: application/json
+
+{
+    "name": "James",
+    "email": "james@gmail.com",
+    "gender": "Male",
+    "city": "Ohio"
+}
+
+###
+Delete http://localhost:5000/users/6378d57c9a738fbb428be2cb

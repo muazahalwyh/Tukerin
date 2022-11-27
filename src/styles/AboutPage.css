@@ -1,0 +1,122 @@
+.about-tukerin {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px auto;
+}
+
+.about-tukerin img {
+    margin: 40px auto;
+    box-shadow: 4px 4px 8px 0 rgba(0, 0, 0, 0.2);
+    min-width: 100px;
+    min-height: 100px;
+    padding: 10px 30px;
+}
+.about-tukerin p {
+    text-align: center;
+    width: 40%;
+}
+
+/* about team */
+
+.about-team {
+    text-align: center;
+    background-color: #d9d9d9;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.card-container {
+    margin: 100px 40px 0px 40px;
+}
+
+.card-item {
+    border: 5px solid #255925;
+    background-color: #97B9A8;
+    box-shadow: 4px 4px 8px 0 rgba(0, 0, 0, 0.2);  
+    border-radius: 40px;
+    grid-column-gap: 15px;
+    margin-top: 50px;
+    margin-bottom: 30px;
+}
+
+.card-item img {
+    width: 170px;
+    height: 170px;
+    border-radius: 100px;
+    border: 5px solid #255925;
+}
+
+.card-avatar {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    transform: translate(0, -100px);
+}
+
+.card-info {
+    text-align: center;
+    transform: translate(0, -70px);
+}
+
+.card-info p {
+    display: inline;
+}
+
+.card-info__name {
+    font-size: 20px;
+    font-weight: 800;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.card-info__id {
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.card-info__city {
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.card-action {
+    text-align: center;
+    padding-bottom: 30px;
+    transform: translate(0, -20px);
+}
+
+.card-action a {
+    min-height: 44px;
+    min-width: 44px;   
+    color: #386159;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.card-action a:hover{
+    color: #FF9F45;
+  }
+
+@media screen and (min-width: 600px) {
+    .card-container {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-column-gap: 30px;
+        grid-row-gap: 50px;
+      }
+}
+
+@media screen and (min-width: 720px) {
+    .card-container {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media screen and (min-width: 900px) {
+    .card-container {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr)
+    }
+  }

@@ -1,0 +1,70 @@
+* {
+    margin: 0;
+    padding: 0;
+  }
+
+.myaccount-header{
+    width: 90vmin;
+    margin: 0 auto;
+    box-shadow: 0 1rem 2rem rgba(37, 36, 36, 0.2);
+    background: rgb(255, 255, 255);
+    padding: 15px;
+}
+
+.myaccount-image{
+    display: flex;
+    margin: auto;
+    justify-content: center;
+    align-items: center;
+    width: 200px;
+    height: 150px;
+    background-color: #97B9A8;
+    border-radius: 10px;
+}
+
+.myaccount-info{
+    width: 80vmin;
+    padding: 20px;
+    margin: 20px auto;
+}
+
+.myaccount-info p{
+    border: 1px solid black;
+    padding: 10px;
+    background-color: #97B9A8;
+    margin: 20px auto;
+    border-radius: 10px;
+}
+
+.add-akun__input {
+    width: 50%;
+}
+
+.add-akun__input-text {
+    width: 100%;
+    padding: 8px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    margin-top: 10px;
+    margin-right: 20px;
+}
+
+.add-akun__action {
+    background-color: #97b9a8;
+    border: 1px solid black;
+    border-radius: 10px;
+    padding: 10px 32px;
+    text-align: center;
+    font-size: 16px;
+    margin: 20px 2px;
+    cursor: pointer;
+}
+.add-akun__input h4{
+    font-size: 20px;
+}
+
+@media screen and (max-width: 550px) {
+    .add-akun__input {
+        width: 80%;
+    }
+}

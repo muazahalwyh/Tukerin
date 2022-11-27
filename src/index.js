@@ -1,10 +1,12 @@
+/* eslint-disable import/extensions */
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './styles/index.css';
 import { BrowserRouter } from 'react-router-dom';
-import App from './components/App';
-import * as serviceWorkerRegistration from './serviceWorkerRegistration';
-import reportWebVitals from './reportWebVitals';
+import App from './components/App.js';
+import * as serviceWorkerRegistration from './serviceWorkerRegistration.js';
+import reportWebVitals from './reportWebVitals.js';
+// import 'bulma/css/bulma.css';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
