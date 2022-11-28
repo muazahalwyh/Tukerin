@@ -100,9 +100,7 @@ function App() {
   };
 
   const onLogout = () => {
-    // localStorage.setItem('AUTHED_USER', null);
-    setAuthedUser(null);
-    putAccessToken('');
+    localStorage.removeItem('AUTHED_USER');
   };
 
   useEffect(() => {
@@ -148,9 +146,11 @@ function App() {
     setSearchParams({ keywordSearch });
   }
 
-  const filteredProducts = products.filter((product) => product.name.toLowerCase().includes(
-    keyword.toLocaleLowerCase(),
-  ));
+  const filteredProducts = publishedProducts.filter(
+    (product) => product.name.toLowerCase().includes(
+      keyword.toLocaleLowerCase(),
+    ),
+  );
 
   if (authedUser === null) {
     return (
@@ -287,8 +287,10 @@ function App() {
             </button>
           </div>
           <div className="brand-container">
-            <Link to="/" className="brand-logo"><img src={brandTukerin} alt="logo tukerin" /></Link>
-            <h1>Tukerin</h1>
+            <Link to="/" className="brand-logo">
+              <img src={brandTukerin} alt="logo tukerin" />
+              <h1>Tukerin</h1>
+            </Link>
           </div>
 
           <SearchBar
