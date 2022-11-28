@@ -9,6 +9,8 @@ function BarangSaya({ barangsaya }) {
         {
           barangsaya.map((barang) => (
             <BarangSayaTemplate
+              // eslint-disable-next-line react/no-array-index-key
+              key={barang.id}
               name={barang.name}
               image={barang.image}
               price={barang.price}

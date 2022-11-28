@@ -1,7 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap');
 
-body {
+*{
+  box-sizing: border-box;
   margin: 0;
+  padding: 0;
   font-family: 'Poppins', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -49,6 +51,10 @@ nav ul li {
 nav ul li a{
   text-decoration: none;
   color: white;
+}
+
+.menu {
+  display: none;
 }
 
 header div {
@@ -220,6 +226,23 @@ header .authentication-button button{
   background-color: #FF9F45;
 }
 
+@media screen and (max-width: 650px) {
+  .login-page{
+      flex-direction: column;
+      height: 750px;
+      width: 95%;
+  }
+
+  .container-img{
+      margin: 90px auto;
+  }
+
+  .container-content{
+      width: 100%;
+      border-radius: 0 0px 10px 10px;
+    }
+}
+
 /* REGISTER */
 
 .register-page {
@@ -278,6 +301,12 @@ header .authentication-button button{
   color: #FF9F45;
   font-weight: bold;
   margin-left: 5px;
+}
+
+@media screen and (max-width: 650px) {
+  .register-page {
+      width: 95%;
+  }
 }
 
 /* FOOTER */
