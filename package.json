@@ -12,7 +12,9 @@
     "cors": "^2.8.5",
     "express": "^4.18.2",
     "mongoose": "^6.7.2",
+    "nanoid": "^4.0.0",
     "next": "^13.0.3",
+    "nodemon": "^2.0.20",
     "prop-types": "^15.8.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -39,7 +41,9 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "start-dev": "nodemon --experimental-modules --es-module-specifier-resolution=node backend.js"
+    "start-dev": "nodemon --experimental-modules --es-module-specifier-resolution=node backend.js",
+    "lint": "eslint ./src",
+    "start-prod": "NODE_ENV=production node ./backend-product/server.js"
   },
   "eslintConfig": {
     "extends": [
