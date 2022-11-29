@@ -1,3 +1,4 @@
+/* eslint-disable react/require-default-props */
 /* eslint-disable react/forbid-prop-types */
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
@@ -7,7 +8,7 @@ import useInput from '../hooks/useInput';
 // import { addProduct } from '../utils/data/local-data';
 
 function ProductInput({
-  publishedProducts, setPublishedProducts, prevBarangSaya, setBarangSaya,
+  publishedProducts, setPublishedProducts, prevBarangSaya, setBarangSaya, noWA,
 }) {
   const [image, setImage] = useState([]);
   const [name, handleNameChange] = useInput('');
@@ -28,10 +29,10 @@ function ProductInput({
   const onSubmit = (e) => {
     e.preventDefault();
     setPublishedProducts([...publishedProducts, {
-      id: Date.now().toString(), name, price, description, image, category,
+      id: Date.now().toString(), name, price, description, image, category, noWA,
     }]);
     setBarangSaya([...prevBarangSaya, {
-      id: Date.now().toString(), name, price, description, image, category,
+      id: Date.now().toString(), name, price, description, image, category, noWA,
     }]);
     navigate('/barang-saya');
   };
@@ -96,6 +97,7 @@ ProductInput.propTypes = {
   setPublishedProducts: PropTypes.func.isRequired,
   prevBarangSaya: PropTypes.arrayOf(PropTypes.object).isRequired,
   setBarangSaya: PropTypes.func.isRequired,
+  noWA: PropTypes.string,
 };
 
 export default ProductInput;

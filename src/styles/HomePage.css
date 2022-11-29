@@ -100,8 +100,13 @@
   overflow: hidden;
 }
 
+.product-item__image {
+  display: flex;
+  justify-content: center;
+}
+
 .product-item__image img {
-  width: 100%;
+  height: 110px;
   min-height: 110px;
 }
 

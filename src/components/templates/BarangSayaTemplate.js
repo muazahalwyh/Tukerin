@@ -5,11 +5,11 @@ function BarangSayaTemplate({
   // eslint-disable-next-line no-unused-vars
   id, name, image, description, price, category,
 }) {
-  const myProducts = JSON.parse(localStorage.getItem('MY_APP_STATE'));
+  const myProducts = JSON.parse(localStorage.getItem('MY_PRODUCTS'));
   const publishedProducts = JSON.parse(localStorage.getItem('PUBLISHED_PRODUCTS'));
   const onDelete = () => {
     myProducts.splice(myProducts.findIndex((mP) => mP.id === id), 1);
-    localStorage.setItem('MY_APP_STATE', JSON.stringify(myProducts));
+    localStorage.setItem('MY_PRODUCTS', JSON.stringify(myProducts));
     publishedProducts.splice(myProducts.findIndex((pP) => pP.id === id), 1);
     localStorage.setItem('PUBLISHED_PRODUCTS', JSON.stringify(publishedProducts));
   };

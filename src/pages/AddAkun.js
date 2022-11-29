@@ -4,22 +4,22 @@ import PropTypes from 'prop-types';
 import MyAccountInput from '../components/MyAccount/MyAccountInput';
 import '../styles/AddPage.css';
 
-function AddAkun({ myProfil, setProfil }) {
+function AddAkun({ myProfile, setMyProfile }) {
   return (
     <div className="add-product__container">
       <h1>Ubah Profil</h1>
       <br />
       <MyAccountInput
-        prevState={myProfil}
-        setState={setProfil}
+        prevState={myProfile}
+        setState={setMyProfile}
       />
     </div>
   );
 }
 
 AddAkun.propTypes = {
-  myProfil: PropTypes.arrayOf(PropTypes.object).isRequired,
-  setProfil: PropTypes.func.isRequired,
+  myProfile: PropTypes.arrayOf(PropTypes.object).isRequired,
+  setMyProfile: PropTypes.func.isRequired,
 };
 
 export default AddAkun;

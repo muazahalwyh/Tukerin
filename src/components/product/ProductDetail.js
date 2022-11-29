@@ -1,3 +1,4 @@
+/* eslint-disable no-template-curly-in-string */
 /* eslint-disable react/forbid-prop-types */
 /* eslint-disable react/require-default-props */
 /* eslint-disable react/jsx-one-expression-per-line */
@@ -13,9 +14,8 @@ function ProductDetail({
 }) {
   // const idImage = `${CONFIG.BASE_IMAGE_URL} + ${id}`;
   const idImage = `${CONFIG.BASE_IMAGE_URL}`;
-  // console.log(productDitawar[0].map((data) => data));
-
   const data = filteredProducts.filter((productt) => productt.id === id);
+  const { noWA } = data[0];
 
   return (
     <div className="detail-page">
@@ -43,7 +43,7 @@ function ProductDetail({
             setProductDiajukan={setProductDiajukan}
             setProductDitawar={setProductDitawar}
           />
-          <HubungiPemilikButton />
+          <a href={`https://wa.me/${noWA}`} aria-label="hubungi whatsapp"><HubungiPemilikButton /></a>
         </div>
       </div>
       {/* <div className="popup-root" /> */}
