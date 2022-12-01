@@ -99,8 +99,7 @@ function App() {
   };
 
   const onLogout = () => {
-    localStorage.removeItem('AUTHED_USER');
-    localStorage.removeItem('MY_PROFILE');
+    localStorage.clear();
   };
 
   useEffect(() => {
