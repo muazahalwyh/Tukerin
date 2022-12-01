@@ -10,7 +10,6 @@ function DetailPage({
   filteredProducts, productDiajukan, setProductDiajukan, productDitawar, setProductDitawar,
 }) {
   const { id } = useParams();
-
   return (
     <section>
       <ProductDetail

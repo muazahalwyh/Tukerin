@@ -57,10 +57,9 @@ function App() {
 
   const [publishedProducts, setPublishedProducts] = useState(JSON.parse(localStorage.getItem('PUBLISHED_PRODUCTS')) || products);
 
-  const [myProduct, setMyProduct] = useState(JSON.parse(localStorage.getItem('MY_APP_STATE')) || []);
+  const [myProduct, setMyProduct] = useState(JSON.parse(localStorage.getItem('MY_PRODUCTS')) || []);
 
-  // eslint-disable-next-line no-unused-vars
-  const [myProfil, setProfil] = useState(JSON.parse(localStorage.getItem('MY_PROFIL_STATE')) || []);
+  const [myProfile, setMyProfile] = useState(JSON.parse(localStorage.getItem('MY_PROFILE')) || []);
 
   const [productDiajukan, setProductDiajukan] = useState(JSON.parse(localStorage.getItem('PRODUCT_DIAJUKAN')) || null);
 
@@ -100,9 +99,7 @@ function App() {
   };
 
   const onLogout = () => {
-    // localStorage.setItem('AUTHED_USER', null);
-    setAuthedUser(null);
-    putAccessToken('');
+    localStorage.clear();
   };
 
   useEffect(() => {
@@ -122,12 +119,12 @@ function App() {
   }, [productDitawar]);
 
   useEffect(() => {
-    localStorage.setItem('MY_APP_STATE', JSON.stringify(myProduct));
+    localStorage.setItem('MY_PRODUCTS', JSON.stringify(myProduct));
   }, [myProduct]);
 
   useEffect(() => {
-    localStorage.setItem('MY_Profil_STATE', JSON.stringify(myProfil));
-  }, [myProfil]);
+    localStorage.setItem('MY_PROFILE', JSON.stringify(myProfile));
+  }, [myProfile]);
 
   // useeffect untuk drawer hamburger
   useEffect(() => {
@@ -148,9 +145,11 @@ function App() {
     setSearchParams({ keywordSearch });
   }
 
-  const filteredProducts = products.filter((product) => product.name.toLowerCase().includes(
-    keyword.toLocaleLowerCase(),
-  ));
+  const filteredProducts = publishedProducts.filter(
+    (product) => product.name.toLowerCase().includes(
+      keyword.toLocaleLowerCase(),
+    ),
+  );
 
   if (authedUser === null) {
     return (
@@ -287,8 +286,10 @@ function App() {
             </button>
           </div>
           <div className="brand-container">
-            <Link to="/" className="brand-logo"><img src={brandTukerin} alt="logo tukerin" /></Link>
-            <h1>Tukerin</h1>
+            <Link to="/" className="brand-logo">
+              <img src={brandTukerin} alt="logo tukerin" />
+              <h1>Tukerin</h1>
+            </Link>
           </div>
 
           <SearchBar
@@ -372,9 +373,10 @@ function App() {
           <Route path="/products/:id" element={<DetailPage filteredProducts={filteredProducts} productDiajukan={productDiajukan} setProductDiajukan={setProductDiajukan} productDitawar={productDitawar} setProductDitawar={setProductDitawar} />} />
           <Route path="/register" element={<RegisterPage />} />
           <Route path="/login" element={<LoginPage />} />
-          <Route path="/add" element={<AddPage publishedProducts={publishedProducts} setPublishedProducts={setPublishedProducts} myProduct={myProduct} setMyProduct={setMyProduct} />} />
+          <Route path="/add" element={<AddPage publishedProducts={publishedProducts} setPublishedProducts={setPublishedProducts} myProduct={myProduct} setMyProduct={setMyProduct} myProfile={myProfile} />} />
           <Route path="/transaction" element={<TransactionPage productDiajukan={productDiajukan} setProductDiajukan={setProductDiajukan} productDitawar={productDitawar} />} />
-          <Route path="/profile" element={<MyAccount />} />
+          <Route path="/profile" element={<MyAccount myProfile={myProfile} setMyProfile={setMyProfile} />} />
+          <Route path="/edit-akun" element={<AddAkun myProfile={myProfile} setMyProfile={setMyProfile} />} />
           <Route path="/user-list" element={<UserList />} />
           <Route path="/add-user" element={<AddUser />} />
           <Route path="/edit-user/:id" element={<EditUser />} />

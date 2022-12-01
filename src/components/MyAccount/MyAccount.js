@@ -2,32 +2,32 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import MyAccountTemplate from './MyAccountTemplate';
 
-function Myaccount({ profilsaya }) {
-  if (profilsaya.length > 0) {
-    return (
-      <div className="profilsaya-list">
-        {
-          profilsaya.map((profil) => (
+function Myaccount({ myProfile, setMyProfile }) {
+  return (
+    <div className="myprofilee-list">
+      {
+          myProfile.map((profile) => (
             <MyAccountTemplate
               // eslint-disable-next-line react/no-array-index-key
-              name={profil.name}
-              image={profil.image}
-              email={profil.email}
-              alamat={profil.alamat}
-              nohp={profil.nohp}
+              name={profile.name}
+              image={profile.image}
+              email={profile.email}
+              alamat={profile.alamat}
+              nohp={profile.nohp}
+              setMyProfile={setMyProfile}
               // eslint-disable-next-line react/jsx-props-no-spreading
-              {...profil}
+              {...profile}
             />
           ))
         }
-      </div>
-    );
-  }
+    </div>
+  );
 }
 
 Myaccount.propTypes = {
   // eslint-disable-next-line react/forbid-prop-types
-  profilsaya: PropTypes.arrayOf(PropTypes.object).isRequired,
+  myProfile: PropTypes.arrayOf(PropTypes.object).isRequired,
+  setMyProfile: PropTypes.func.isRequired,
 };
 
 export default Myaccount;

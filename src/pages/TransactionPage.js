@@ -37,7 +37,9 @@ function TransactionPage({ productDiajukan, setProductDiajukan, productDitawar }
     );
   }
   return (
-    <p>Product masih kosong</p>
+    <div className="transaction-page">
+      <p>Transaksi masih kosong</p>
+    </div>
   );
 
 //   if (productDiajukan[0].status === 'pending') {

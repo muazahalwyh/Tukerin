@@ -1,3 +1,4 @@
+/* eslint-disable react/require-default-props */
 /* eslint-disable react/jsx-no-bind */
 import React from 'react';
 import PropTypes from 'prop-types';
@@ -33,7 +34,7 @@ function LoginPage({ loginSuccess }) {
 }
 
 LoginPage.propTypes = {
-  loginSuccess: PropTypes.func.isRequired,
+  loginSuccess: PropTypes.func,
 };
 
 export default LoginPage;

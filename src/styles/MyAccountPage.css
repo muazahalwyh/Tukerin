@@ -47,7 +47,7 @@
     width: 200px;
     z-index: 10;
     color: black;
-    background-color: white;
+    background-color: none;
     gap: 30px;
   }
 
@@ -55,4 +55,8 @@
     display: flex;
     gap: 20px;
     border-bottom: 2px solid #97B9A8;
+  }
+
+  .profile-setting p {
+    margin-bottom: 0;
   }
