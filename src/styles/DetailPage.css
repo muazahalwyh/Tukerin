@@ -7,20 +7,20 @@
   .detail-page__headline-product {
     margin: auto;
     margin-top: 30px;
-    display: grid;
-    grid-auto-flow: column;
-    grid-template-columns: 1fr 3fr;
+    display: flex;
     max-width: 1000px;
     max-height: 600px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     border-radius: 20px;
     overflow: hidden;
   }
-  
-  .detail-page__headline-product img{
+
+  .detail-page__headline-product__image {
+    margin: 30px;
+  }  
+  .detail-page__headline-product__image img{
     max-width: 400px;
-    padding: 30px;
-    border-radius: 5px;
+    border-radius: 20px;
   }
 
   .detail-page__headline-product__text {
@@ -259,4 +259,112 @@
     width: 200px;
     height: 40px;
     padding: 10px;
+  }
+
+  @media screen and (max-width: 1000px) {
+    
+    .detail-page__name {
+      font-size: 20px;
+    }
+    
+    .detail-page__price {
+      font-size: 24px;
+    }
+    
+    .detail-product-text {
+      padding: 0;
+    }
+
+    .detail-page__headline-product {
+      max-width: 600px;
+      max-height: 1000px;
+      flex-direction: column;
+    }
+    .detail-page__headline-product__image {
+      margin: 30px;
+      max-width: 300px;
+    }  
+    .detail-page__headline-product__image img{
+      max-width: 300px;
+    }
+    .detail-page__detail-product {
+      display: flex;
+    }
+  }
+
+  @media screen and (max-width: 650px) {
+    .detail-page__headline-product {
+      max-width: 400px;
+      flex-direction: column;
+    }
+    .detail-page__headline-product__image {
+      margin: 30px;
+      max-width: 200px;
+    }  
+    .detail-page__headline-product__image img{
+      max-width: 200px;
+    }
+  }
+
+  @media screen and (max-width: 550px) {
+    /* FORM AJUKAN */
+    .masukan-barang-barter form p {
+      padding: 0;
+      font-size: 14px;
+    }
+    
+    .masukan-barang-barter form {
+      width: 400px;
+      height: 500px;
+    }
+  
+    form label {
+      margin-top: 10px;
+      text-align: center;
+      width: 80%;
+      text-align: left;
+      font-size: 14px;
+    }
+    
+    form label input{
+      width: 100%;
+      height: 30px;
+      border-radius: 10px;
+      padding-left: 10px;
+    }
+
+    .ajukan-button {
+      border-style: none;
+      border-radius: 10px;
+      background-color: #386159;
+      color: white;
+      font-size: 12px;
+      width: 150px;
+      height: 40px;
+      padding: 10px;
+    }
+  }
+
+  @media screen and (max-width: 400px) {
+    .detail-page__headline-product {
+      max-width: 300px;
+    }
+    .detail-page__button {
+      display: flex;
+      gap: 5px;
+    }
+    .detail-page__button button, .detail-page__button a {
+      max-width: 150px;
+      font-size: 14px;
+    }
+    .ajukan-barter {
+      margin: 0;
+      padding: 0;
+    }
+
+    /* FORM */
+    .masukan-barang-barter form {
+      width: 350px;
+      height: 530px;
+    }
   }

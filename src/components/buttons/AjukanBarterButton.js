@@ -1,3 +1,4 @@
+/* eslint-disable react/require-default-props */
 /* eslint-disable react/forbid-prop-types */
 /* eslint-disable max-len */
 import React from 'react';
@@ -9,9 +10,10 @@ import MasukanBarangBarter from '../pop-up/MasukanBarangBarter';
 function AjukanBarterButton({
   id, filteredProducts, productDiajukan, productDitawar, setProductDiajukan, setProductDitawar,
 }) {
-  const data = localStorage.getItem('AUTHED_USER');
+  const user = localStorage.getItem('AUTHED_USER');
+  console.log(user);
 
-  if (data == null) {
+  if (user === null) {
     return (
       <Popup trigger={<button className="ajukan-barter" type="button">Ajukan Barter</button>}>
         <SilahkanLogin />
@@ -34,11 +36,11 @@ function AjukanBarterButton({
 
 AjukanBarterButton.propTypes = {
   id: PropTypes.string.isRequired,
-  filteredProducts: PropTypes.arrayOf(PropTypes.object).isRequired,
-  productDitawar: PropTypes.arrayOf(PropTypes.object).isRequired,
-  productDiajukan: PropTypes.arrayOf(PropTypes.object).isRequired,
-  setProductDiajukan: PropTypes.func.isRequired,
-  setProductDitawar: PropTypes.func.isRequired,
+  filteredProducts: PropTypes.arrayOf(PropTypes.object),
+  productDitawar: PropTypes.arrayOf(PropTypes.object),
+  productDiajukan: PropTypes.arrayOf(PropTypes.object),
+  setProductDiajukan: PropTypes.func,
+  setProductDitawar: PropTypes.func,
 };
 
 export default AjukanBarterButton;

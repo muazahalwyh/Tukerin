@@ -1,3 +1,4 @@
+/* eslint-disable react/require-default-props */
 /* eslint-disable max-len */
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/forbid-prop-types */
@@ -129,7 +130,6 @@ function MasukanBarangBarter({
               <AiOutlinePlus className="icon-add" />
             </div>
             <br />
-            <h4 className="nama-file">{image}</h4>
           </label>
           <input className="ajukan-button" type="submit" value="Terbitkan" onClick={onClick} />
         </form>
@@ -139,11 +139,11 @@ function MasukanBarangBarter({
 }
 
 MasukanBarangBarter.propTypes = {
-  filteredProducts: PropTypes.arrayOf(PropTypes.object).isRequired,
-  productDitawar: PropTypes.arrayOf(PropTypes.object).isRequired,
-  productDiajukan: PropTypes.arrayOf(PropTypes.object).isRequired,
-  setProductDiajukan: PropTypes.func.isRequired,
-  setProductDitawar: PropTypes.func.isRequired,
+  filteredProducts: PropTypes.arrayOf(PropTypes.object),
+  productDitawar: PropTypes.arrayOf(PropTypes.object),
+  productDiajukan: PropTypes.arrayOf(PropTypes.object),
+  setProductDiajukan: PropTypes.func,
+  setProductDitawar: PropTypes.func,
 };
 
 export default MasukanBarangBarter;

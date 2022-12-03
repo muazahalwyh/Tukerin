@@ -1,3 +1,4 @@
+/* eslint-disable react/require-default-props */
 /* eslint-disable react/forbid-prop-types */
 import React from 'react';
 import PropTypes from 'prop-types';
@@ -31,11 +32,11 @@ function AddPage({
 }
 
 AddPage.propTypes = {
-  publishedProducts: PropTypes.arrayOf(PropTypes.object).isRequired,
-  setPublishedProducts: PropTypes.func.isRequired,
-  myProduct: PropTypes.arrayOf(PropTypes.object).isRequired,
-  setMyProduct: PropTypes.func.isRequired,
-  myProfile: PropTypes.arrayOf(PropTypes.object).isRequired,
+  publishedProducts: PropTypes.arrayOf(PropTypes.object),
+  setPublishedProducts: PropTypes.func,
+  myProduct: PropTypes.arrayOf(PropTypes.object),
+  setMyProduct: PropTypes.func,
+  myProfile: PropTypes.arrayOf(PropTypes.object),
 };
 
 export default AddPage;

@@ -14,8 +14,7 @@ function TransactionCompleted({ productDiajukan }) {
   if (productDiajukan !== 0) {
     return (
       <article className="transaction-item">
-        <div>
-          {
+        {
             productDiajukan.map((product) => (
               <BarangSelesai
                 key={product.id}
@@ -27,7 +26,6 @@ function TransactionCompleted({ productDiajukan }) {
               />
             ))
           }
-        </div>
       </article>
     );
   }

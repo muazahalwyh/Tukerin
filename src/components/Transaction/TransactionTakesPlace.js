@@ -32,35 +32,31 @@ function TransactionTakesPlace({ productDiajukan, productDitawar }) {
   if (productDiajukan != null) {
     return (
       <article className="transaction-item">
-        <div>
-          {
-            productDitawar.map((product) => (
-              <BarangDitawar
-                key={product.id}
-                image={product.image}
-                name={product.name}
-                price={product.price}
-                description={product.description}
-                {...product}
-              />
-            ))
-          }
-        </div>
-        <div>
-          {
-            productDiajukan.map((product) => (
-              <BarangDiajukan
-                key={product.id}
-                image={product.image}
-                name={product.name}
-                price={product.price}
-                description={product.description}
-                onTerima={onTerima}
-                {...product}
-              />
-            ))
-          }
-        </div>
+        {
+          productDitawar.map((product) => (
+            <BarangDitawar
+              key={product.id}
+              image={product.image}
+              name={product.name}
+              price={product.price}
+              description={product.description}
+              {...product}
+            />
+          ))
+        }
+        {
+          productDiajukan.map((product) => (
+            <BarangDiajukan
+              key={product.id}
+              image={product.image}
+              name={product.name}
+              price={product.price}
+              description={product.description}
+              onTerima={onTerima}
+              {...product}
+            />
+          ))
+        }
       </article>
     );
   }

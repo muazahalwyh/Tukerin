@@ -1,3 +1,4 @@
+/* eslint-disable react/require-default-props */
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import BarangSaya from '../components/BarangSaya';
@@ -31,8 +32,8 @@ function BarangSayaPage({ myProduct, setMyProduct }) {
 
 BarangSayaPage.propTypes = {
   // eslint-disable-next-line react/forbid-prop-types
-  myProduct: PropTypes.arrayOf(PropTypes.object).isRequired,
-  setMyProduct: PropTypes.func.isRequired,
+  myProduct: PropTypes.arrayOf(PropTypes.object),
+  setMyProduct: PropTypes.func,
 };
 
 export default BarangSayaPage;

@@ -84,7 +84,12 @@ header div {
   max-height: 71px;
 }
 
-.brand-logo a h1:hover {
+.brand-logo h1:hover {
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.brand-logo a h1:link {
   text-decoration: none;
 }
 
