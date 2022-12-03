@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { AiOutlinePlus } from 'react-icons/ai';
 import useInput from '../../hooks/useInput';
 
+// eslint-disable-next-line no-unused-vars
 function MyAccountInput({ prevState, setState }) {
   const [image, setImage] = useState([]);
   const [name, handleNameChange] = useInput('');
@@ -15,7 +16,7 @@ function MyAccountInput({ prevState, setState }) {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    setState([...prevState, {
+    setState([{
       image, name, email, alamat, noHp,
     }]);
     navigate('/profile');
