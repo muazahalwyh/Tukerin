@@ -29,7 +29,7 @@ function MyAccount({ myProfile, setMyProfile }) {
             <div className="profile-setting">
               <div>
                 <AiOutlineEdit />
-                <a href="/addakun"><p>Ubah akun</p></a>
+                <a href="/edit-akun"><p>Ubah akun</p></a>
               </div>
             </div>
           </div>
@@ -80,21 +80,3 @@ MyAccount.propTypes = {
 };
 
 export default MyAccount;
-
-// <div className="myaccount-container">
-//   <h1>Akun Saya</h1>
-//   <div className="profile-picture">
-//     <input type="file" onChange={handlePicture} />
-//     <BsCamera className="icon-add-profile" />
-//   </div>
-//   <div className="profile-setting">
-//     <div>
-//       <AiOutlineEdit />
-//       <a href="/AddAkun"><p>Ubah akun</p></a>
-//     </div>
-//     <div>
-//       <MdOutlineLogout />
-//       <a href="/transaction"><p>Keluar</p></a>
-//     </div>
-//   </div>
-// </div>

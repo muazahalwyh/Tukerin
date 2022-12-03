@@ -1,3 +1,4 @@
+/* eslint-disable react/require-default-props */
 /* eslint-disable no-unreachable */
 /* eslint-disable react/forbid-prop-types */
 import React from 'react';
@@ -41,50 +42,12 @@ function TransactionPage({ productDiajukan, setProductDiajukan, productDitawar }
       <p>Transaksi masih kosong</p>
     </div>
   );
-
-//   if (productDiajukan[0].status === 'pending') {
-//     return (
-//       <div className="transaction-page">
-//         <h1>Transaksi</h1>
-//         <div className="transaction-page__container">
-//           <h2>Pending</h2>
-//           <TransactionPending
-//             productDiajukan={productDiajukan}
-//             productDitawar={productDitawar}
-//           />
-//           <h2>Berlangsung</h2>
-//           <TransactionTakesPlace
-//             productDiajukan={productDiajukan}
-//             setProductDiajukan={setProductDiajukan}
-//             productDitawar={productDitawar}
-//           />
-//           <h2>Selesai</h2>
-//           <TransactionCompleted kosong />
-//         </div>
-//       </div>
-//     );
-//   }
-//   if (productDiajukan[0].status === 'selesai') {
-//     return (
-//       <div className="transaction-page">
-//         <h1>Transaksi</h1>
-//         <div className="transaction-page__container">
-//           <h2>Pending</h2>
-//           <TransactionPending productDiajukan={productDiajukan} />
-//           <h2>Berlangsung</h2>
-//           <TransactionTakesPlace productDiajukan={productDiajukan} />
-//           <h2>Selesai</h2>
-//           <TransactionCompleted productDiajukan={productDiajukan} kosong={false} />
-//         </div>
-//       </div>
-//     );
-//   }
 }
 
 TransactionPage.propTypes = {
-  productDiajukan: PropTypes.arrayOf(PropTypes.object).isRequired,
-  setProductDiajukan: PropTypes.func.isRequired,
-  productDitawar: PropTypes.arrayOf(PropTypes.object).isRequired,
+  productDiajukan: PropTypes.arrayOf(PropTypes.object),
+  setProductDiajukan: PropTypes.func,
+  productDitawar: PropTypes.arrayOf(PropTypes.object),
 };
 
 export default TransactionPage;
