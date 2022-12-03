@@ -10,6 +10,7 @@
     align-items: center;
     margin-top: 20px;
     width: 100%;
+    min-height: 50vh;
   }
 
   .transaction-page p {
@@ -284,7 +285,17 @@
     text-align: center;
   }
 
+  @media screen and (max-width: 1000px) {
+    .transaction-item__body-action button {
+      max-width: 200px;
+    }
+  }
+
   @media screen and (max-width: 650px) {
+    .transaction-item__body-action {
+      flex-direction: column;
+      gap: 10px;
+    }
     .hps{
       margin-left: 140px;
     }
