@@ -5,10 +5,19 @@ import { CgProfile } from 'react-icons/cg';
 import { AiOutlineShoppingCart } from 'react-icons/ai';
 import { MdOutlineInventory2, MdOutlineLogout } from 'react-icons/md';
 
-function ProfileModal(onLogout) {
+// eslint-disable-next-line no-unused-vars
+function ProfileModal() {
   function onClick() {
     const root = document.querySelector('.root-popup-profile');
     root.style.display = 'none';
+  }
+  function logout() {
+    window.localStorage.removeItem('AUTHED_USER');
+    window.localStorage.removeItem('MY_PRODUCTS');
+    window.localStorage.removeItem('MY_PROFILE');
+    window.localStorage.removeItem('PRODUCT_DITAWAR');
+    window.localStorage.removeItem('PRODUCT_DIAJUKAN');
+    window.localStorage.removeItem('accessToken');
   }
   return (
     <div onClick={onClick} className="root-popup-profile">
@@ -32,7 +41,7 @@ function ProfileModal(onLogout) {
           </a>
         </div>
         <div>
-          <a href="/" onClick={onLogout}>
+          <a href="/" onClick={logout}>
             <MdOutlineLogout />
             <p>Log Out</p>
           </a>
