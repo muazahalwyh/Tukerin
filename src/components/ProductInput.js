@@ -76,7 +76,7 @@ function ProductInput({
       </select>
       <br />
       <h4>Deskripsi</h4>
-      <input
+      <textarea
         className="add-product__input-description"
         placeholder="Jelaskan kondisi barang anda"
         value={description}
