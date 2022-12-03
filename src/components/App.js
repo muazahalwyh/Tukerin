@@ -39,13 +39,12 @@ import '../styles/App.css';
 import '../styles/AddPage.css';
 import '../styles/NavbarResponsiv.css';
 import brandTukerin from '../images/brand-tukerin.png';
-import brandTukerinFooter from '../images/tukerinn-removebg.png';
+import brandTukerinFooter from '../images/tukerin-removebg.png';
 import products from '../utils/data/products';
 // Icons
 import { BsFacebook, BsInstagram, BsTwitter } from 'react-icons/bs';
 import { FaCopyright } from 'react-icons/fa';
 import { CgProfile } from 'react-icons/cg';
-import { MdNotifications } from 'react-icons/md';
 import { GoThreeBars } from 'react-icons/go';
 import { GrClose } from 'react-icons/gr';
 
@@ -74,6 +73,13 @@ function App() {
   const [searchParams, setSearchParams] = useSearchParams();
   const [keyword, setKeyword] = useState(() => searchParams.get('keywordSearch') || '');
 
+  // idb
+  // useEffect(() => {
+  //   (async () => {
+  //     await USER_DATABASE.putUser({ authedUser });
+  //   })();
+  // }, []);
+
   // fungsi untuk drawer hamburger
   const handleClose = () => {
     setActiveHam(!activeHam);
@@ -84,22 +90,12 @@ function App() {
     setShowProf(!showProf);
   };
 
-  // useEffect(() => {
-  //   const getUser = async () => {
-  //     const { data } = await getUserLogged();
-  //     setAuthedUser(data.name);
-  //   };
-  //   getUser();
-  // }, []);
-
   const onLoginSuccess = async ({ accessToken }) => {
     putAccessToken(accessToken);
     const { data } = await getUserLogged();
-    setAuthedUser(data.name);
-  };
-
-  const onLogout = () => {
-    localStorage.clear();
+    // const id = Date.now().toString();
+    const { name } = data;
+    setAuthedUser(name);
   };
 
   useEffect(() => {
@@ -161,7 +157,7 @@ function App() {
             <ul>
               <li><a href="/">Beranda</a></li>
               <li><a href="/about">Tentang Kami</a></li>
-              <li><a href="/user-list">Hubungi Kami</a></li>
+              <li><a href="/FAQ">FAQ</a></li>
             </ul>
           </nav>
           <div className="header-main-login">
@@ -219,7 +215,7 @@ function App() {
             <Route path="/category/kecantikan" element={<Kecantikan publishedProduct={publishedProducts} />} />
             <Route path="/category/hobi" element={<Hobi publishedProduct={publishedProducts} />} />
 
-            <Route path="/products/:id" element={<DetailPage authedUser={authedUser} />} />
+            <Route path="/products/:id" element={<DetailPage authedUser={authedUser} filteredProducts={filteredProducts} />} />
             <Route path="/register" element={<RegisterPage />} />
             <Route path="/login" element={<LoginPage loginSuccess={onLoginSuccess} />} />
             <Route path="/add" element={<AddPage />} />
@@ -276,7 +272,7 @@ function App() {
           <ul>
             <li><a href="/">Beranda</a></li>
             <li><a href="/about">Tentang Kami</a></li>
-            <li><a href="/user-list">Hubungi Kami</a></li>
+            <li><a href="/FAQ">FAQ</a></li>
           </ul>
         </nav>
         <div className="header-main">
@@ -298,15 +294,10 @@ function App() {
             keywordChange={onKeywordChangeHandler}
           />
           <div className="authentication-button">
-            <li>
-              <Popup trigger={<MdNotifications className="notification-icon" />} position="right center">
-                {/* <ProfileModal onLogout={onLogout} /> */}
-              </Popup>
-            </li>
             <div className="profile-icon">
               <li>
                 <Popup trigger={<CgProfile className="profile-icon__icon" />}>
-                  <ProfileModal onLogout={onLogout} />
+                  <ProfileModal />
                 </Popup>
                 {' '}
                 <p>{authedUser}</p>
@@ -350,7 +341,7 @@ function App() {
                     )}
                   </div>
                   {showProf && (
-                    <ProfilNav onLogout={onLogout} />
+                    <ProfilNav />
                   )}
                 </div>
               </div>
@@ -418,3 +409,9 @@ function App() {
 }
 
 export default App;
+
+// {/* <li>
+// <Popup trigger={<MdNotifications className="notification-icon" />} position="right center">
+//  {/* <ProfileModal onLogout={onLogout} /> */}
+//   </Popup>
+// </li> */}
