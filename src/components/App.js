@@ -165,8 +165,10 @@ function App() {
               {activeHam ? <GrClose /> : <GoThreeBars />}
             </button>
             <div className="brand-container">
-              <Link to="/" className="brand-logo"><img src={brandTukerin} alt="logo tukerin" /></Link>
-              <h1>Tukerin</h1>
+              <Link to="/" className="brand-logo">
+                <img src={brandTukerin} alt="logo tukerin" />
+                <h1>Tukerin</h1>
+              </Link>
             </div>
             <SearchBar
               keyword={keyword}
@@ -207,13 +209,13 @@ function App() {
           <Routes>
             <Route path="/" element={<Homepage filteredProducts={filteredProducts} />} />
 
-            <Route path="/category/elektronik" element={<Elektronik publishedProduct={publishedProducts} />} />
-            <Route path="/category/fashion-wanita" element={<FashionWanita publishedProduct={publishedProducts} />} />
-            <Route path="/category/fashion-pria" element={<FashionPria publishedProduct={publishedProducts} />} />
-            <Route path="/category/fashion-anak" element={<FashionAnak publishedProduct={publishedProducts} />} />
-            <Route path="/category/makanan-minuman" element={<MakananMinuman publishedProduct={publishedProducts} />} />
-            <Route path="/category/kecantikan" element={<Kecantikan publishedProduct={publishedProducts} />} />
-            <Route path="/category/hobi" element={<Hobi publishedProduct={publishedProducts} />} />
+            <Route path="/category/elektronik" element={<Elektronik publishedProduct={publishedProducts} keyword={keyword} />} />
+            <Route path="/category/fashion-wanita" element={<FashionWanita publishedProduct={publishedProducts} keyword={keyword} />} />
+            <Route path="/category/fashion-pria" element={<FashionPria publishedProduct={publishedProducts} keyword={keyword} />} />
+            <Route path="/category/fashion-anak" element={<FashionAnak publishedProduct={publishedProducts} keyword={keyword} />} />
+            <Route path="/category/makanan-minuman" element={<MakananMinuman publishedProduct={publishedProducts} keyword={keyword} />} />
+            <Route path="/category/kecantikan" element={<Kecantikan publishedProduct={publishedProducts} keyword={keyword} />} />
+            <Route path="/category/hobi" element={<Hobi publishedProduct={publishedProducts} keyword={keyword} />} />
 
             <Route path="/products/:id" element={<DetailPage authedUser={authedUser} filteredProducts={filteredProducts} />} />
             <Route path="/register" element={<RegisterPage />} />
@@ -353,13 +355,13 @@ function App() {
         <Routes>
           <Route path="/" element={<Homepage filteredProducts={filteredProducts} />} />
 
-          <Route path="/category/elektronik" element={<Elektronik publishedProduct={publishedProducts} />} />
-          <Route path="/category/fashion-wanita" element={<FashionWanita publishedProduct={publishedProducts} />} />
-          <Route path="/category/fashion-pria" element={<FashionPria publishedProduct={publishedProducts} />} />
-          <Route path="/category/fashion-anak" element={<FashionAnak publishedProduct={publishedProducts} />} />
-          <Route path="/category/makanan-minuman" element={<MakananMinuman publishedProduct={publishedProducts} />} />
-          <Route path="/category/kecantikan" element={<Kecantikan publishedProduct={publishedProducts} />} />
-          <Route path="/category/hobi" element={<Hobi publishedProduct={publishedProducts} />} />
+          <Route path="/category/elektronik" element={<Elektronik publishedProduct={publishedProducts} keyword={keyword} />} />
+          <Route path="/category/fashion-wanita" element={<FashionWanita publishedProduct={publishedProducts} keyword={keyword} />} />
+          <Route path="/category/fashion-pria" element={<FashionPria publishedProduct={publishedProducts} keyword={keyword} />} />
+          <Route path="/category/fashion-anak" element={<FashionAnak publishedProduct={publishedProducts} keyword={keyword} />} />
+          <Route path="/category/makanan-minuman" element={<MakananMinuman publishedProduct={publishedProducts} keyword={keyword} />} />
+          <Route path="/category/kecantikan" element={<Kecantikan publishedProduct={publishedProducts} keyword={keyword} />} />
+          <Route path="/category/hobi" element={<Hobi publishedProduct={publishedProducts} keyword={keyword} />} />
 
           <Route path="/products/:id" element={<DetailPage filteredProducts={filteredProducts} productDiajukan={productDiajukan} setProductDiajukan={setProductDiajukan} productDitawar={productDitawar} setProductDitawar={setProductDitawar} />} />
           <Route path="/register" element={<RegisterPage />} />
