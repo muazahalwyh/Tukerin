@@ -1,11 +1,10 @@
-/* eslint-disable no-unused-vars */
 /* eslint-disable react/forbid-prop-types */
 /* eslint-disable react/button-has-type */
 import React from 'react';
 import PropTypes from 'prop-types';
 
 function BarangSelesai({
-  id, image, name, description, price,
+  image, name, description, price,
 }) {
   return (
     <div className="barang-ditawar">
@@ -35,7 +34,6 @@ function BarangSelesai({
 }
 
 BarangSelesai.propTypes = {
-  id: PropTypes.string.isRequired,
   image: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
