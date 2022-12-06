@@ -6,6 +6,7 @@ const products = [
     category: 'elektronik',
     price: '21.000.000',
     description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras sit amet eros commodo, imperdiet enim sed, posuere lacus. Praesent semper justo eu ligula varius tincidunt. Nunc faucibus magna mi. Integer eu fringilla lorem, et faucibus lorem. Suspendisse tellus lacus, elementum vel tristique nec, scelerisque sed enim. Suspendisse vehicula auctor sagittis. Morbi nec nunc venenatis felis porttitor mattis eu at dolor. Etiam tristique dignissim dui, a vulputate diam volutpat eu.',
+    noWA: '085800262606',
   },
   {
     id: '2',
@@ -14,6 +15,7 @@ const products = [
     category: 'Hobi',
     price: '370.000',
     description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras sit amet eros commodo, imperdiet enim sed, posuere lacus. Praesent semper justo eu ligula varius tincidunt. Nunc faucibus magna mi. Integer eu fringilla lorem, et faucibus lorem. Suspendisse tellus lacus, elementum vel tristique nec, scelerisque sed enim. Suspendisse vehicula auctor sagittis. Morbi nec nunc venenatis felis porttitor mattis eu at dolor. Etiam tristique dignissim dui, a vulputate diam volutpat eu.',
+    noWA: '085800262606',
   },
   {
     id: '3',
@@ -22,6 +24,7 @@ const products = [
     category: 'fashion pria',
     price: '1.200.000',
     description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras sit amet eros commodo, imperdiet enim sed, posuere lacus. Praesent semper justo eu ligula varius tincidunt. Nunc faucibus magna mi. Integer eu fringilla lorem, et faucibus lorem. Suspendisse tellus lacus, elementum vel tristique nec, scelerisque sed enim. Suspendisse vehicula auctor sagittis. Morbi nec nunc venenatis felis porttitor mattis eu at dolor. Etiam tristique dignissim dui, a vulputate diam volutpat eu.',
+    noWA: '085800262606',
   },
   {
     id: '4',
@@ -30,6 +33,7 @@ const products = [
     category: 'Hobi',
     price: '4.000.000',
     description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras sit amet eros commodo, imperdiet enim sed, posuere lacus. Praesent semper justo eu ligula varius tincidunt. Nunc faucibus magna mi. Integer eu fringilla lorem, et faucibus lorem. Suspendisse tellus lacus, elementum vel tristique nec, scelerisque sed enim. Suspendisse vehicula auctor sagittis. Morbi nec nunc venenatis felis porttitor mattis eu at dolor. Etiam tristique dignissim dui, a vulputate diam volutpat eu.',
+    noWA: '085800262606',
   },
   {
     id: '5',
@@ -38,6 +42,7 @@ const products = [
     category: 'elektronik',
     price: '2.100.000',
     description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras sit amet eros commodo, imperdiet enim sed, posuere lacus. Praesent semper justo eu ligula varius tincidunt. Nunc faucibus magna mi. Integer eu fringilla lorem, et faucibus lorem. Suspendisse tellus lacus, elementum vel tristique nec, scelerisque sed enim. Suspendisse vehicula auctor sagittis. Morbi nec nunc venenatis felis porttitor mattis eu at dolor. Etiam tristique dignissim dui, a vulputate diam volutpat eu.',
+    noWA: '085800262606',
 
   },
   {
@@ -47,6 +52,7 @@ const products = [
     category: 'Hobi',
     price: '4.000.000',
     description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras sit amet eros commodo, imperdiet enim sed, posuere lacus. Praesent semper justo eu ligula varius tincidunt. Nunc faucibus magna mi. Integer eu fringilla lorem, et faucibus lorem. Suspendisse tellus lacus, elementum vel tristique nec, scelerisque sed enim. Suspendisse vehicula auctor sagittis. Morbi nec nunc venenatis felis porttitor mattis eu at dolor. Etiam tristique dignissim dui, a vulputate diam volutpat eu.',
+    noWA: '085800262606',
   },
   {
     id: '7',
@@ -55,6 +61,7 @@ const products = [
     category: 'elektronik',
     price: '21.000.000',
     description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras sit amet eros commodo, imperdiet enim sed, posuere lacus. Praesent semper justo eu ligula varius tincidunt. Nunc faucibus magna mi. Integer eu fringilla lorem, et faucibus lorem. Suspendisse tellus lacus, elementum vel tristique nec, scelerisque sed enim. Suspendisse vehicula auctor sagittis. Morbi nec nunc venenatis felis porttitor mattis eu at dolor. Etiam tristique dignissim dui, a vulputate diam volutpat eu.',
+    noWA: '085800262606',
   },
   {
     id: '8',
@@ -63,6 +70,7 @@ const products = [
     category: 'fashion wanita',
     price: '370.000',
     description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras sit amet eros commodo, imperdiet enim sed, posuere lacus. Praesent semper justo eu ligula varius tincidunt. Nunc faucibus magna mi. Integer eu fringilla lorem, et faucibus lorem. Suspendisse tellus lacus, elementum vel tristique nec, scelerisque sed enim. Suspendisse vehicula auctor sagittis. Morbi nec nunc venenatis felis porttitor mattis eu at dolor. Etiam tristique dignissim dui, a vulputate diam volutpat eu.',
+    noWA: '085800262606',
   },
   {
     id: '9',
@@ -71,6 +79,7 @@ const products = [
     category: 'fashion anak',
     price: '1.200.000',
     description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras sit amet eros commodo, imperdiet enim sed, posuere lacus. Praesent semper justo eu ligula varius tincidunt. Nunc faucibus magna mi. Integer eu fringilla lorem, et faucibus lorem. Suspendisse tellus lacus, elementum vel tristique nec, scelerisque sed enim. Suspendisse vehicula auctor sagittis. Morbi nec nunc venenatis felis porttitor mattis eu at dolor. Etiam tristique dignissim dui, a vulputate diam volutpat eu.',
+    noWA: '085800262606',
   },
   {
     id: '10',
@@ -79,6 +88,7 @@ const products = [
     category: 'kecantikan',
     price: '4.000.000',
     description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras sit amet eros commodo, imperdiet enim sed, posuere lacus. Praesent semper justo eu ligula varius tincidunt. Nunc faucibus magna mi. Integer eu fringilla lorem, et faucibus lorem. Suspendisse tellus lacus, elementum vel tristique nec, scelerisque sed enim. Suspendisse vehicula auctor sagittis. Morbi nec nunc venenatis felis porttitor mattis eu at dolor. Etiam tristique dignissim dui, a vulputate diam volutpat eu.',
+    noWA: '085800262606',
   },
   {
     id: '11',
@@ -87,6 +97,7 @@ const products = [
     category: 'makanan & minuman',
     price: '2.100.000',
     description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras sit amet eros commodo, imperdiet enim sed, posuere lacus. Praesent semper justo eu ligula varius tincidunt. Nunc faucibus magna mi. Integer eu fringilla lorem, et faucibus lorem. Suspendisse tellus lacus, elementum vel tristique nec, scelerisque sed enim. Suspendisse vehicula auctor sagittis. Morbi nec nunc venenatis felis porttitor mattis eu at dolor. Etiam tristique dignissim dui, a vulputate diam volutpat eu.',
+    noWA: '085800262606',
   },
   {
     id: '12',
@@ -95,6 +106,7 @@ const products = [
     category: 'hobi',
     price: '4.000.000',
     description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras sit amet eros commodo, imperdiet enim sed, posuere lacus. Praesent semper justo eu ligula varius tincidunt. Nunc faucibus magna mi. Integer eu fringilla lorem, et faucibus lorem. Suspendisse tellus lacus, elementum vel tristique nec, scelerisque sed enim. Suspendisse vehicula auctor sagittis. Morbi nec nunc venenatis felis porttitor mattis eu at dolor. Etiam tristique dignissim dui, a vulputate diam volutpat eu.',
+    noWA: '085800262606',
   },
 ];
 
