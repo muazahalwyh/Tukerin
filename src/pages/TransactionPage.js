@@ -20,8 +20,8 @@ function TransactionPage({ productDiajukan, setProductDiajukan, productDitawar }
         <div className="transaction-page__container">
           <h2>Pending</h2>
           <TransactionPending
-            productDiajukan={productDiajukan}
-            productDitawar={productDitawar}
+            productDiajukan={productDiajukanPending}
+            productDitawar={productDitawarPending}
           />
           <h2>Berlangsung</h2>
           <TransactionTakesPlace
