@@ -54,9 +54,8 @@
   }
   
   .Barang-saya_item__body-image {
-    border: 1px solid black;
     width: 50%;
-    padding: 12px;
+    border-radius: 10px;
   }
 
   .Barang-saya_itemful{
@@ -104,18 +103,20 @@
     margin-bottom: 50px;
   }
 
-  @media screen and (max-width: 650px) {
+  @media screen and (max-width: 1000px) {
     .barang-saya_container {
-      width: 80%;
+      width: 70%;
+    }
+  }
+
+  @media screen and (max-width: 750px) {
+    .barang-saya_container {
+      width: 100%;
       margin-top: 20px;
     }
   }
 
   @media screen and (max-width: 550px) {
-    .barang-saya_container {
-      width: 150%;
-    }
-
     .hapus-btn{
       margin-left: auto;
       max-width: 100px;
@@ -124,10 +125,6 @@
       border-radius: 5px;
       border: 1px solid #386159;
       cursor: pointer;
-    }
-  
-    .Barang-saya_item {
-      margin: 20px 20px;
     }
   }
 
