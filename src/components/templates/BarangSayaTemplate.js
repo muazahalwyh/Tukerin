@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 function BarangSayaTemplate({
-  // eslint-disable-next-line no-unused-vars
   id, name, image, description, price, category,
 }) {
   const myProducts = JSON.parse(localStorage.getItem('MY_PRODUCTS'));
