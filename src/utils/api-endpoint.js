@@ -1,3 +1,5 @@
+import { toast } from 'react-toastify';
+
 const BASE_URL = 'https://contact-api.dicoding.dev/v1';
 
 function getAccessToken() {
@@ -28,9 +30,11 @@ async function login({ email, password }) {
   });
 
   const responseJson = await response.json();
+  // eslint-disable-next-line no-undef
+  console.log(responseJson.message);
 
   if (responseJson.status !== 'success') {
-    alert(responseJson.message);
+    toast.error(responseJson.message);
     return { error: true, data: null };
   }
 
@@ -49,7 +53,7 @@ async function register({ name, email, password }) {
   const responseJson = await response.json();
 
   if (responseJson.status !== 'success') {
-    alert(responseJson.message);
+    toast.error(responseJson.message);
     return { error: true };
   }
 

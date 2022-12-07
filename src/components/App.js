@@ -21,6 +21,7 @@ import RegisterPage from '../pages/RegisterPage';
 import LoginPage from '../pages/LoginPage';
 import AboutPage from '../pages/AboutPage';
 import FAQpage from '../pages/FAQpage';
+// import ContactForm from '../pages/HubungiKami';
 // Kategori
 import {
   Elektronik, FashionWanita, FashionPria, FashionAnak, MakananMinuman, Kecantikan, Hobi,
@@ -31,7 +32,7 @@ import TransactionPage from '../pages/TransactionPage';
 import MyAccount from '../pages/MyAccountPage';
 import BarangSayaPage from '../pages/BarangSayaPage';
 import AddAkun from '../pages/AddAkun';
-import ProfilNav from './ProfilNav';
+// import ProfilNav from './ProfilNav';
 import UserList from './UserList';
 import EditUser from './EditUser';
 // Styles
@@ -47,6 +48,9 @@ import { FaCopyright } from 'react-icons/fa';
 import { CgProfile } from 'react-icons/cg';
 import { GoThreeBars } from 'react-icons/go';
 import { GrClose } from 'react-icons/gr';
+
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
   // useref untuk drawer hamburger
@@ -68,7 +72,7 @@ function App() {
   const [activeHam, setActiveHam] = useState(false);
 
   // showprof untuk menu profil saat responsif
-  const [showProf, setShowProf] = useState(false);
+  // const [showProf, setShowProf] = useState(false);
 
   const [searchParams, setSearchParams] = useSearchParams();
   const [keyword, setKeyword] = useState(() => searchParams.get('keywordSearch') || '');
@@ -85,10 +89,10 @@ function App() {
     setActiveHam(!activeHam);
   };
 
-  // untuk menu profil saat responsif
-  const closeProf = () => {
-    setShowProf(!showProf);
-  };
+  // // untuk menu profil saat responsif
+  // const closeProf = () => {
+  //   setShowProf(!showProf);
+  // };
 
   const onLoginSuccess = async ({ accessToken }) => {
     putAccessToken(accessToken);
@@ -152,6 +156,18 @@ function App() {
       // eslint-disable-next-line max-len
       // eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions
       <div className="app-container">
+        <ToastContainer
+          position="top-center"
+          autoClose={2500}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="light"
+        />
         <header>
           <nav className="menu">
             <ul>
@@ -190,8 +206,8 @@ function App() {
             <nav>
               <ul>
                 <li><a href="/">Beranda</a></li>
-                <li><a href="/">Tentang Kami</a></li>
-                <li><a href="/">Hubungi Kami</a></li>
+                <li><a href="/about">Tentang Kami</a></li>
+                <li><a href="/FAQ">FAQ</a></li>
               </ul>
             </nav>
             <div className="header-main-dropdown">
@@ -267,6 +283,18 @@ function App() {
     // eslint-disable-next-line max-len
     // eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions
     <div className="app-container">
+      <ToastContainer
+        position="top-center"
+        autoClose={2500}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+      />
       <header>
         <nav className="menu">
           <ul>
@@ -318,34 +346,10 @@ function App() {
             <nav>
               <ul>
                 <li><a href="/">Beranda</a></li>
-                <li><a href="/">Tentang Kami</a></li>
-                <li><a href="/">Hubungi Kami</a></li>
+                <li><a href="/about">Tentang Kami</a></li>
+                <li><a href="/FAQ">FAQ</a></li>
               </ul>
             </nav>
-            <div className="header-main-dropdown">
-              <div className="authentication-button">
-                <div className="profile-icon">
-                  <div className={showProf ? 'prof active-prof' : 'prof'} onClick={closeProf}>
-                    {showProf ? (
-                      <>
-                        <CgProfile className="profile-icon__icon" />
-                        {' '}
-                        <p>{authedUser}</p>
-                      </>
-                    ) : (
-                      <>
-                        <CgProfile className="profile-icon__icon" />
-                        {' '}
-                        <p>{authedUser}</p>
-                      </>
-                    )}
-                  </div>
-                  {showProf && (
-                    <ProfilNav />
-                  )}
-                </div>
-              </div>
-            </div>
           </div>
         )}
       </header>
@@ -374,6 +378,7 @@ function App() {
           <Route path="/barang-saya" element={<BarangSayaPage myProduct={myProduct} setMyProduct={setMyProduct} />} />
           <Route path="/about" element={<AboutPage />} />
           <Route path="/FAQ" element={<FAQpage />} />
+          {/* <Route path="/hubungi" element={<ContactForm />} /> */}
         </Routes>
       </main>
       <footer>

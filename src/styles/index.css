@@ -53,6 +53,12 @@ nav ul li a{
   color: white;
 }
 
+nav ul li a:hover{
+  color: #b96618;
+  font-weight: bold;
+  text-decoration: none;
+}
+
 .menu {
   display: none;
 }
@@ -377,7 +383,9 @@ footer ul li a{
 }
 
 footer ul li a:hover{
-  color: #FF9F45;
+  color: #b96618;
+  font-weight: bold;
+  text-decoration: none;
 }
 
 .usefull-links, .ikuti-kami {

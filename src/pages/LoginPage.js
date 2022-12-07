@@ -6,12 +6,16 @@ import { Link } from 'react-router-dom';
 import LoginInput from '../components/LoginInput';
 import { login } from '../utils/api-endpoint';
 import brandTukerin from '../images/brand-tukerin.png';
+// eslint-disable-next-line import/order
+import { toast } from 'react-toastify';
 
 function LoginPage({ loginSuccess }) {
   async function onLogin({ email, password }) {
     const { error, data } = await login({ email, password });
+    console.log(data);
 
     if (!error) {
+      toast.success('Login berhasil !');
       loginSuccess(data);
     }
   }

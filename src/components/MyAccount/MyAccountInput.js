@@ -2,8 +2,10 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { useNavigate } from 'react-router-dom';
 import { AiOutlinePlus } from 'react-icons/ai';
+// import { toast } from 'react-toastify';
 import useInput from '../../hooks/useInput';
-
+// eslint-disable-next-line import/order
+import { toast } from 'react-toastify';
 // eslint-disable-next-line no-unused-vars
 function MyAccountInput({ prevState, setState }) {
   const [image, setImage] = useState([]);
@@ -14,12 +16,18 @@ function MyAccountInput({ prevState, setState }) {
 
   const navigate = useNavigate();
 
+  console.log(name);
+  // eslint-disable-next-line no-unused-vars
+  const session = localStorage.getItem('MY_PROFILE');
+  console.log(session);
+
   const onSubmit = (e) => {
     e.preventDefault();
     setState([{
       image, name, email, alamat, noHp,
     }]);
     navigate('/profile');
+    toast.success('Perubahan data success!');
   };
 
   const handleImage = (e) => {
@@ -31,7 +39,7 @@ function MyAccountInput({ prevState, setState }) {
   return (
     <form className="add-akun__input" onSubmit={onSubmit}>
       <div className="input-image">
-        <input type="file" onChange={handleImage} src={image} />
+        <input type="file" onChange={handleImage} src={image} required />
         <AiOutlinePlus className="icon-add" />
       </div>
       <h4>Nama</h4>
@@ -40,6 +48,7 @@ function MyAccountInput({ prevState, setState }) {
         placeholder="Nama Lengkap"
         value={name}
         onChange={handleNameChange}
+        required=""
       />
       <br />
       <h4>Email</h4>
@@ -48,6 +57,7 @@ function MyAccountInput({ prevState, setState }) {
         placeholder="Email"
         value={email}
         onChange={handleEmailChange}
+        required=""
       />
       <br />
       <h4>Alamat</h4>
@@ -56,6 +66,7 @@ function MyAccountInput({ prevState, setState }) {
         placeholder="Alamat"
         value={alamat}
         onChange={handleAlamatChange}
+        required=""
       />
       <br />
       <h4>No.Hp</h4>
@@ -64,6 +75,7 @@ function MyAccountInput({ prevState, setState }) {
         placeholder="Nomor Hp"
         value={noHp}
         onChange={handleNoHpChange}
+        required=""
       />
       <br />
       <button type="submit" className="add-akun__action">Simpan Perubahan</button>
