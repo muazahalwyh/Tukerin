@@ -7,7 +7,7 @@ import Popup from 'reactjs-popup';
 import TransactionPopup from '../pop-up/TransactionPopup';
 
 function BarangDiajukan({
-  id, image, name, description, price, productDiajukan, productDitawar,
+  id, image, name, description, price, productDiajukan, productDitawar, idProductDitawar,
 }) {
   function onTerima(idProduct) {
     productDiajukan.forEach((obj) => {
@@ -19,9 +19,18 @@ function BarangDiajukan({
     });
 
     productDitawar.forEach((obj) => {
-      obj.status = 'selesai';
+      if (obj.id === idProductDitawar) {
+        obj.status = 'selesai';
+      }
       localStorage.setItem('PRODUCT_DITAWAR', [JSON.stringify(productDitawar)]);
     });
+  }
+  function onDelete(idProduct) {
+    productDiajukan.splice(productDiajukan.findIndex((product) => product.id === idProduct), 1);
+    localStorage.setItem('PRODUCT_DIAJUKAN', JSON.stringify(productDiajukan));
+    // eslint-disable-next-line max-len
+    productDitawar.splice(productDitawar.findIndex((product) => product.id === idProductDitawar), 1);
+    localStorage.setItem('PRODUCT_DITAWAR', JSON.stringify(productDitawar));
   }
   return (
     <div className="barang-diajukan">
@@ -48,7 +57,7 @@ function BarangDiajukan({
           type="submit" className="button-accept">Terima</button>}>
             <TransactionPopup />
           </Popup> */}
-          <button type="submit" className="button-reject">Tolak</button>
+          <button onClick={() => onDelete(id)} type="submit" className="button-reject">Tolak</button>
         </div>
       </div>
     </div>
@@ -63,6 +72,7 @@ BarangDiajukan.propTypes = {
   price: PropTypes.string.isRequired,
   productDiajukan: PropTypes.arrayOf(PropTypes.object).isRequired,
   productDitawar: PropTypes.arrayOf(PropTypes.object).isRequired,
+  idProductDitawar: PropTypes.string.isRequired,
 };
 
 export default BarangDiajukan;

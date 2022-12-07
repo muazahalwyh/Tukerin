@@ -4,8 +4,12 @@ import PropTypes from 'prop-types';
 import { FaWhatsapp } from 'react-icons/fa';
 
 function BarangDitawar({
-  image, name, description, price, noWA,
+  id, image, name, description, price, noWA, setIdProductDitawar,
 }) {
+  async function setId() {
+    await setIdProductDitawar(id);
+  }
+  setId();
   return (
     <div className="barang-ditawar">
       <div className="transaction-item__header">
@@ -38,11 +42,13 @@ function BarangDitawar({
 }
 
 BarangDitawar.propTypes = {
+  id: PropTypes.string.isRequired,
   image: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
   price: PropTypes.string.isRequired,
   noWA: PropTypes.string.isRequired,
+  setIdProductDitawar: PropTypes.func.isRequired,
 };
 
 export default BarangDitawar;
