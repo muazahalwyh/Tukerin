@@ -1,17 +1,20 @@
+/* eslint-disable react/prop-types */
 /* eslint-disable react/forbid-prop-types */
 import React from 'react';
 import PropTypes from 'prop-types';
 import ProductItem from '../../components/product/ProductItem';
 import '../../styles/CategoryPage.css';
 
-function Elektronik({ publishedProduct }) {
-  const filteredByCategory = publishedProduct.filter((product) => product.category === 'elektronik');
-  console.log(filteredByCategory);
-  return (
-    <div className="category-container">
-      <h2>Daftar Barang</h2>
-      <div className="category-items">
-        {
+function Elektronik({ publishedProduct, keyword }) {
+  const filteredByCategory = publishedProduct.filter((product) => product.category === 'elektronik')
+    .filter((product1) => product1.name.toLowerCase().includes(keyword.toLocaleLowerCase()));
+
+  if (filteredByCategory.length > 0) {
+    return (
+      <div className="category-container">
+        <h2>Daftar Barang</h2>
+        <div className="category-items">
+          {
           filteredByCategory.map((product) => (
             <ProductItem
               key={product.id}
@@ -24,18 +27,27 @@ function Elektronik({ publishedProduct }) {
             />
           ))
         }
+        </div>
       </div>
+    );
+  }
+  return (
+    <div className="category-container">
+      <p>Barang tidak ditemukan</p>
     </div>
   );
 }
 
-function FashionWanita({ publishedProduct }) {
-  const filteredByCategory = publishedProduct.filter((product) => product.category === 'fashion wanita');
-  return (
-    <div className="category-container">
-      <h2>Daftar Barang</h2>
-      <div className="category-items">
-        {
+function FashionWanita({ publishedProduct, keyword }) {
+  const filteredByCategory = publishedProduct.filter((product) => product.category === 'fashion wanita')
+    .filter((product1) => product1.name.toLowerCase().includes(keyword.toLocaleLowerCase()));
+
+  if (filteredByCategory.length > 0) {
+    return (
+      <div className="category-container">
+        <h2>Daftar Barang</h2>
+        <div className="category-items">
+          {
           filteredByCategory.map((product) => (
             <ProductItem
               key={product.id}
@@ -48,18 +60,27 @@ function FashionWanita({ publishedProduct }) {
             />
           ))
         }
+        </div>
       </div>
+    );
+  }
+  return (
+    <div className="category-container">
+      <p>Barang tidak ditemukan</p>
     </div>
   );
 }
 
-function FashionPria({ publishedProduct }) {
-  const filteredByCategory = publishedProduct.filter((product) => product.category === 'fashion pria');
-  return (
-    <div className="category-container">
-      <h2>Daftar Barang</h2>
-      <div className="category-items">
-        {
+function FashionPria({ publishedProduct, keyword }) {
+  const filteredByCategory = publishedProduct.filter((product) => product.category === 'fashion pria')
+    .filter((product1) => product1.name.toLowerCase().includes(keyword.toLocaleLowerCase()));
+
+  if (filteredByCategory.length > 0) {
+    return (
+      <div className="category-container">
+        <h2>Daftar Barang</h2>
+        <div className="category-items">
+          {
           filteredByCategory.map((product) => (
             <ProductItem
               key={product.id}
@@ -72,18 +93,27 @@ function FashionPria({ publishedProduct }) {
             />
           ))
         }
+        </div>
       </div>
+    );
+  }
+  return (
+    <div className="category-container">
+      <p>Barang tidak ditemukan</p>
     </div>
   );
 }
 
-function FashionAnak({ publishedProduct }) {
-  const filteredByCategory = publishedProduct.filter((product) => product.category === 'fashion anak');
-  return (
-    <div className="category-container">
-      <h2>Daftar Barang</h2>
-      <div className="category-items">
-        {
+function FashionAnak({ publishedProduct, keyword }) {
+  const filteredByCategory = publishedProduct.filter((product) => product.category === 'fashion anak')
+    .filter((product1) => product1.name.toLowerCase().includes(keyword.toLocaleLowerCase()));
+
+  if (filteredByCategory.length > 0) {
+    return (
+      <div className="category-container">
+        <h2>Daftar Barang</h2>
+        <div className="category-items">
+          {
           filteredByCategory.map((product) => (
             <ProductItem
               key={product.id}
@@ -96,18 +126,27 @@ function FashionAnak({ publishedProduct }) {
             />
           ))
         }
+        </div>
       </div>
+    );
+  }
+  return (
+    <div className="category-container">
+      <p>Barang tidak ditemukan</p>
     </div>
   );
 }
 
-function MakananMinuman({ publishedProduct }) {
-  const filteredByCategory = publishedProduct.filter((product) => product.category === 'makanan & minuman');
-  return (
-    <div className="category-container">
-      <h2>Daftar Barang</h2>
-      <div className="category-items">
-        {
+function MakananMinuman({ publishedProduct, keyword }) {
+  const filteredByCategory = publishedProduct.filter((product) => product.category === 'makanan & minuman')
+    .filter((product1) => product1.name.toLowerCase().includes(keyword.toLocaleLowerCase()));
+
+  if (filteredByCategory.length > 0) {
+    return (
+      <div className="category-container">
+        <h2>Daftar Barang</h2>
+        <div className="category-items">
+          {
           filteredByCategory.map((product) => (
             <ProductItem
               key={product.id}
@@ -120,18 +159,27 @@ function MakananMinuman({ publishedProduct }) {
             />
           ))
         }
+        </div>
       </div>
+    );
+  }
+  return (
+    <div className="category-container">
+      <p>Barang tidak ditemukan</p>
     </div>
   );
 }
 
-function Kecantikan({ publishedProduct }) {
-  const filteredByCategory = publishedProduct.filter((product) => product.category === 'kecantikan');
-  return (
-    <div className="category-container">
-      <h2>Daftar Barang</h2>
-      <div className="category-items">
-        {
+function Kecantikan({ publishedProduct, keyword }) {
+  const filteredByCategory = publishedProduct.filter((product) => product.category === 'kecantikan')
+    .filter((product1) => product1.name.toLowerCase().includes(keyword.toLocaleLowerCase()));
+
+  if (filteredByCategory.length > 0) {
+    return (
+      <div className="category-container">
+        <h2>Daftar Barang</h2>
+        <div className="category-items">
+          {
           filteredByCategory.map((product) => (
             <ProductItem
               key={product.id}
@@ -144,18 +192,27 @@ function Kecantikan({ publishedProduct }) {
             />
           ))
         }
+        </div>
       </div>
+    );
+  }
+  return (
+    <div className="category-container">
+      <p>Barang tidak ditemukan</p>
     </div>
   );
 }
 
-function Hobi({ publishedProduct }) {
-  const filteredByCategory = publishedProduct.filter((product) => product.category === 'Hobi');
-  return (
-    <div className="category-container">
-      <h2>Daftar Barang</h2>
-      <div className="category-items">
-        {
+function Hobi({ publishedProduct, keyword }) {
+  const filteredByCategory = publishedProduct.filter((product) => product.category === 'Hobi')
+    .filter((product1) => product1.name.toLowerCase().includes(keyword.toLocaleLowerCase()));
+
+  if (filteredByCategory.length > 0) {
+    return (
+      <div className="category-container">
+        <h2>Daftar Barang</h2>
+        <div className="category-items">
+          {
           filteredByCategory.map((product) => (
             <ProductItem
               key={product.id}
@@ -168,7 +225,13 @@ function Hobi({ publishedProduct }) {
             />
           ))
         }
+        </div>
       </div>
+    );
+  }
+  return (
+    <div className="category-container">
+      <p>Barang tidak ditemukan</p>
     </div>
   );
 }

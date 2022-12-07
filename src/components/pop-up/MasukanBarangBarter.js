@@ -63,7 +63,7 @@ function MasukanBarangBarter({
           product.status = 'pending';
         }
         return product.id === id;
-      })]);
+      })[0]]);
     }
     navigate('/transaction');
   };

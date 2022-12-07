@@ -11,7 +11,6 @@ function AjukanBarterButton({
   id, filteredProducts, productDiajukan, productDitawar, setProductDiajukan, setProductDitawar,
 }) {
   const user = localStorage.getItem('AUTHED_USER');
-  console.log(user);
 
   if (user === null) {
     return (

@@ -18,6 +18,11 @@ h2 {
   font-weight: 550;
 }
 
+a:hover {
+  color: #FF9F45;
+  text-decoration:none;
+}
+
 /* HEADER */
 
 header {
@@ -54,9 +59,11 @@ nav ul li a{
 }
 
 nav ul li a:hover{
-  color: #b96618;
+  /* color: #b96618; */
   font-weight: bold;
   text-decoration: none;
+  color: #386159;
+  transition-duration: 0.2s;
 }
 
 .menu {
@@ -263,7 +270,7 @@ header .authentication-button button{
   .login-page{
       flex-direction: column;
       height: 750px;
-      width: 95%;
+      width: 80%;
   }
 
   .container-img{
@@ -338,7 +345,7 @@ header .authentication-button button{
 
 @media screen and (max-width: 650px) {
   .register-page {
-      width: 95%;
+    width: 80%;
   }
 }
 
@@ -403,6 +410,16 @@ footer ul li a:hover{
 .usefull-links a, .ikuti-kami a {
   font-weight: 500;
   color: #386159;
+}
+
+.usefull-links a:hover {
+  font-weight: 550;
+  transition-duration: 0.2s;
+}
+
+.ikuti-kami a:hover {
+  color: #ffffff;
+  transition-duration: 0.3s;
 }
 
 .usefull-links ul, .ikuti-kami ul {

@@ -256,7 +256,8 @@ div.prof {
   
 } */
 
-@media screen and (max-width: 650px) {
+@media screen and (max-width: 750px) {
+
   .header-main-login .search-bar{
     display: none;
   }
@@ -291,6 +292,7 @@ div.prof {
 
   .header-main-login{
     padding: 30px;
+    justify-content: space-around;
   }
 
   header div .search-bar input {
@@ -471,5 +473,15 @@ div.prof {
 
   .nav-dropdown-login {
     display: none;
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .search-bar {
+    width: 50%;
+  }
+
+  header div {
+    justify-content: center;
   }
 }

@@ -2,6 +2,13 @@ import React from 'react';
 import ProductItem from './product/ProductItem';
 
 function Recommendation(filteredProducts) {
+  if (filteredProducts.filteredProducts.length <= 0) {
+    return (
+      <div>
+        <p>Barang tidak ditemukan</p>
+      </div>
+    );
+  }
   return (
     <div className="recommendations">
       {

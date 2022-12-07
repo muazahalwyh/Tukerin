@@ -171,11 +171,16 @@
 
   .button-tochat {
     padding: 10px;
+    text-align: center;
     border-radius: 10px;
     background-color: #386159;
     border: 1px solid black;
     color: white;
     cursor: pointer;
+  }
+
+  .button-tochat:hover {
+    color: white;
   }
   
   .button-pending {
