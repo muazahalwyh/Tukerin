@@ -4,15 +4,17 @@ Capstone Project
 Tukerin adalah aplikasi barter
 
 fitur yang belum selesai :
-1. Kategori
-2. Notifikasi
-3. Profile
-4. Delete product
-5. Hubungi pemilik
-6. Membedakan tampilan page transaksi untuk pemilik dan penawar barang
+1. Membedakan tampilan page transaksi untuk pemilik dan penawar barang
 
 list bug :
-1. Logout
-2. File image belum bisa tampil karena masih bentuk url blob
-3. Transaksi, harusnya misal produk pertama masuk ke page transaksi itu status nya "pending" tapi sekarang langsung "selesai".
+1. File image belum bisa tampil karena masih bentuk url blob
+2. Item product ditawar tidak mau hilang
 
+Project Resources:
+1. Bahasa Pemrograman: Javascript, Node js
+2. Bahasa Markup: HTML
+3. Bahasa Style Sheet: CSS
+4. Framework: Bootstrap
+5. Library: React
+6. Tools: npm, Github
+7. API: https://contact-api.dicoding.dev/v1
