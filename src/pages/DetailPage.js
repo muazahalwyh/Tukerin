@@ -8,7 +8,8 @@ import PropTypes from 'prop-types';
 import ProductDetail from '../components/product/ProductDetail';
 
 function DetailPage({
-  filteredProducts, productDiajukan, setProductDiajukan, productDitawar, setProductDitawar,
+  filteredProducts, productDiajukan, setProductDiajukan,
+  productDitawar, setProductDitawar, authedUser,
 }) {
   const { id } = useParams();
   return (
@@ -20,6 +21,7 @@ function DetailPage({
         productDitawar={productDitawar}
         setProductDiajukan={setProductDiajukan}
         setProductDitawar={setProductDitawar}
+        authedUser={authedUser}
       />
     </section>
   );
@@ -31,6 +33,7 @@ DetailPage.propTypes = {
   setProductDiajukan: PropTypes.func,
   productDitawar: PropTypes.arrayOf(PropTypes.object),
   setProductDitawar: PropTypes.func,
+  authedUser: PropTypes.string,
 };
 
 export default DetailPage;

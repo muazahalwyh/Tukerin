@@ -8,11 +8,11 @@ import SilahkanLogin from '../pop-up/SilahkanLogin';
 import MasukanBarangBarter from '../pop-up/MasukanBarangBarter';
 
 function AjukanBarterButton({
-  id, filteredProducts, productDiajukan, productDitawar, setProductDiajukan, setProductDitawar,
+  id, filteredProducts, productDiajukan, productDitawar, setProductDiajukan, setProductDitawar, authedUser,
 }) {
-  const user = localStorage.getItem('AUTHED_USER');
+  console.log(authedUser);
 
-  if (user === null) {
+  if (authedUser === null) {
     return (
       <Popup trigger={<button className="ajukan-barter" type="button">Ajukan Barter</button>}>
         <SilahkanLogin />
@@ -40,6 +40,7 @@ AjukanBarterButton.propTypes = {
   productDiajukan: PropTypes.arrayOf(PropTypes.object),
   setProductDiajukan: PropTypes.func,
   setProductDitawar: PropTypes.func,
+  authedUser: PropTypes.string,
 };
 
 export default AjukanBarterButton;

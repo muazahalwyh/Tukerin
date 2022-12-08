@@ -47,7 +47,9 @@ function MyAccount({ myProfile, setMyProfile }) {
             <h1>Akun Saya</h1>
             <div className="profile-saya">
               <div className="myaccount-header">
-                <img className="myaccount-image" alt="foto profil" />
+                <div className="myaccount-image">
+                  <img alt="foto profil" />
+                </div>
                 <div className="myaccount-info">
                   <h5>Nama Lengkap</h5>
                   <p className="nama">Nama Lengkap</p>
