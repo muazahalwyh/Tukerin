@@ -22,17 +22,27 @@ function MyAccountInput({ prevState, setState }) {
     navigate('/profile');
   };
 
-  const handleImage = (e) => {
-    console.log(e.target.files[0]);
-    const upload = e.target.files[0];
-    setImage(URL.createObjectURL(upload));
+  const clickFile = (e) => {
+    setImage(URL.createObjectURL(e.target.files[0]));
+
+    const inputFile = document.getElementById('input-file');
+    const imgFile = document.getElementById('img-file');
+
+    inputFile.style = 'display:none';
+    imgFile.style = 'display:block';
+    imgFile.style = 'width:85px';
+    imgFile.style = 'height:85px';
+    imgFile.src = URL.createObjectURL(e.target.files[0]);
   };
 
   return (
     <form className="add-akun__input" onSubmit={onSubmit}>
       <div className="input-image">
-        <input type="file" onChange={handleImage} src={image} />
-        <AiOutlinePlus className="icon-add" />
+        <div id="input-file">
+          <input type="file" name="input-file" onChange={clickFile} required />
+          <AiOutlinePlus className="icon-add" />
+        </div>
+        <img id="img-file" style={{ display: 'none' }} src="" alt="gambar barang" />
       </div>
       <h4>Nama</h4>
       <input
@@ -40,6 +50,7 @@ function MyAccountInput({ prevState, setState }) {
         placeholder="Nama Lengkap"
         value={name}
         onChange={handleNameChange}
+        required
       />
       <br />
       <h4>Email</h4>
@@ -48,6 +59,7 @@ function MyAccountInput({ prevState, setState }) {
         placeholder="Email"
         value={email}
         onChange={handleEmailChange}
+        required
       />
       <br />
       <h4>Alamat</h4>
@@ -56,6 +68,7 @@ function MyAccountInput({ prevState, setState }) {
         placeholder="Alamat"
         value={alamat}
         onChange={handleAlamatChange}
+        required
       />
       <br />
       <h4>No.Hp</h4>
@@ -64,6 +77,7 @@ function MyAccountInput({ prevState, setState }) {
         placeholder="Nomor Hp"
         value={noHp}
         onChange={handleNoHpChange}
+        required
       />
       <br />
       <button type="submit" className="add-akun__action">Simpan Perubahan</button>
