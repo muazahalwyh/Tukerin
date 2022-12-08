@@ -320,8 +320,8 @@ function App() {
             <nav>
               <ul>
                 <li><a href="/">Beranda</a></li>
-                <li><a href="/">Tentang Kami</a></li>
-                <li><a href="/">Hubungi Kami</a></li>
+                <li><a href="/about">Tentang Kami</a></li>
+                <li><a href="/FAQ">FAQ</a></li>
               </ul>
             </nav>
             <div className="header-main-dropdown">
