@@ -59,10 +59,10 @@ nav ul li a{
 }
 
 nav ul li a:hover{
-  /* color: #b96618; */
+  color: #b96618;
   font-weight: bold;
   text-decoration: none;
-  color: #386159;
+  /* color: #386159; */
   transition-duration: 0.2s;
 }
 

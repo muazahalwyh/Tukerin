@@ -32,7 +32,6 @@ import TransactionPage from '../pages/TransactionPage';
 import MyAccount from '../pages/MyAccountPage';
 import BarangSayaPage from '../pages/BarangSayaPage';
 import AddAkun from '../pages/AddAkun';
-// import ProfilNav from './ProfilNav';
 import UserList from './UserList';
 import EditUser from './EditUser';
 // Styles
@@ -71,9 +70,6 @@ function App() {
   // const untuk drawer hamburger;
   const [activeHam, setActiveHam] = useState(false);
 
-  // showprof untuk menu profil saat responsif
-  // const [showProf, setShowProf] = useState(false);
-
   const [searchParams, setSearchParams] = useSearchParams();
   const [keyword, setKeyword] = useState(() => searchParams.get('keywordSearch') || '');
 
@@ -88,11 +84,6 @@ function App() {
   const handleClose = () => {
     setActiveHam(!activeHam);
   };
-
-  // // untuk menu profil saat responsif
-  // const closeProf = () => {
-  //   setShowProf(!showProf);
-  // };
 
   const onLoginSuccess = async ({ accessToken }) => {
     putAccessToken(accessToken);
