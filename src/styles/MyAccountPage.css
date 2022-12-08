@@ -19,6 +19,12 @@
     border-radius: 10px;
   }
 
+  .myaccount-image img {
+    width: 100%;
+    text-align: center;
+    color: white;
+  }
+
   .profile-picture input {
     position: absolute;
     width: 85px;
