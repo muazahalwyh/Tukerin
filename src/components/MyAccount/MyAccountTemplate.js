@@ -8,7 +8,9 @@ function MyAccountTemplate({
 }) {
   return (
     <div className="myaccount-header">
-      <img className="myaccount-image" src={image} alt="foto profil" />
+      <div className="myaccount-image">
+        <img src={image} alt="foto profil" />
+      </div>
       <div className="myaccount-info">
         <h5>Nama Lengkap</h5>
         <p className="nama">{name}</p>

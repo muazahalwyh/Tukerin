@@ -18,7 +18,9 @@ function BarangSayaTemplate({
         <h3>{name}</h3>
       </div>
       <div className="Barang-saya_item__body">
-        <img className="Barang-saya_item__body-image" src={image} alt="barang-saya" />
+        <div className="Barang-saya_item__body-image">
+          <img src={image} alt="barang-saya" />
+        </div>
         <div className="Barang-saya_itemful">
           <div className="Barang-saya_item__body-deskripsi">
             <h4>

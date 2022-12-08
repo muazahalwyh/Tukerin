@@ -7,14 +7,14 @@ import BarangDitawar from './BarangDitawar';
 import BarangPending from './BarangPending';
 
 function TransactionPending({ productDiajukan, productDitawar }) {
-  if (productDiajukan != null) {
+  if (productDiajukan.length > 0) {
     return (
       <article className="transaction-item">
         <div>
           {
             productDitawar.map((product) => (
               <BarangDitawar
-                key={product.id}
+                id={product.id}
                 image={product.image}
                 name={product.name}
                 price={product.price}
@@ -28,7 +28,7 @@ function TransactionPending({ productDiajukan, productDitawar }) {
           {
             productDiajukan.map((product) => (
               <BarangPending
-                key={product.id}
+                id={product.id}
                 image={product.image}
                 name={product.name}
                 price={product.price}
@@ -43,7 +43,7 @@ function TransactionPending({ productDiajukan, productDitawar }) {
       </article>
     );
   }
-  if (productDiajukan.length === 0 && productDitawar.length === 0) {
+  if (productDiajukan.length === 0 || productDiajukan === null) {
     return (
       <p>Barang masih kosong</p>
     );

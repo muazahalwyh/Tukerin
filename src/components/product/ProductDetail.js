@@ -9,7 +9,8 @@ import HubungiPemilikButton from '../buttons/HubungiPemilikButton';
 import '../../styles/DetailPage.css';
 
 function ProductDetail({
-  id, filteredProducts, productDiajukan, productDitawar, setProductDiajukan, setProductDitawar,
+  id, filteredProducts, productDiajukan, productDitawar,
+  setProductDiajukan, setProductDitawar, authedUser,
 }) {
   const data = filteredProducts.filter((product) => product.id === id);
   const { noWA } = data[0];
@@ -42,11 +43,11 @@ function ProductDetail({
             productDitawar={productDitawar}
             setProductDiajukan={setProductDiajukan}
             setProductDitawar={setProductDitawar}
+            authedUser={authedUser}
           />
           <a href={`https://wa.me/${noWA}`} aria-label="hubungi whatsapp"><HubungiPemilikButton /></a>
         </div>
       </div>
-      {/* <div className="popup-root" /> */}
     </div>
   );
 }
@@ -58,6 +59,7 @@ ProductDetail.propTypes = {
   productDiajukan: PropTypes.arrayOf(PropTypes.object),
   setProductDiajukan: PropTypes.func,
   setProductDitawar: PropTypes.func,
+  authedUser: PropTypes.string,
 };
 
 export default ProductDetail;

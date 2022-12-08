@@ -19,6 +19,12 @@
     border-radius: 10px;
   }
 
+  .myaccount-image img {
+    max-height: 200px;
+    text-align: center;
+    border-radius: 10px;
+  }
+
   .profile-picture input {
     position: absolute;
     width: 85px;

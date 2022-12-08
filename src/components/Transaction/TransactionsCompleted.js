@@ -10,7 +10,7 @@ function TransactionCompleted({ productDiajukan }) {
   // img = URL.revokeObjectURL(productDiajukan[0].image);
   // const reader = new FileReader();
   // reader.readAsArrayBuffer(productDiajukan[0].image);
-  if (productDiajukan !== 0) {
+  if (productDiajukan.lenngth > 0) {
     return (
       <article className="transaction-item">
         {
@@ -28,11 +28,9 @@ function TransactionCompleted({ productDiajukan }) {
       </article>
     );
   }
-  if (productDiajukan.length === 0) {
-    return (
-      <p>Barang masih kosong</p>
-    );
-  }
+  return (
+    <p>Barang masih kosong</p>
+  );
 }
 
 TransactionCompleted.propTypes = {

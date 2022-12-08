@@ -75,7 +75,7 @@ function AboutPage() {
             <div className="member">
               <div className="profile-picture1"><img src={iqbal} alt="profile img" /></div>
               <div className="member-info">
-                <h3>Muhammad Iqbal Hibatullah</h3>
+                <h3>Muhammad Iqbaal Hibatullah</h3>
                 <p>R012X0099</p>
                 <p>Bandung</p>
               </div>
