@@ -20,10 +20,8 @@ function ProductInput({
 
   const navigate = useNavigate();
 
-  console.log(name);
   // eslint-disable-next-line no-unused-vars
   const session = localStorage.getItem('MY_PRODUCTS');
-  console.log(session);
 
   // const reader = new FileReader();
   // reader.readAsDataURL(image);
