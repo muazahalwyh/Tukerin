@@ -3,6 +3,7 @@
 import React, { useEffect, useState } from 'react';
 import { FaLinkedinIn, FaGithub } from 'react-icons/fa';
 import logo from '../images/brand-tukerin.png';
+import inspora from '../images/about-us-images/inspora.svg';
 import kelebihanTukerin from '../images/homepage.png';
 import '../styles/AboutPage.css';
 import Loading from '../components/Loading';
@@ -49,7 +50,7 @@ function AboutPage() {
                 diperlukan.
               </p>
             </div>
-            <div className="whyTukerin"><img src="https://inspora.com/images/inspora_hero.svg" alt="logo tukerin" /></div>
+            <div className="whyTukerin"><img src={inspora} alt="logo tukerin" /></div>
           </div>
           <div className="about-tukerin">
             <div className="kelebihanTukerin"><img src={kelebihanTukerin} alt="logo tukerin" /></div>
