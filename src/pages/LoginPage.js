@@ -12,7 +12,6 @@ import { toast } from 'react-toastify';
 function LoginPage({ loginSuccess }) {
   async function onLogin({ email, password }) {
     const { error, data } = await login({ email, password });
-    console.log(data);
 
     if (!error) {
       toast.success('Login berhasil !');
