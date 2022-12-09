@@ -31,7 +31,7 @@ async function login({ email, password }) {
 
   const responseJson = await response.json();
   // eslint-disable-next-line no-undef
-  console.log(responseJson.message);
+  // console.log(responseJson.message);
 
   if (responseJson.status !== 'success') {
     toast.error(responseJson.message);
