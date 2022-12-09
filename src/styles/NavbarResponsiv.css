@@ -336,7 +336,7 @@ div.prof {
   }
 
   div.authentication-button {
-    width: 20%;
+    /* width: 900%; */
     text-align: center;
     padding: 0px 0px;
   }
@@ -385,7 +385,12 @@ div.prof {
     width: 100%;
   } */
 
-  header div {
+  .header-main div {
     justify-content: center;
+  }
+
+  .header-main-login div {
+    justify-content: center;
+    width: 95%;
   }
 }
