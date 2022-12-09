@@ -109,6 +109,11 @@
     margin-bottom: 50px;
   }
 
+  .add-barang-saya_btn:hover{
+    color: #ed923e;
+    text-decoration: none;
+  }
+  
   @media screen and (max-width: 1000px) {
     .barang-saya_container {
       width: 70%;

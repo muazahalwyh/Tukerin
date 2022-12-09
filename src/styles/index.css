@@ -59,7 +59,10 @@ nav ul li a{
 }
 
 nav ul li a:hover{
-  color: #386159;
+  color: #b96618;
+  font-weight: bold;
+  text-decoration: none;
+  /* color: #386159; */
   transition-duration: 0.2s;
 }
 
@@ -384,6 +387,12 @@ footer ul li a{
   text-decoration: none;
   color: black;
   font-weight: bold;
+}
+
+footer ul li a:hover{
+  color: #b96618;
+  font-weight: bold;
+  text-decoration: none;
 }
 
 .usefull-links, .ikuti-kami {

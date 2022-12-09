@@ -2,8 +2,10 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { useNavigate } from 'react-router-dom';
 import { AiOutlinePlus } from 'react-icons/ai';
+// import { toast } from 'react-toastify';
 import useInput from '../../hooks/useInput';
-
+// eslint-disable-next-line import/order
+import { toast } from 'react-toastify';
 // eslint-disable-next-line no-unused-vars
 function MyAccountInput({ prevState, setState }) {
   const [image, setImage] = useState([]);
@@ -14,12 +16,18 @@ function MyAccountInput({ prevState, setState }) {
 
   const navigate = useNavigate();
 
+  console.log(name);
+  // eslint-disable-next-line no-unused-vars
+  const session = localStorage.getItem('MY_PROFILE');
+  console.log(session);
+
   const onSubmit = (e) => {
     e.preventDefault();
     setState([{
       image, name, email, alamat, noHp,
     }]);
     navigate('/profile');
+    toast.success('Perubahan data success!');
   };
 
   const clickFile = (e) => {

@@ -32,13 +32,6 @@ MyAccountTemplate.propTypes = {
   image: PropTypes.arrayOf(PropTypes.object).isRequired,
   alamat: PropTypes.string.isRequired,
   noHp: PropTypes.string.isRequired,
-
-//   name: PropTypes.string.isRequired,
-//   price: PropTypes.string.isRequired,
-//   // eslint-disable-next-line react/forbid-prop-types
-//   image: PropTypes.arrayOf(PropTypes.object).isRequired,
-//   description: PropTypes.string.isRequired,
-//   category: PropTypes.string.isRequired,
 };
 
 export default MyAccountTemplate;

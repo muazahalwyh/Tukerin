@@ -6,6 +6,8 @@ import { useNavigate } from 'react-router-dom';
 import { AiOutlinePlus } from 'react-icons/ai';
 import useInput from '../hooks/useInput';
 // import { addProduct } from '../utils/data/local-data';
+// eslint-disable-next-line import/order
+import { toast } from 'react-toastify';
 
 function ProductInput({
   publishedProducts, setPublishedProducts, prevBarangSaya, setBarangSaya, noWA,
@@ -17,6 +19,9 @@ function ProductInput({
   const [description, handleDescriptionChange] = useInput('');
 
   const navigate = useNavigate();
+
+  // eslint-disable-next-line no-unused-vars
+  const session = localStorage.getItem('MY_PRODUCTS');
 
   // const reader = new FileReader();
   // reader.readAsDataURL(image);
@@ -35,6 +40,7 @@ function ProductInput({
       id: Date.now().toString(), name, price, description, image, category, noWA,
     }]);
     navigate('/barang-saya');
+    toast.success('Barang Telah diTambahkan !');
   };
 
   // const handleImage = (e) => {
