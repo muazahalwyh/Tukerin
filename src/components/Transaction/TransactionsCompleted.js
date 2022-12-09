@@ -10,7 +10,7 @@ function TransactionCompleted({ productDiajukan }) {
   // img = URL.revokeObjectURL(productDiajukan[0].image);
   // const reader = new FileReader();
   // reader.readAsArrayBuffer(productDiajukan[0].image);
-  if (productDiajukan.lenngth > 0) {
+  if (productDiajukan.length > 0) {
     return (
       <article className="transaction-item">
         {
