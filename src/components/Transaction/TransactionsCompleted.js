@@ -10,12 +10,10 @@ function TransactionCompleted({ productDiajukan }) {
   // img = URL.revokeObjectURL(productDiajukan[0].image);
   // const reader = new FileReader();
   // reader.readAsArrayBuffer(productDiajukan[0].image);
-  console.log(productDiajukan);
-  if (productDiajukan !== 0) {
+  if (productDiajukan.length > 0) {
     return (
       <article className="transaction-item">
-        <div>
-          {
+        {
             productDiajukan.map((product) => (
               <BarangSelesai
                 key={product.id}
@@ -27,15 +25,12 @@ function TransactionCompleted({ productDiajukan }) {
               />
             ))
           }
-        </div>
       </article>
     );
   }
-  if (productDiajukan.length === 0) {
-    return (
-      <p>Barang masih kosong</p>
-    );
-  }
+  return (
+    <p>Barang masih kosong</p>
+  );
 }
 
 TransactionCompleted.propTypes = {
@@ -43,37 +38,3 @@ TransactionCompleted.propTypes = {
 };
 
 export default TransactionCompleted;
-
-// if (productDiajukan === null) {
-//   return (
-//     <p>Barang masih kosong</p>
-//   );
-// }
-// return (
-//   <article className="transaction-item">
-//     <div className="barang-ditawar">
-//       <div className="transaction-item__header">
-//         <h3>Barang yang ditawar</h3>
-//       </div>
-//       <div className="transaction-item__body-pending">
-//         <div className="img-name-price_container">
-// eslint-disable-next-line max-len
-//           <img className="transaction-item__body-image-pending" src={productDiajukan[0].image} alt="kamera" />
-//           <div>
-//             <h3>{productDiajukan[0].name}</h3>
-//             <h4>
-//               Rp
-//               {productDiajukan[0].price}
-//             </h4>
-//           </div>
-//         </div>
-//         <div className="transaction-item__body-title-pending">
-//           <p>{productDiajukan[0].description}</p>
-//         </div>
-//         <div className="transaction-item__body-action-pending">
-//           <p>Selesai</p>
-//         </div>
-//       </div>
-//     </div>
-//   </article>
-// );

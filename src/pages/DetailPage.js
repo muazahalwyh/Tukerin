@@ -1,3 +1,4 @@
+/* eslint-disable react/require-default-props */
 /* eslint-disable react/forbid-prop-types */
 /* eslint-disable react/jsx-props-no-spreading */
 /* eslint-disable react/destructuring-assignment */
@@ -7,10 +8,10 @@ import PropTypes from 'prop-types';
 import ProductDetail from '../components/product/ProductDetail';
 
 function DetailPage({
-  filteredProducts, productDiajukan, setProductDiajukan, productDitawar, setProductDitawar,
+  filteredProducts, productDiajukan, setProductDiajukan,
+  productDitawar, setProductDitawar, authedUser,
 }) {
   const { id } = useParams();
-
   return (
     <section>
       <ProductDetail
@@ -20,35 +21,19 @@ function DetailPage({
         productDitawar={productDitawar}
         setProductDiajukan={setProductDiajukan}
         setProductDitawar={setProductDitawar}
+        authedUser={authedUser}
       />
     </section>
   );
 }
 
 DetailPage.propTypes = {
-  filteredProducts: PropTypes.arrayOf(PropTypes.object).isRequired,
-  productDiajukan: PropTypes.arrayOf(PropTypes.object).isRequired,
-  setProductDiajukan: PropTypes.func.isRequired,
-  productDitawar: PropTypes.arrayOf(PropTypes.object).isRequired,
-  setProductDitawar: PropTypes.func.isRequired,
+  filteredProducts: PropTypes.arrayOf(PropTypes.object),
+  productDiajukan: PropTypes.arrayOf(PropTypes.object),
+  setProductDiajukan: PropTypes.func,
+  productDitawar: PropTypes.arrayOf(PropTypes.object),
+  setProductDitawar: PropTypes.func,
+  authedUser: PropTypes.string,
 };
 
 export default DetailPage;
-
-// const arrProductDitawar = filteredProducts.filter((productt) => productt.id === id);
-// console.log(arrProductDitawar);
-// const objProductDitawar = arrProductDitawar.map((productt) => productt[0]);
-// console.log(objProductDitawar);
-// useEffect(() => {
-//   if (productDitawar === null) {
-//     eslint-disable-next-line max-len
-//     setProductDitawar(filteredProducts.filter((productt) => productt.id === id));
-//   }
-//   if (productDitawar != null) {
-//   eslint-disable-next-line max-len
-//     setProductDitawar([filteredProducts.filter((productt) => productt.id === id), ...productDitawar]);
-//   }
-// }, []);
-// if (productDitawar === null) {
-//   return <p>Product tidak ditemukan</p>;
-// }

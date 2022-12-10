@@ -1,20 +1,132 @@
-.about-tukerin {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin: 20px auto;
+.about {
+    box-sizing: border-box;
+    margin-top: 50px;
 }
 
-.about-tukerin img {
-    margin: 40px auto;
-    box-shadow: 4px 4px 8px 0 rgba(0, 0, 0, 0.2);
-    min-width: 100px;
-    min-height: 100px;
-    padding: 10px 30px;
-}
-.about-tukerin p {
+.about h1 {
+    font-weight: 550;
+    margin: auto;
+    padding-bottom: 20px;
     text-align: center;
-    width: 40%;
+    width: 80%;
+    border-bottom: 2px solid #255925;
+}
+
+.about-tukerin {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+    height: 25vw;
+    max-width: 80%;
+    gap: 40px;
+}
+
+.logo-about, .whyTukerin, .kelebihanTukerin {
+    display: flex;
+    flex: 1;
+}
+
+.logo-about img, .whyTukerin img {
+    margin: auto;
+    max-width: 400px;
+}
+
+.logo-about img:hover, .whyTukerin img:hover, .kelebihanTukerin img:hover {
+    transition-duration: 0.3s;
+    transition-timing-function: linear;
+    transition-delay: 0s;
+    transition-property: all;
+    transform: scale(1.25);
+}
+
+.pengertian {
+    flex: 1;
+}
+
+.kelebihanTukerin img {
+    max-width: 450px;
+    border-radius: 10px;
+    box-shadow: 4px 4px 8px 4px rgba(0, 0, 0, 0.2); 
+}
+
+/* TEAM INFORMATION */
+.container-team {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 20px 0;
+    margin-bottom: 40px;
+}
+
+.member {
+    text-align: left;
+    padding: 20px;
+}
+
+.profile-picture1 img {
+    width: 300px;
+    height: 300px;
+    margin-bottom: 20px;
+}
+
+.profile-picture1 img:hover {
+    transition-duration: 0.3s;
+    transition-timing-function: linear;
+    transition-delay: 0s;
+    transition-property: all;
+    transform: scale(1.1);
+}
+
+.member-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+}
+
+.member-info h3 {
+    font-size: 20px;
+    font-weight: 600;
+}
+.member-info h3:hover {
+    transition-duration: 0.3s;
+    transition-timing-function: linear;
+    transition-delay: 0s;
+    transition-property: all;
+    transform: scale(1.1);
+}
+.member-info p {
+    margin-bottom: 0.5rem;
+}
+
+.social-media {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    gap: 10px;
+}
+
+.social-media a {
+    display: flex;
+    min-height: 30px;
+    min-width: 30px;
+    color: #212529;
+    margin-top: 20px;
+}
+
+.social-media a svg {
+    padding-left: 0;
+    width: 100%;
+    height: auto;
+}
+
+.social-media a svg:hover {
+    transition-duration: 0.1s;
+    transition-timing-function: linear;
+    transition-delay: 0s;
+    transition-property: all;
+    transform: scale(1.1);
 }
 
 /* about team */
@@ -97,6 +209,48 @@
 .card-action a:hover{
     color: #FF9F45;
   }
+
+@media screen and (max-width: 1100px) {
+    .about {
+        margin-top: 20px;
+        font-size: 15px;
+    }
+    .about h1, h2 {
+        font-size: 30px;
+    }
+    .about-tukerin {
+        flex-direction: column;
+        height: auto;
+    }
+    .whyTukerin img {
+        width: 300px;
+        margin-bottom: 40px;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .about {
+        font-size: 12px;
+    }
+    .about h1, h2 {
+        font-size: 20px;
+    }
+    .about-tukerin {
+        gap: 10px;
+    }
+    .logo-about img {
+        max-width: 100px;
+        margin: 20px 0;
+    }
+    .whyTukerin img {
+        width: 200px;
+        margin-bottom: 20px;
+    }
+    .kelebihanTukerin img {
+        margin: 20px 0;
+        max-width: 200px;
+    }
+}
 
 @media screen and (min-width: 600px) {
     .card-container {

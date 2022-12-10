@@ -3,6 +3,8 @@ import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import RegisterInput from '../components/RegisterInput';
 import { register } from '../utils/api-endpoint';
+// eslint-disable-next-line import/order
+import { toast } from 'react-toastify';
 
 function RegisterPage() {
   const navigate = useNavigate();
@@ -10,6 +12,7 @@ function RegisterPage() {
   async function onRegisterHandler(user) {
     const { error } = await register(user);
     if (!error) {
+      toast.success('Daftar akun berhasil, Silahkan Login !');
       navigate('/login');
     }
   }

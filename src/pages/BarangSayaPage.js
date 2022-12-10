@@ -1,12 +1,11 @@
+/* eslint-disable react/require-default-props */
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
-// import Popup from 'reactjs-popup';
 import BarangSaya from '../components/BarangSaya';
-// import MasukanBarangBarter from '../components/pop-up/MasukanBarangBarter';
 import '../styles/BarangSaya.css';
 import Loading from '../components/Loading';
 
-function BarangSayaPage({ myProduct }) {
+function BarangSayaPage({ myProduct, setMyProduct }) {
   const [IsLoading, setIsLoading] = useState(true);
   useEffect(() => {
     setTimeout(() => {
@@ -22,7 +21,7 @@ function BarangSayaPage({ myProduct }) {
         <div className="barang-saya">
           <h1>Barang Saya</h1>
           <div className="barang-saya_container">
-            <BarangSaya barangsaya={myProduct} />
+            <BarangSaya barangsaya={myProduct} setMyProduct={setMyProduct} />
           </div>
           <a href="/add" className="add-barang-saya_btn">Tambahkan Barang Baru</a>
         </div>
@@ -33,8 +32,8 @@ function BarangSayaPage({ myProduct }) {
 
 BarangSayaPage.propTypes = {
   // eslint-disable-next-line react/forbid-prop-types
-  myProduct: PropTypes.arrayOf(PropTypes.object).isRequired,
-  // setMyProduct: PropTypes.func.isRequired,
+  myProduct: PropTypes.arrayOf(PropTypes.object),
+  setMyProduct: PropTypes.func,
 };
 
 export default BarangSayaPage;

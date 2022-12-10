@@ -1,12 +1,15 @@
-/* eslint-disable no-unused-vars */
 /* eslint-disable react/button-has-type */
 import React from 'react';
 import PropTypes from 'prop-types';
 import { FaWhatsapp } from 'react-icons/fa';
 
 function BarangDitawar({
-  id, image, name, description, price,
+  id, image, name, description, price, noWA, setIdProductDitawar,
 }) {
+  async function setId() {
+    await setIdProductDitawar(id);
+  }
+  setId();
   return (
     <div className="barang-ditawar">
       <div className="transaction-item__header">
@@ -14,7 +17,7 @@ function BarangDitawar({
       </div>
       <div className="transaction-item__body-pending">
         <div className="img-name-price_container">
-          <img className="transaction-item__body-image-pending" src="./images/gambar-kamera.jpg" alt="kamera" />
+          <img className="transaction-item__body-image-pending" src={image} alt="product" />
           <div>
             <h3>{name}</h3>
             <h4>
@@ -27,11 +30,11 @@ function BarangDitawar({
           <p>{description}</p>
         </div>
         <div className="transaction-item__body-action-pending">
-          <button className="button-tochat">
+          <a className="button-tochat" href={`https://wa.me/${noWA}`} aria-label="hubungi whatsapp">
             <span>Hubungi di</span>
             {' '}
             <FaWhatsapp />
-          </button>
+          </a>
         </div>
       </div>
     </div>
@@ -44,6 +47,8 @@ BarangDitawar.propTypes = {
   name: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
   price: PropTypes.string.isRequired,
+  noWA: PropTypes.string.isRequired,
+  setIdProductDitawar: PropTypes.func.isRequired,
 };
 
 export default BarangDitawar;

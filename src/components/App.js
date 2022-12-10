@@ -21,6 +21,7 @@ import RegisterPage from '../pages/RegisterPage';
 import LoginPage from '../pages/LoginPage';
 import AboutPage from '../pages/AboutPage';
 import FAQpage from '../pages/FAQpage';
+// import ContactForm from '../pages/HubungiKami';
 // Kategori
 import {
   Elektronik, FashionWanita, FashionPria, FashionAnak, MakananMinuman, Kecantikan, Hobi,
@@ -31,7 +32,6 @@ import TransactionPage from '../pages/TransactionPage';
 import MyAccount from '../pages/MyAccountPage';
 import BarangSayaPage from '../pages/BarangSayaPage';
 import AddAkun from '../pages/AddAkun';
-import ProfilNav from './ProfilNav';
 import UserList from './UserList';
 import EditUser from './EditUser';
 // Styles
@@ -39,15 +39,17 @@ import '../styles/App.css';
 import '../styles/AddPage.css';
 import '../styles/NavbarResponsiv.css';
 import brandTukerin from '../images/brand-tukerin.png';
-import brandTukerinFooter from '../images/tukerinn-removebg.png';
+import brandTukerinFooter from '../images/tukerin-removebg.png';
 import products from '../utils/data/products';
 // Icons
 import { BsFacebook, BsInstagram, BsTwitter } from 'react-icons/bs';
 import { FaCopyright } from 'react-icons/fa';
 import { CgProfile } from 'react-icons/cg';
-import { MdNotifications } from 'react-icons/md';
 import { GoThreeBars } from 'react-icons/go';
 import { GrClose } from 'react-icons/gr';
+
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
   // useref untuk drawer hamburger
@@ -57,10 +59,9 @@ function App() {
 
   const [publishedProducts, setPublishedProducts] = useState(JSON.parse(localStorage.getItem('PUBLISHED_PRODUCTS')) || products);
 
-  const [myProduct, setMyProduct] = useState(JSON.parse(localStorage.getItem('MY_APP_STATE')) || []);
+  const [myProduct, setMyProduct] = useState(JSON.parse(localStorage.getItem('MY_PRODUCTS')) || []);
 
-  // eslint-disable-next-line no-unused-vars
-  const [myProfil, setProfil] = useState(JSON.parse(localStorage.getItem('MY_PROFIL_STATE')) || []);
+  const [myProfile, setMyProfile] = useState(JSON.parse(localStorage.getItem('MY_PROFILE')) || []);
 
   const [productDiajukan, setProductDiajukan] = useState(JSON.parse(localStorage.getItem('PRODUCT_DIAJUKAN')) || null);
 
@@ -69,40 +70,27 @@ function App() {
   // const untuk drawer hamburger;
   const [activeHam, setActiveHam] = useState(false);
 
-  // showprof untuk menu profil saat responsif
-  const [showProf, setShowProf] = useState(false);
-
   const [searchParams, setSearchParams] = useSearchParams();
   const [keyword, setKeyword] = useState(() => searchParams.get('keywordSearch') || '');
+
+  // idb
+  // useEffect(() => {
+  //   (async () => {
+  //     await USER_DATABASE.putUser({ authedUser });
+  //   })();
+  // }, []);
 
   // fungsi untuk drawer hamburger
   const handleClose = () => {
     setActiveHam(!activeHam);
   };
 
-  // untuk menu profil saat responsif
-  const closeProf = () => {
-    setShowProf(!showProf);
-  };
-
-  // useEffect(() => {
-  //   const getUser = async () => {
-  //     const { data } = await getUserLogged();
-  //     setAuthedUser(data.name);
-  //   };
-  //   getUser();
-  // }, []);
-
   const onLoginSuccess = async ({ accessToken }) => {
     putAccessToken(accessToken);
     const { data } = await getUserLogged();
-    setAuthedUser(data.name);
-  };
-
-  const onLogout = () => {
-    // localStorage.setItem('AUTHED_USER', null);
-    setAuthedUser(null);
-    putAccessToken('');
+    // const id = Date.now().toString();
+    const { name } = data;
+    setAuthedUser(name);
   };
 
   useEffect(() => {
@@ -122,12 +110,12 @@ function App() {
   }, [productDitawar]);
 
   useEffect(() => {
-    localStorage.setItem('MY_APP_STATE', JSON.stringify(myProduct));
+    localStorage.setItem('MY_PRODUCTS', JSON.stringify(myProduct));
   }, [myProduct]);
 
   useEffect(() => {
-    localStorage.setItem('MY_Profil_STATE', JSON.stringify(myProfil));
-  }, [myProfil]);
+    localStorage.setItem('MY_PROFILE', JSON.stringify(myProfile));
+  }, [myProfile]);
 
   // useeffect untuk drawer hamburger
   useEffect(() => {
@@ -148,21 +136,35 @@ function App() {
     setSearchParams({ keywordSearch });
   }
 
-  const filteredProducts = products.filter((product) => product.name.toLowerCase().includes(
-    keyword.toLocaleLowerCase(),
-  ));
+  const filteredProducts = publishedProducts.filter(
+    (product) => product.name.toLowerCase().includes(
+      keyword.toLocaleLowerCase(),
+    ),
+  );
 
   if (authedUser === null) {
     return (
       // eslint-disable-next-line max-len
       // eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions
       <div className="app-container">
+        <ToastContainer
+          position="top-center"
+          autoClose={2500}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="light"
+        />
         <header>
           <nav className="menu">
             <ul>
               <li><a href="/">Beranda</a></li>
               <li><a href="/about">Tentang Kami</a></li>
-              <li><a href="/user-list">Hubungi Kami</a></li>
+              <li><a href="/FAQ">FAQ</a></li>
             </ul>
           </nav>
           <div className="header-main-login">
@@ -170,8 +172,10 @@ function App() {
               {activeHam ? <GrClose /> : <GoThreeBars />}
             </button>
             <div className="brand-container">
-              <Link to="/" className="brand-logo"><img src={brandTukerin} alt="logo tukerin" /></Link>
-              <h1>Tukerin</h1>
+              <Link to="/" className="brand-logo">
+                <img src={brandTukerin} alt="logo tukerin" />
+                <h1>Tukerin</h1>
+              </Link>
             </div>
             <SearchBar
               keyword={keyword}
@@ -195,8 +199,8 @@ function App() {
             <nav>
               <ul>
                 <li><a href="/">Beranda</a></li>
-                <li><a href="/">Tentang Kami</a></li>
-                <li><a href="/">Hubungi Kami</a></li>
+                <li><a href="/about">Tentang Kami</a></li>
+                <li><a href="/FAQ">FAQ</a></li>
               </ul>
             </nav>
             <div className="header-main-dropdown">
@@ -212,15 +216,15 @@ function App() {
           <Routes>
             <Route path="/" element={<Homepage filteredProducts={filteredProducts} />} />
 
-            <Route path="/category/elektronik" element={<Elektronik publishedProduct={publishedProducts} />} />
-            <Route path="/category/fashion-wanita" element={<FashionWanita publishedProduct={publishedProducts} />} />
-            <Route path="/category/fashion-pria" element={<FashionPria publishedProduct={publishedProducts} />} />
-            <Route path="/category/fashion-anak" element={<FashionAnak publishedProduct={publishedProducts} />} />
-            <Route path="/category/makanan-minuman" element={<MakananMinuman publishedProduct={publishedProducts} />} />
-            <Route path="/category/kecantikan" element={<Kecantikan publishedProduct={publishedProducts} />} />
-            <Route path="/category/hobi" element={<Hobi publishedProduct={publishedProducts} />} />
+            <Route path="/category/elektronik" element={<Elektronik publishedProduct={publishedProducts} keyword={keyword} />} />
+            <Route path="/category/fashion-wanita" element={<FashionWanita publishedProduct={publishedProducts} keyword={keyword} />} />
+            <Route path="/category/fashion-pria" element={<FashionPria publishedProduct={publishedProducts} keyword={keyword} />} />
+            <Route path="/category/fashion-anak" element={<FashionAnak publishedProduct={publishedProducts} keyword={keyword} />} />
+            <Route path="/category/makanan-minuman" element={<MakananMinuman publishedProduct={publishedProducts} keyword={keyword} />} />
+            <Route path="/category/kecantikan" element={<Kecantikan publishedProduct={publishedProducts} keyword={keyword} />} />
+            <Route path="/category/hobi" element={<Hobi publishedProduct={publishedProducts} keyword={keyword} />} />
 
-            <Route path="/products/:id" element={<DetailPage authedUser={authedUser} />} />
+            <Route path="/products/:id" element={<DetailPage authedUser={authedUser} filteredProducts={filteredProducts} />} />
             <Route path="/register" element={<RegisterPage />} />
             <Route path="/login" element={<LoginPage loginSuccess={onLoginSuccess} />} />
             <Route path="/add" element={<AddPage />} />
@@ -272,12 +276,24 @@ function App() {
     // eslint-disable-next-line max-len
     // eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions
     <div className="app-container">
+      <ToastContainer
+        position="top-center"
+        autoClose={2500}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+      />
       <header>
         <nav className="menu">
           <ul>
             <li><a href="/">Beranda</a></li>
             <li><a href="/about">Tentang Kami</a></li>
-            <li><a href="/user-list">Hubungi Kami</a></li>
+            <li><a href="/FAQ">FAQ</a></li>
           </ul>
         </nav>
         <div className="header-main">
@@ -287,8 +303,10 @@ function App() {
             </button>
           </div>
           <div className="brand-container">
-            <Link to="/" className="brand-logo"><img src={brandTukerin} alt="logo tukerin" /></Link>
-            <h1>Tukerin</h1>
+            <Link to="/" className="brand-logo">
+              <img src={brandTukerin} alt="logo tukerin" />
+              <h1>Tukerin</h1>
+            </Link>
           </div>
 
           <SearchBar
@@ -297,15 +315,10 @@ function App() {
             keywordChange={onKeywordChangeHandler}
           />
           <div className="authentication-button">
-            <li>
-              <Popup trigger={<MdNotifications className="notification-icon" />} position="right center">
-                {/* <ProfileModal onLogout={onLogout} /> */}
-              </Popup>
-            </li>
             <div className="profile-icon">
               <li>
                 <Popup trigger={<CgProfile className="profile-icon__icon" />}>
-                  <ProfileModal onLogout={onLogout} />
+                  <ProfileModal />
                 </Popup>
                 {' '}
                 <p>{authedUser}</p>
@@ -326,34 +339,10 @@ function App() {
             <nav>
               <ul>
                 <li><a href="/">Beranda</a></li>
-                <li><a href="/">Tentang Kami</a></li>
-                <li><a href="/">Hubungi Kami</a></li>
+                <li><a href="/about">Tentang Kami</a></li>
+                <li><a href="/FAQ">FAQ</a></li>
               </ul>
             </nav>
-            <div className="header-main-dropdown">
-              <div className="authentication-button">
-                <div className="profile-icon">
-                  <div className={showProf ? 'prof active-prof' : 'prof'} onClick={closeProf}>
-                    {showProf ? (
-                      <>
-                        <CgProfile className="profile-icon__icon" />
-                        {' '}
-                        <p>{authedUser}</p>
-                      </>
-                    ) : (
-                      <>
-                        <CgProfile className="profile-icon__icon" />
-                        {' '}
-                        <p>{authedUser}</p>
-                      </>
-                    )}
-                  </div>
-                  {showProf && (
-                    <ProfilNav onLogout={onLogout} />
-                  )}
-                </div>
-              </div>
-            </div>
           </div>
         )}
       </header>
@@ -361,26 +350,28 @@ function App() {
         <Routes>
           <Route path="/" element={<Homepage filteredProducts={filteredProducts} />} />
 
-          <Route path="/category/elektronik" element={<Elektronik publishedProduct={publishedProducts} />} />
-          <Route path="/category/fashion-wanita" element={<FashionWanita publishedProduct={publishedProducts} />} />
-          <Route path="/category/fashion-pria" element={<FashionPria publishedProduct={publishedProducts} />} />
-          <Route path="/category/fashion-anak" element={<FashionAnak publishedProduct={publishedProducts} />} />
-          <Route path="/category/makanan-minuman" element={<MakananMinuman publishedProduct={publishedProducts} />} />
-          <Route path="/category/kecantikan" element={<Kecantikan publishedProduct={publishedProducts} />} />
-          <Route path="/category/hobi" element={<Hobi publishedProduct={publishedProducts} />} />
+          <Route path="/category/elektronik" element={<Elektronik publishedProduct={publishedProducts} keyword={keyword} />} />
+          <Route path="/category/fashion-wanita" element={<FashionWanita publishedProduct={publishedProducts} keyword={keyword} />} />
+          <Route path="/category/fashion-pria" element={<FashionPria publishedProduct={publishedProducts} keyword={keyword} />} />
+          <Route path="/category/fashion-anak" element={<FashionAnak publishedProduct={publishedProducts} keyword={keyword} />} />
+          <Route path="/category/makanan-minuman" element={<MakananMinuman publishedProduct={publishedProducts} keyword={keyword} />} />
+          <Route path="/category/kecantikan" element={<Kecantikan publishedProduct={publishedProducts} keyword={keyword} />} />
+          <Route path="/category/hobi" element={<Hobi publishedProduct={publishedProducts} keyword={keyword} />} />
 
           <Route path="/products/:id" element={<DetailPage filteredProducts={filteredProducts} productDiajukan={productDiajukan} setProductDiajukan={setProductDiajukan} productDitawar={productDitawar} setProductDitawar={setProductDitawar} />} />
           <Route path="/register" element={<RegisterPage />} />
           <Route path="/login" element={<LoginPage />} />
-          <Route path="/add" element={<AddPage publishedProducts={publishedProducts} setPublishedProducts={setPublishedProducts} myProduct={myProduct} setMyProduct={setMyProduct} />} />
+          <Route path="/add" element={<AddPage publishedProducts={publishedProducts} setPublishedProducts={setPublishedProducts} myProduct={myProduct} setMyProduct={setMyProduct} myProfile={myProfile} />} />
           <Route path="/transaction" element={<TransactionPage productDiajukan={productDiajukan} setProductDiajukan={setProductDiajukan} productDitawar={productDitawar} />} />
-          <Route path="/profile" element={<MyAccount />} />
+          <Route path="/profile" element={<MyAccount myProfile={myProfile} setMyProfile={setMyProfile} />} />
+          <Route path="/edit-akun" element={<AddAkun myProfile={myProfile} setMyProfile={setMyProfile} />} />
           <Route path="/user-list" element={<UserList />} />
           <Route path="/add-user" element={<AddUser />} />
           <Route path="/edit-user/:id" element={<EditUser />} />
           <Route path="/barang-saya" element={<BarangSayaPage myProduct={myProduct} setMyProduct={setMyProduct} />} />
           <Route path="/about" element={<AboutPage />} />
           <Route path="/FAQ" element={<FAQpage />} />
+          {/* <Route path="/hubungi" element={<ContactForm />} /> */}
         </Routes>
       </main>
       <footer>
@@ -416,3 +407,9 @@ function App() {
 }
 
 export default App;
+
+// {/* <li>
+// <Popup trigger={<MdNotifications className="notification-icon" />} position="right center">
+//  {/* <ProfileModal onLogout={onLogout} /> */}
+//   </Popup>
+// </li> */}

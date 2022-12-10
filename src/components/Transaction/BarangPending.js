@@ -1,19 +1,17 @@
-/* eslint-disable react/forbid-prop-types */
-/* eslint-disable react/button-has-type */
 import React from 'react';
 import PropTypes from 'prop-types';
 
-function BarangSelesai({
+function BarangPending({
   image, name, description, price,
 }) {
   return (
-    <div className="barang-ditawar">
+    <div className="barang-diajukan">
       <div className="transaction-item__header">
-        <h3>Transaksi Selesai</h3>
+        <h3>Barang yang diajukan</h3>
       </div>
       <div className="transaction-item__body-pending">
         <div className="img-name-price_container">
-          <img className="transaction-item__body-image-pending" src={image} alt="kamera" />
+          <img className="transaction-item__body-image-pending" src={image} alt="product" />
           <div>
             <h3>{name}</h3>
             <h4>
@@ -25,19 +23,19 @@ function BarangSelesai({
         <div className="transaction-item__body-title-pending">
           <p>{description}</p>
         </div>
-        <div className="transaction-item__body-action-pending selesai">
-          <p>Selesai</p>
+        <div className="transaction-item__body-action">
+          <button className="button-pending" type="submit">Pending</button>
         </div>
       </div>
     </div>
   );
 }
 
-BarangSelesai.propTypes = {
-  image: PropTypes.string.isRequired,
+BarangPending.propTypes = {
+  image: PropTypes.arrayOf.isRequired,
   name: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
   price: PropTypes.string.isRequired,
 };
 
-export default BarangSelesai;
+export default BarangPending;

@@ -1,3 +1,4 @@
+/* eslint-disable react/require-default-props */
 /* eslint-disable max-len */
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/forbid-prop-types */
@@ -62,7 +63,7 @@ function MasukanBarangBarter({
           product.status = 'pending';
         }
         return product.id === id;
-      })]);
+      })[0]]);
     }
     navigate('/transaction');
   };
@@ -86,9 +87,17 @@ function MasukanBarangBarter({
     setDescription(e.target.value);
   };
 
-  const handleImage = (e) => {
-    console.log(e.target.files);
+  const clickFile = (e) => {
     setImage(URL.createObjectURL(e.target.files[0]));
+
+    const inputFile = document.getElementById('input-file');
+    const imgFile = document.getElementById('img-file');
+
+    inputFile.style = 'display:none';
+    imgFile.style = 'display:block';
+    imgFile.style = 'width:85px';
+    imgFile.style = 'height:85px';
+    imgFile.src = URL.createObjectURL(e.target.files[0]);
   };
 
   function onClick() {
@@ -109,27 +118,29 @@ function MasukanBarangBarter({
           <label>
             Name
             <br />
-            <input type="text" onChange={handleName} />
+            <input type="text" onChange={handleName} required />
             <br />
             <br />
             Harga
             <br />
-            <input type="text" onChange={handlePrice} />
+            <input type="text" onChange={handlePrice} required />
             <br />
             <br />
             Deskripsi
             <br />
-            <input type="text" onChange={handleDescription} />
+            <input type="text" onChange={handleDescription} required />
             <br />
             <br />
             Foto
             <br />
             <div className="input-image">
-              <input type="file" onChange={handleImage} />
-              <AiOutlinePlus className="icon-add" />
+              <div id="input-file">
+                <input type="file" name="input-file" onChange={clickFile} required />
+                <AiOutlinePlus className="icon-add" />
+              </div>
+              <img id="img-file" style={{ display: 'none' }} src="" alt="gambar barang" />
             </div>
             <br />
-            <h4 className="nama-file">{image}</h4>
           </label>
           <input className="ajukan-button" type="submit" value="Terbitkan" onClick={onClick} />
         </form>
@@ -139,11 +150,11 @@ function MasukanBarangBarter({
 }
 
 MasukanBarangBarter.propTypes = {
-  filteredProducts: PropTypes.arrayOf(PropTypes.object).isRequired,
-  productDitawar: PropTypes.arrayOf(PropTypes.object).isRequired,
-  productDiajukan: PropTypes.arrayOf(PropTypes.object).isRequired,
-  setProductDiajukan: PropTypes.func.isRequired,
-  setProductDitawar: PropTypes.func.isRequired,
+  filteredProducts: PropTypes.arrayOf(PropTypes.object),
+  productDitawar: PropTypes.arrayOf(PropTypes.object),
+  productDiajukan: PropTypes.arrayOf(PropTypes.object),
+  setProductDiajukan: PropTypes.func,
+  setProductDitawar: PropTypes.func,
 };
 
 export default MasukanBarangBarter;

@@ -1,3 +1,4 @@
+/* eslint-disable react/require-default-props */
 /* eslint-disable react/jsx-no-bind */
 import React from 'react';
 import PropTypes from 'prop-types';
@@ -5,12 +6,15 @@ import { Link } from 'react-router-dom';
 import LoginInput from '../components/LoginInput';
 import { login } from '../utils/api-endpoint';
 import brandTukerin from '../images/brand-tukerin.png';
+// eslint-disable-next-line import/order
+import { toast } from 'react-toastify';
 
 function LoginPage({ loginSuccess }) {
   async function onLogin({ email, password }) {
     const { error, data } = await login({ email, password });
 
     if (!error) {
+      toast.success('Login berhasil !');
       loginSuccess(data);
     }
   }
@@ -33,7 +37,7 @@ function LoginPage({ loginSuccess }) {
 }
 
 LoginPage.propTypes = {
-  loginSuccess: PropTypes.func.isRequired,
+  loginSuccess: PropTypes.func,
 };
 
 export default LoginPage;

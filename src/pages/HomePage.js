@@ -1,3 +1,4 @@
+/* eslint-disable react/forbid-prop-types */
 import React from 'react';
 import PropTypes from 'prop-types';
 import Category from '../components/Category';
@@ -44,7 +45,6 @@ function Homepage({ filteredProducts }) {
 }
 
 Homepage.propTypes = {
-  // eslint-disable-next-line react/forbid-prop-types
   filteredProducts: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 
