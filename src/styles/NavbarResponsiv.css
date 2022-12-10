@@ -175,19 +175,6 @@ div.prof {
   .header-main-dropdown .authentication-button .profile-icon {
     margin-top: 0px;
   }
-
-  /* Pop modal */
-   div#root{
-    position: absolute;
-  }
-  .popup-arrow{
-    display: none;
-  }
-  .root-popup-profile {
-    position: relative;
-    top: 108px;
-    pointer-events:none;
-  }
 }
 
 @media screen and (max-width: 750px) {
