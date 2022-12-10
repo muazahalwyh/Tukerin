@@ -18,3 +18,9 @@ Project Resources:
 5. Library: React
 6. Tools: npm, Github
 7. API: https://contact-api.dicoding.dev/v1
+
+Presentation link:
+https://youtu.be/bPnxS_0lNA4
+
+Demo link:
+https://youtu.be/DyF1Rws0by4
